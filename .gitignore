@@ -19,7 +19,6 @@ coverage
 
 # Editor directories and files
 .vscode/*
-!.vscode/settings.json
 !.vscode/extensions.json
 .idea
 *.suo
@@ -29,10 +28,3 @@ coverage
 *.sw?
 
 *.tsbuildinfo
-
-# User directories and files
-*.tgz
-*.zip
-*.7z
-*/tmp/*
-*.tmp.*
