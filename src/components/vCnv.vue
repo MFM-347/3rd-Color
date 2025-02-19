@@ -22,7 +22,10 @@ import chroma from 'chroma-js'
 import { copy } from '@/utils'
 
 const props = defineProps({
-  color: String,
+  color: {
+    type: String,
+    default: '#000000',
+  },
 })
 const clr = computed(() => {
   const c = new TinyColor(props.color)

@@ -102,7 +102,12 @@ import vInput from '@/components/vInput.vue'
 import { TinyColor } from '@ctrl/tinycolor'
 import { copy, isDark } from '@/utils'
 
-const props = defineProps({ color: String })
+const props = defineProps({
+  color: {
+    type: String,
+    default: '#000000',
+  },
+})
 const mod = reactive({
   lighten: 0,
   darken: 0,
