@@ -11,7 +11,7 @@
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
     "format": "prettier -w .",
-    "start": "npm run lint && npm run format && cls && npm run dev"
+    "start": "npm run lint && npm run format && clear && npm run dev"
   },
   "dependencies": {
     "@ctrl/tinycolor": "^4.1.0",
@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@nirtamir2/prettier-plugin-css-order": "^0.0.1",
-    "@tailwindcss/vite": "^4.0.6",
+    "@tailwindcss/vite": "^4.0.7",
     "@tsconfig/node22": "^22.0.0",
     "@types/chroma-js": "^3.1.1",
     "@types/node": "^22.13.4",
@@ -35,9 +35,9 @@
     "npm-run-all2": "^7.0.2",
     "prettier": "^3.5.1",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "tailwindcss": "^4.0.6",
+    "tailwindcss": "^4.0.7",
     "typescript": "~5.7.3",
-    "vite": "^6.1.0",
+    "vite": "^6.1.1",
     "vite-plugin-pwa": "^0.21.1",
     "vite-plugin-vue-devtools": "^7.7.2",
     "vue-tsc": "^2.2.2",

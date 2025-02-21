@@ -46,5 +46,5 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 .i {
-  @apply mx-4 rounded-lg border-clr-400 bg-zinc-200 p-2 px-4 ta-200 hover:scale-[1.02] hover:border-1 hover:shadow-md dark:bg-zinc-800;
+  @apply mx-4 cursor-pointer rounded-lg border-clr-400 bg-zinc-200 p-2 px-4 ta-200 hover:scale-[1.02] hover:border-1 hover:shadow-md dark:bg-zinc-800;
 }
