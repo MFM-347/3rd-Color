@@ -1,20 +1,15 @@
 <template>
   <div class="flex flex-row">
+    <label class="hidden" :for="label.toLowerCase()">{{ label }}</label>
     <input
+      :id="label.toLowerCase()"
       type="text"
       :placeholder="ph"
       :value="modelValue"
       @input="onTChange"
-      class="grow border border-zinc-400 bg-zinc-200 p-3 focus:border-clr-400 focus:ring-1 focus:ring-clr-500 focus:outline-none dark:border-zinc-600 dark:bg-zinc-800"
-      :class="pick ? 'rounded-l-xl' : 'rounded-xl'"
+      class="grow rounded-l-xl border border-zinc-400 bg-zinc-200 p-3 focus:border-clr-400 focus:ring-1 focus:ring-clr-500 focus:outline-none dark:border-zinc-600 dark:bg-zinc-800"
     />
-    <input
-      type="color"
-      :value="colorHex"
-      @input="onCChange"
-      class="mt-2 size-14 rounded-r-xl"
-      v-if="pick"
-    />
+    <input type="color" :value="colorHex" @input="onCChange" class="mt-2 size-14 rounded-r-xl" />
   </div>
 </template>
 
@@ -24,8 +19,8 @@ import { TinyColor } from '@ctrl/tinycolor'
 
 const props = defineProps({
   modelValue: { type: String, default: '' },
-  ph: { type: String, default: 'Enter value' },
-  pick: { type: Boolean, default: true },
+  ph: { type: String, default: 'Enter text' },
+  label: { type: String, default: 'Enter text' },
 })
 
 const emit = defineEmits(['update:modelValue'])

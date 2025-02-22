@@ -23,7 +23,7 @@ export default defineConfig({
 
       manifest: {
         name: '3rd Color',
-        short_name: 'VibraX',
+        short_name: '3Color',
         description:
           '3rd Color is a powerful, user-friendly color tool app that offers color information, seamless color conversion, and advanced color modification features. Explore and transform colors easily.',
         theme_color: '#0063ff',
@@ -44,7 +44,6 @@ export default defineConfig({
     }),
     Sitemap({
       hostname: 'https://3rd-color.vercel.app/',
-      changefreq: 'weekly',
       generateRobotsTxt: true,
     }),
   ],

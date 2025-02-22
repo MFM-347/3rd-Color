@@ -23,8 +23,11 @@ onMounted(() => {
   <div
     class="fixed right-4 bottom-4 gap-1 rounded-full border bg-zinc-50 p-1 shadow-sm shadow-black dark:bg-zinc-950 dark:shadow-white"
   >
-    <div class="grid grid-cols-1">
-      <button :title="text" class="vf-btn rounded-full" @click="darkMode">
+    <div class="grid grid-cols-2">
+      <button title="About" class="vf-btn rounded-l-full">
+        <span>About</span>
+      </button>
+      <button :title="text" class="vf-btn rounded-r-full" @click="darkMode">
         <span>{{ text }}</span>
       </button>
     </div>

@@ -1,5 +1,6 @@
 <template>
-  <div class="w-full">
+  <div class="flex w-full flex-col">
+    <label class="text-lg" :for="label.toLowerCase()">{{ label }}</label>
     <div class="relative">
       <div
         :class="[
@@ -19,6 +20,7 @@
         </button>
         <input
           type="number"
+          :id="label.toLowerCase()"
           v-model="val"
           :min="min"
           :max="max"
@@ -44,11 +46,13 @@
 import { ref, watch } from 'vue'
 
 const props = defineProps({
+  label: { type: String, default: 'Enter Value' },
   min: { type: Number, default: 0 },
   max: { type: Number, default: 100 },
   step: { type: Number, default: 1 },
   modelValue: { type: Number, default: 50 },
 })
+
 const emit = defineEmits<{
   (event: 'update:modelValue', value: number): void
 }>()

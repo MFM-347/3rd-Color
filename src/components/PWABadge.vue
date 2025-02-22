@@ -57,48 +57,32 @@ function close() {
 </script>
 
 <template>
-  <div v-if="needRefresh" class="pwa-toast" aria-labelledby="toast-message" role="alert">
-    <div class="message">
+  <div
+    v-if="needRefresh"
+    class="fixed bottom-2 left-2 z-[1] m-4 grid rounded border-zinc-600/50 bg-zinc-50 p-3 text-left shadow-md shadow-zinc-600/50 dark:bg-zinc-950"
+    aria-labelledby="toast-message"
+    role="alert"
+  >
+    <div class="mb-2">
       <span id="toast-message">
         {{ title }}
       </span>
     </div>
-    <div class="buttons">
-      <button type="button" class="reload" @click="updateServiceWorker()">Reload</button>
-      <button type="button" @click="close">Close</button>
+    <div class="flex">
+      <button
+        type="button"
+        class="mr-1 block rounded-[2px] border-zinc-600/50 px-2.5 py-1 outline-none hover:underline"
+        @click="updateServiceWorker()"
+      >
+        Reload
+      </button>
+      <button
+        type="button"
+        class="mr-1 rounded-[2px] border-zinc-600/50 px-2.5 py-1 outline-none hover:underline"
+        @click="close"
+      >
+        Close
+      </button>
     </div>
   </div>
 </template>
-
-<style scoped>
-.pwa-toast {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  margin: 16px;
-  padding: 12px;
-  border: 1px solid #8885;
-  border-radius: 4px;
-  z-index: 1;
-  text-align: left;
-  box-shadow: 3px 4px 5px 0 #8885;
-  display: grid;
-  background-color: white;
-}
-.pwa-toast .message {
-  margin-bottom: 8px;
-}
-.pwa-toast .buttons {
-  display: flex;
-}
-.pwa-toast button {
-  border: 1px solid #8885;
-  outline: none;
-  margin-right: 5px;
-  border-radius: 2px;
-  padding: 3px 10px;
-}
-.pwa-toast button.reload {
-  display: block;
-}
-</style>
