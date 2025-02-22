@@ -1,13 +1,13 @@
-# Contributing to VibrantX
+# Contributing to 3rd Color
 
-Thank you for considering contributing to VibrantX! 🎉  
+Thank you for considering contributing to 3rd Color! 🎉
 Your contributions, whether big or small, are essential to the success of this project. We welcome **bug reports**, **feature requests**, **documentation updates**, and **code improvements**.
 
 ## Contribution Guide
 
 ### Step 1: Fork the Repository
 
-1. Navigate to the [VibrantX repository](https://github.com/MFM-347/VibrantX).
+1. Navigate to the [3rd Color repository](https://github.com/MFM-347/3rd Color).
 2. Click the **Fork** button in the top-right corner to create your own copy of the repository.
 
 ### Step 2: Clone Your Fork
@@ -15,8 +15,8 @@ Your contributions, whether big or small, are essential to the success of this p
 Clone your forked repository to your local machine:
 
 ```bash
-git clone https://github.com/<your-username>/VibrantX.git
-cd VibrantX
+git clone https://github.com/<your-username>/3rd Color.git
+cd 3rd Color
 ```
 
 ### Step 3: Set Up Your Environment
@@ -95,7 +95,7 @@ Push your branch to your fork:
 git push origin <branch-name>
 ```
 
-Then, navigate to the **original VibrantX repository** and submit a pull request.  
+Then, navigate to the **original 3rd Color repository** and submit a pull request.
 Include the following in your PR description:
 
 - A summary of changes.
@@ -104,18 +104,18 @@ Include the following in your PR description:
 
 ## Reporting Issues
 
-Encountered a bug or have a great idea for a new feature? Create an issue [here](https://github.com/MFM-347/VibrantX/issues).
+Encountered a bug or have a great idea for a new feature? Create an issue [here](https://github.com/MFM-347/3rd Color/issues).
 
 ### Guidelines for Issues:
 
-- **Bug Reports**:  
+- **Bug Reports**:
   Include:
 
   - Steps to reproduce the issue.
   - Expected vs. actual behavior.
   - Relevant screenshots or logs (if available).
 
-- **Feature Requests**:  
+- **Feature Requests**:
   Describe:
   - The feature and its use case.
   - Any benefits or improvements it will bring.
@@ -146,7 +146,7 @@ To maintain a high-quality codebase, please follow these guidelines:
 
 If you’re unsure about something or need guidance:
 
-- Start a [discussion](https://github.com/MFM-347/VibrantX/discussions).
+- Start a [discussion](https://github.com/MFM-347/3rd Color/discussions).
 - Join our community for support and collaboration.
 
-Thank you ✨ for contributing to VibrantX! Your effort makes this project better for everyone.
+Thank you ✨ for contributing to 3rd Color! Your effort makes this project better for everyone.

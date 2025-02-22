@@ -1,17 +1,19 @@
 <template>
   <div class="m-2 flex w-full flex-col gap-y-1 p-2">
     <h2 class="text-center text-2xl font-bold">Conversions</h2>
-    <div @click="copy(clr.hex)" class="i cursor-pointer">{{ clr.hex }}</div>
-    <div @click="copy(clr.rgb)" class="i cursor-pointer">{{ clr.rgb }}</div>
-    <div @click="copy(clr.cmyk)" class="i cursor-pointer">{{ clr.cmyk }}</div>
-    <div @click="copy(clr.hsl)" class="i cursor-pointer">{{ clr.hsl }}</div>
-    <div @click="copy(clr.hsv)" class="i cursor-pointer">{{ clr.hsv }}</div>
-    <div @click="copy(clr.hcl)" class="i cursor-pointer">{{ clr.hcl }}</div>
-    <div @click="copy(clr.hsi)" class="i cursor-pointer">{{ clr.hsi }}</div>
-    <div @click="copy(clr.oklch)" class="i cursor-pointer">{{ clr.oklch }}</div>
-    <div @click="copy(clr.oklab)" class="i cursor-pointer">{{ clr.oklab }}</div>
-    <div @click="copy(clr.lch)" class="i cursor-pointer">{{ clr.lch }}</div>
-    <div @click="copy(clr.lab)" class="i cursor-pointer">{{ clr.lab }}</div>
+    <div class="grid grid-cols-1 gap-1 sm:grid-cols-2">
+      <div @click="copy(clr.hex)" class="i">{{ clr.hex }}</div>
+      <div @click="copy(clr.rgb)" class="i">{{ clr.rgb }}</div>
+      <div @click="copy(clr.cmyk)" class="i">{{ clr.cmyk }}</div>
+      <div @click="copy(clr.hsl)" class="i">{{ clr.hsl }}</div>
+      <div @click="copy(clr.hsv)" class="i">{{ clr.hsv }}</div>
+      <div @click="copy(clr.hcl)" class="i">{{ clr.hcl }}</div>
+      <div @click="copy(clr.hsi)" class="i">{{ clr.hsi }}</div>
+      <div @click="copy(clr.oklch)" class="i">{{ clr.oklch }}</div>
+      <div @click="copy(clr.oklab)" class="i">{{ clr.oklab }}</div>
+      <div @click="copy(clr.lch)" class="i">{{ clr.lch }}</div>
+      <div @click="copy(clr.lab)" class="i">{{ clr.lab }}</div>
+    </div>
   </div>
 </template>
 

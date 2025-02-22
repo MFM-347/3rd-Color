@@ -4,7 +4,7 @@
     <div>
       <div class="flex h-24 flex-row overflow-hidden rounded-xl">
         <div
-          class="grid w-1/2 cursor-pointer place-items-center"
+          class="grid w-1/2 cursor-pointer place-items-center border"
           :class="isDark(props.color) ? 'text-gray-200' : 'text-gray-800'"
           @click="copy(props.color)"
           :style="{ backgroundColor: props.color }"
@@ -12,7 +12,7 @@
           {{ props.color }}
         </div>
         <div
-          class="grid w-1/2 cursor-pointer place-items-center"
+          class="grid w-1/2 cursor-pointer place-items-center border"
           :class="isDark(c) ? 'text-gray-200' : 'text-gray-800'"
           @click="copy(c)"
           :style="{ backgroundColor: c }"
@@ -21,77 +21,91 @@
         </div>
       </div>
     </div>
-    <div class="flex w-full flex-col gap-y-1">
-      <label for="lighten">Lighten</label>
-      <vInput
-        v-model="mod.lighten"
-        ph="Enter value"
-        :min="0"
-        :max="100"
-        :step="1"
-        type="number"
-        name="lighten"
-      />
-      <label for="darken">Darken</label>
-      <vInput
-        v-model="mod.darken"
-        ph="Enter value"
-        :min="0"
-        :max="100"
-        :step="1"
-        type="number"
-        name="darken"
-      />
-      <label for="saturate">Saturate</label>
-      <vInput
-        v-model="mod.saturate"
-        ph="Enter value"
-        :min="0"
-        :max="100"
-        :step="1"
-        type="number"
-        name="saturate"
-      />
-      <label for="desaturate">Desaturate</label>
-      <vInput
-        v-model="mod.desaturate"
-        ph="Enter value"
-        :min="0"
-        :max="100"
-        :step="1"
-        type="number"
-        name="desaturate"
-      />
-      <label for="shade">Shade</label>
-      <vInput
-        v-model="mod.shade"
-        ph="Enter value"
-        :min="0"
-        :max="100"
-        :step="1"
-        type="number"
-        name="shade"
-      />
-      <label for="tint">Tint</label>
-      <vInput
-        v-model="mod.tint"
-        ph="Enter value"
-        :min="0"
-        :max="100"
-        :step="1"
-        type="number"
-        name="tint"
-      />
-      <label for="spin">Spin</label>
-      <vInput
-        v-model="mod.spin"
-        ph="Enter value"
-        :min="0"
-        :max="360"
-        :step="1"
-        type="number"
-        name="spin"
-      />
+    <div class="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
+      <div>
+        <label class="text-lg" for="lighten">Lighten</label>
+        <vInput
+          v-model="mod.lighten"
+          ph="Enter value"
+          :min="0"
+          :max="100"
+          :step="1"
+          type="number"
+          name="lighten"
+        />
+      </div>
+      <div>
+        <label class="text-lg" for="darken">Darken</label>
+        <vInput
+          v-model="mod.darken"
+          ph="Enter value"
+          :min="0"
+          :max="100"
+          :step="1"
+          type="number"
+          name="darken"
+        />
+      </div>
+      <div>
+        <label class="text-lg" for="saturate">Saturate</label>
+        <vInput
+          v-model="mod.saturate"
+          ph="Enter value"
+          :min="0"
+          :max="100"
+          :step="1"
+          type="number"
+          name="saturate"
+        />
+      </div>
+      <div>
+        <label class="text-lg" for="desaturate">Desaturate</label>
+        <vInput
+          v-model="mod.desaturate"
+          ph="Enter value"
+          :min="0"
+          :max="100"
+          :step="1"
+          type="number"
+          name="desaturate"
+        />
+      </div>
+      <div>
+        <label class="text-lg" for="shade">Shade</label>
+        <vInput
+          v-model="mod.shade"
+          ph="Enter value"
+          :min="0"
+          :max="100"
+          :step="1"
+          type="number"
+          name="shade"
+        />
+      </div>
+      <div>
+        <label class="text-lg" for="tint">Tint</label>
+        <vInput
+          v-model="mod.tint"
+          ph="Enter value"
+          :min="0"
+          :max="100"
+          :step="1"
+          type="number"
+          name="tint"
+        />
+      </div>
+      <div>
+        <label class="text-lg" for="spin">Spin</label>
+        <vInput
+          v-model="mod.spin"
+          ph="Enter value"
+          :min="0"
+          :max="360"
+          :step="1"
+          type="number"
+          name="spin"
+        />
+      </div>
     </div>
   </div>
 </template>

@@ -14,17 +14,17 @@
   outline: none;
 }
 @theme {
-  --color-clr-50: #e7f3ff;
-  --color-clr-100: #d2eaff;
-  --color-clr-200: #afd5ff;
-  --color-clr-300: #7fb7ff;
-  --color-clr-400: #4d89ff;
-  --color-clr-500: #255bff;
-  --color-clr-600: #0027ff;
-  --color-clr-700: #002bff;
-  --color-clr-800: #0023d5;
-  --color-clr-900: #0a27a5;
-  --color-clr-950: #030a30; /* hsl(230, 90, 10) */
+  --color-clr-50: #eaf7ff;
+  --color-clr-100: #d0ecff;
+  --color-clr-200: #aae1ff;
+  --color-clr-300: #70d0ff;
+  --color-clr-400: #2db4ff;
+  --color-clr-500: #008bff;
+  --color-clr-600: #0063ff;
+  --color-clr-700: #0049ff;
+  --color-clr-800: #003cdf;
+  --color-clr-900: #0039ad;
+  --color-clr-950: #010c23; /* hsl(220, 97, 7) */
 }
 *,
 *::before,
@@ -46,5 +46,5 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 .i {
-  @apply mx-4 cursor-pointer rounded-lg border-clr-400 bg-zinc-200 p-2 px-4 ta-200 hover:scale-[1.02] hover:border-1 hover:shadow-md dark:bg-zinc-800;
+  @apply cursor-pointer rounded-lg border-clr-400 bg-zinc-200 p-2 px-4 ta-200 hover:scale-[1.02] hover:border-1 hover:shadow-md dark:bg-zinc-800;
 }

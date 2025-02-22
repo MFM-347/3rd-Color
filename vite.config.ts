@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import tailwind from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
+import Sitemap from 'vite-plugin-sitemap'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -21,11 +22,11 @@ export default defineConfig({
       },
 
       manifest: {
-        name: 'VibrantX',
+        name: '3rd Color',
         short_name: 'VibraX',
         description:
-          'VibrantX is a powerful, user-friendly color tool app that offers color information, seamless color conversion, and advanced color modification features. Explore and transform colors easily.',
-        theme_color: '#255bff',
+          '3rd Color is a powerful, user-friendly color tool app that offers color information, seamless color conversion, and advanced color modification features. Explore and transform colors easily.',
+        theme_color: '#0063ff',
       },
 
       workbox: {
@@ -40,6 +41,11 @@ export default defineConfig({
         suppressWarnings: true,
         type: 'module',
       },
+    }),
+    Sitemap({
+      hostname: 'https://3rd-color.vercel.app/',
+      changefreq: 'weekly',
+      generateRobotsTxt: true,
     }),
   ],
   resolve: {
