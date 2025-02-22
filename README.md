@@ -9,7 +9,6 @@ I need a little bit of your help in creating a minimalistic logo for 3rd Color.
 ## Future Plans
 
 - I may add color scheme generation like **[uicolors.app](https://uicolors.app/)** and **[chromax.app](https://www.chromax.app/)**.
-- I may relayout the app.
 - I may (or may not) rename **3rd Color** to **ColorXpret**.
 
 ## Contributing

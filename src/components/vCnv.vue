@@ -32,24 +32,25 @@ const props = defineProps({
 const clr = computed(() => {
   const c = new TinyColor(props.color)
   const d = chroma(props.color)
-  const hcl = d.hcl()
-  const hsi = d.hsi()
-  const oklch = d.oklch()
-  const oklab = d.oklab()
-  const lch = d.lch()
-  const lab = d.lab()
+  const sV = (value: number) => (isNaN(value) ? 0 : value.toFixed(0))
+  const hcl = d.hcl().map(sV)
+  const hsi = d.hsi().map(sV)
+  const oklch = d.oklch().map(sV)
+  const oklab = d.oklab().map(sV)
+  const lch = d.lch().map(sV)
+  const lab = d.lab().map(sV)
   return {
     hex: c.toHexString(),
     rgb: c.toRgbString(),
     cmyk: c.toCmykString(),
     hsl: c.toHslString(),
     hsv: c.toHsvString(),
-    hcl: `hcl(${hcl[0].toFixed(1)}, ${hcl[1].toFixed(1)}, ${hcl[2].toFixed(1)})`,
-    hsi: `hsi(${hsi[0].toFixed(1)}, ${hsi[1].toFixed(1)}, ${hsi[2].toFixed(1)})`,
-    oklch: `oklch(${oklch[0].toFixed(1)}, ${oklch[1].toFixed(1)}, ${oklch[2].toFixed(1)})`,
-    oklab: `oklab(${oklab[0].toFixed(1)}, ${oklab[1].toFixed(1)}, ${oklab[2].toFixed(1)})`,
-    lch: `lch(${lch[0].toFixed(1)}, ${lch[1].toFixed(1)}, ${lch[2].toFixed(1)})`,
-    lab: `lab(${lab[0].toFixed(1)}, ${lab[1].toFixed(1)}, ${lab[2].toFixed(1)})`,
+    hcl: `hcl(${hcl[0]}, ${hcl[1]}, ${hcl[2]})`,
+    hsi: `hsi(${hsi[0]}, ${hsi[1]}, ${hsi[2]})`,
+    oklch: `oklch(${oklch[0]}, ${oklch[1]}, ${oklch[2]})`,
+    oklab: `oklab(${oklab[0]}, ${oklab[1]}, ${oklab[2]})`,
+    lch: `lch(${lch[0]}, ${lch[1]}, ${lch[2]})`,
+    lab: `lab(${lab[0]}, ${lab[1]}, ${lab[2]})`,
   }
 })
 </script>

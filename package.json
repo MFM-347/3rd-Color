@@ -11,12 +11,13 @@
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
     "format": "prettier -w .",
-    "start": "npm run lint && npm run format && clear && npm run dev"
+    "start": "npm run lint && npm run format && cls && npm run dev"
   },
   "dependencies": {
     "@ctrl/tinycolor": "^4.1.0",
     "chroma-js": "^3.1.2",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
     "@nirtamir2/prettier-plugin-css-order": "^0.0.1",

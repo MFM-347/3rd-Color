@@ -33,6 +33,7 @@
   margin: 0;
 }
 :root {
+  @apply ta-125;
   font-family: 'Assistant', 'Segoe UI', Roboto, sans-serif;
 }
 body {
@@ -46,5 +47,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 .i {
-  @apply cursor-pointer rounded-lg border-clr-400 bg-zinc-200 p-2 px-4 ta-200 hover:scale-[1.02] hover:border-1 hover:shadow-md dark:bg-zinc-800;
+  @apply cursor-pointer rounded-lg border-clr-400 bg-zinc-200 p-2 px-4 tracking-wider ta-200 hover:scale-[1.02] hover:border-1 hover:shadow-md dark:bg-zinc-800;
+}
+h1,
+h2,
+h3 {
+  @apply text-center;
+}
+h1 {
+  @apply text-4xl font-extrabold;
+}
+h2 {
+  @apply text-3xl font-bold;
+}
+h3 {
+  @apply text-2xl font-semibold;
+}
+p {
+  @apply text-lg leading-relaxed sm:text-xl;
+}
+section a {
+  @apply font-medium underline hover:no-underline;
+}
+section {
+  @apply p-4 md:px-8;
 }
