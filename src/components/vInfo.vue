@@ -1,5 +1,5 @@
 <template>
-  <div class="m-2 flex w-full flex-col gap-y-1 p-2">
+  <div class="m-2 flex w-full flex-col gap-2 p-2">
     <h2 class="text-center text-2xl font-bold">Info</h2>
     <div class="i">Color: {{ color }}</div>
     <div class="i">Format: {{ clr.format }}</div>

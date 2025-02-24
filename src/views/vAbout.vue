@@ -58,8 +58,8 @@ const techs = [
       </ul>
 
       <p class="mt-4">
-        With <strong>3rd Color</strong>, you no long to switch between multiple tools each time. It
-        allows you to enhances your creative workflow and boosts your efficiency.
+        With <strong>3rd Color</strong>, you no longer need to switch between multiple tools each
+        time. It allows you to enhances your creative workflow and boosts your efficiency.
       </p>
     </section>
     <section id="credits">

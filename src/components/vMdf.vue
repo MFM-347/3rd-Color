@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full flex-col gap-y-4 p-2">
+  <div class="flex w-full flex-col gap-4 border-t p-2">
     <h2 class="text-center text-2xl font-bold">Modifications</h2>
     <div>
       <div class="flex h-24 flex-row overflow-hidden rounded-xl">

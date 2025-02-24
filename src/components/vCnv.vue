@@ -1,7 +1,7 @@
 <template>
-  <div class="m-2 flex w-full flex-col gap-y-1 p-2">
+  <div class="m-2 flex w-full flex-col gap-2 p-2">
     <h2 class="text-center text-2xl font-bold">Conversions</h2>
-    <div class="grid grid-cols-1 gap-1 sm:grid-cols-2">
+    <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
       <div @click="copy(clr.hex)" class="i">{{ clr.hex }}</div>
       <div @click="copy(clr.rgb)" class="i">{{ clr.rgb }}</div>
       <div @click="copy(clr.cmyk)" class="i">{{ clr.cmyk }}</div>
