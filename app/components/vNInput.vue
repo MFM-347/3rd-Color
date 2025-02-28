@@ -27,7 +27,7 @@
           :step="step"
           @focus="focused = true"
           @blur="focused = false"
-          class="w-full border-none bg-transparent text-center text-zinc-900 [-moz-appearance:textfield] focus:outline-hidden dark:text-zinc-100 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+          class="focus:outline-hidden w-full border-none bg-transparent text-center text-zinc-900 [-moz-appearance:textfield] dark:text-zinc-100 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
         />
         <button
           type="button"

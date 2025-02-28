@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full flex-col gap-4 border-t p-2">
+  <div class="flex w-full flex-col gap-4 p-2">
     <h2 class="text-center text-2xl font-bold">Modifications</h2>
     <div>
       <div class="flex h-24 flex-row overflow-hidden rounded-xl">
@@ -23,81 +23,25 @@
     </div>
     <div class="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
       <div>
-        <vInput
-          v-model="mod.lighten"
-          ph="0 - 100"
-          :min="0"
-          :max="100"
-          :step="1"
-          type="number"
-          label="Lighten"
-        />
+        <vNInput v-model="mod.lighten" ph="0 - 100" :min="0" :max="100" :step="1" type="number" label="Lighten" />
       </div>
       <div>
-        <vInput
-          v-model="mod.darken"
-          ph="0 - 100"
-          :min="0"
-          :max="100"
-          :step="1"
-          type="number"
-          label="Darken"
-        />
+        <vNInput v-model="mod.darken" ph="0 - 100" :min="0" :max="100" :step="1" type="number" label="Darken" />
       </div>
       <div>
-        <vInput
-          v-model="mod.saturate"
-          ph="0 - 100"
-          :min="0"
-          :max="100"
-          :step="1"
-          type="number"
-          label="Saturate"
-        />
+        <vNInput v-model="mod.saturate" ph="0 - 100" :min="0" :max="100" :step="1" type="number" label="Saturate" />
       </div>
       <div>
-        <vInput
-          v-model="mod.desaturate"
-          ph="0 - 100"
-          :min="0"
-          :max="100"
-          :step="1"
-          type="number"
-          label="Desaturate"
-        />
+        <vNInput v-model="mod.desaturate" ph="0 - 100" :min="0" :max="100" :step="1" type="number" label="Desaturate" />
       </div>
       <div>
-        <vInput
-          v-model="mod.shade"
-          ph="0 - 100"
-          :min="0"
-          :max="100"
-          :step="1"
-          type="number"
-          label="Shade"
-        />
+        <vNInput v-model="mod.shade" ph="0 - 100" :min="0" :max="100" :step="1" type="number" label="Shade" />
       </div>
       <div>
-        <vInput
-          v-model="mod.tint"
-          ph="0 - 100"
-          :min="0"
-          :max="100"
-          :step="1"
-          type="number"
-          label="Tint"
-        />
+        <vNInput v-model="mod.tint" ph="0 - 100" :min="0" :max="100" :step="1" type="number" label="Tint" />
       </div>
       <div>
-        <vInput
-          v-model="mod.spin"
-          ph="0 - 360"
-          :min="0"
-          :max="360"
-          :step="1"
-          type="number"
-          label="Spin"
-        />
+        <vNInput v-model="mod.spin" ph="0 - 360" :min="0" :max="360" :step="1" type="number" label="Spin" />
       </div>
     </div>
   </div>
@@ -105,7 +49,6 @@
 
 <script setup lang="ts">
 import { reactive, computed } from 'vue'
-import vInput from '@/components/vInput.vue'
 import { TinyColor } from '@ctrl/tinycolor'
 import { copy, isDark } from '@/utils'
 

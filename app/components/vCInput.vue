@@ -7,9 +7,9 @@
       :placeholder="ph"
       :value="modelValue"
       @input="onTChange"
-      class="grow rounded-l-xl border border-zinc-400 bg-zinc-200 p-3 focus:border-clr-400 focus:ring-1 focus:ring-clr-500 focus:outline-none dark:border-zinc-600 dark:bg-zinc-800"
+      class="focus:border-clr-400 focus:ring-clr-500 min-h-full grow rounded-l-xl border border-zinc-400 bg-zinc-200 p-3 focus:outline-none focus:ring-1 dark:border-zinc-600 dark:bg-zinc-800"
     />
-    <input type="color" :value="colorHex" @input="onCChange" class="mt-2 size-14 rounded-r-xl" />
+    <input type="color" :value="colorHex" @input="onCChange" class="aspect-square h-full rounded-r-xl" />
   </div>
 </template>
 
@@ -26,9 +26,7 @@ const props = defineProps({
 const emit = defineEmits(['update:modelValue'])
 
 const colorHex = ref(
-  new TinyColor(props.modelValue).isValid
-    ? new TinyColor(props.modelValue).toHexString()
-    : '#000000',
+  new TinyColor(props.modelValue).isValid ? new TinyColor(props.modelValue).toHexString() : '#000000',
 )
 
 watch(
