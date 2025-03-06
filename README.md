@@ -9,11 +9,11 @@
 ## Future Plans
 
 - I may add color scheme generation like **[uicolors.app](https://uicolors.app/)** and **[chromax.app](https://www.chromax.app/)**.
-- I may (or may not) rename **3rd Color** to **ColorXpret**.
+- I may (`or may not`) rename **3rd Color** to **ColorXpret**.
 
 ## Contributing
 
-We welcome contributions! Please check the [CONTRIBUTING.md](https://github.com/MFM-347/3rd Color/blob/main/CONTRIBUTING.md) for guidelines.
+We welcome contributions! Please check the [CONTRIBUTING.md](https://github.com/MFM-347/3rdColor/blob/main/CONTRIBUTING.md) for guidelines.
 
 ## Credits
 
