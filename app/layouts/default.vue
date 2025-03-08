@@ -7,7 +7,7 @@
       <slot />
     </main>
     <footer class="mt-8 w-full border-t border-zinc-200 py-4 dark:border-zinc-800">
-      <div class="text-center text-sm text-gray-600 dark:text-gray-400">
+      <div class="flex flex-col items-center text-center text-sm text-gray-600 dark:text-gray-400">
         <p>
           Created with ❤️ by
           <a
@@ -16,6 +16,17 @@
             >@MFM347</a
           >
         </p>
+        <a
+          class="my-2"
+          href="https://www.producthunt.com/posts/3rd-color?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-3rd&#0045;color"
+          target="_blank"
+          ><img
+            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=939594&theme=light"
+            alt="3rd Color - Color Tools for Designers & Developers | Product Hunt"
+            style="width: 250px; height: 54px"
+            width="250"
+            height="54"
+        /></a>
         <p>&copy; {{ new Date().getFullYear() }} 3rd Color. All rights reserved.</p>
       </div>
     </footer>

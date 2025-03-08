@@ -80,78 +80,84 @@ watch(clr, updateFormats, { immediate: true })
 </script>
 
 <template>
-  <div class="min-h-screen pt-8">
-    <div class="mx-auto max-w-7xl">
-      <div class="mb-12 text-center">
-        <h1 class="text-5xl font-extrabold text-gray-950 dark:text-gray-50">Create New Color</h1>
+  <div class="min-h-screen pt-4 md:pt-8">
+    <div class="mx-auto max-w-5xl">
+      <div class="mb-4 px-2 text-center md:mb-8">
+        <h1 class="title">Create New Color</h1>
         <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
           Enter any color format (only hex, rgb, hsl, cmyk, hsv) to explore its properties and
           variations
         </p>
       </div>
-      <div class="mx-auto max-w-3xl space-y-8">
-        <div class="relative rounded-2xl bg-zinc-100 p-6 shadow-xl dark:bg-zinc-900">
-          <vCInput
-            type="text"
-            ph="Enter any color format (e.g., #0063ff, rgb(0, 99, 255))"
-            label="Color Input"
-            v-model="c"
-          />
-          <div
-            class="mt-4 h-32 rounded-xl transition-colors"
-            :style="{ backgroundColor: clr }"
-            :class="[isDark(clr) ? 'text-gray-100 shadow-inner' : 'text-gray-900 shadow-lg']"
-          >
-            <div class="flex h-full items-center justify-center">
-              <p class="text-2xl font-medium">{{ clr }}</p>
-            </div>
+      <div class="sec">
+        <vCInput
+          type="text"
+          ph="Enter any color format (e.g., #0063ff, rgb(0, 99, 255))"
+          label="Color Input"
+          v-model="c"
+        />
+        <div
+          class="ta-150 mt-4 h-32 rounded-xl"
+          :style="{ backgroundColor: clr }"
+          :class="[isDark(clr) ? 'text-gray-100 shadow-inner' : 'text-gray-900 shadow-lg']"
+        >
+          <div class="flex h-full items-center justify-center">
+            <p class="text-2xl font-medium">{{ clr }}</p>
           </div>
-          <div class="grid gap-4 rounded-2xl md:grid-cols-2">
-            <div class="p-4">
-              <h2 class="mb-4 text-2xl font-bold">Color Information</h2>
-              <div class="space-y-3">
-                <div class="flex justify-between rounded-lg bg-zinc-50 p-3 dark:bg-zinc-800">
-                  <span class="font-medium">Format</span>
-                  <span>{{ new TinyColor(clr).format }}</span>
-                </div>
-                <div class="flex justify-between rounded-lg bg-zinc-50 p-3 dark:bg-zinc-800">
-                  <span class="font-medium">Brightness</span>
-                  <span>{{ new TinyColor(clr).getBrightness().toFixed(2) }}</span>
-                </div>
-                <div class="flex justify-between rounded-lg bg-zinc-50 p-3 dark:bg-zinc-800">
-                  <span class="font-medium">Luminance</span>
-                  <span>{{ new TinyColor(clr).getLuminance().toFixed(3) }}</span>
-                </div>
-                <div class="flex justify-between rounded-lg bg-zinc-50 p-3 dark:bg-zinc-800">
-                  <span class="font-medium">Is Dark</span>
-                  <span>{{ new TinyColor(clr).isDark() ? 'Yes' : 'No' }}</span>
-                </div>
-              </div>
-            </div>
-            <div class="p-6">
-              <h2 class="mb-4 text-2xl font-bold">Color Formats</h2>
-              <div class="space-y-3">
-                <div
-                  v-for="format in formats"
-                  :key="format.name"
-                  class="ta-150 group cursor-pointer rounded-lg bg-zinc-200 p-3 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700"
-                  @click="copy(format.value)"
-                >
-                  <div class="flex items-center justify-between">
-                    <span class="font-medium uppercase">{{ format.name }}</span>
-                    <span class="font-mono">{{ format.value ?? 'N/A' }}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <button
-            @click="edit"
-            class="mt-6 w-full rounded-lg bg-blue-600 py-3 text-white hover:bg-blue-700"
-          >
-            Edit Color
-          </button>
         </div>
+        <div class="grid gap-2 rounded-2xl md:grid-cols-2">
+          <div class="p-4">
+            <h2 class="mb-4 text-2xl font-bold">Color Information</h2>
+            <div class="space-y-3">
+              <div
+                class="flex justify-between rounded-lg bg-zinc-50 p-2 text-sm sm:p-3 sm:text-base dark:bg-zinc-800"
+              >
+                <span class="font-medium">Format</span>
+                <span>{{ new TinyColor(clr).format }}</span>
+              </div>
+              <div
+                class="flex justify-between rounded-lg bg-zinc-50 p-2 text-sm sm:p-3 sm:text-base dark:bg-zinc-800"
+              >
+                <span class="font-medium">Brightness</span>
+                <span>{{ new TinyColor(clr).getBrightness().toFixed(2) }}</span>
+              </div>
+              <div
+                class="flex justify-between rounded-lg bg-zinc-50 p-2 text-sm sm:p-3 sm:text-base dark:bg-zinc-800"
+              >
+                <span class="font-medium">Luminance</span>
+                <span>{{ new TinyColor(clr).getLuminance().toFixed(3) }}</span>
+              </div>
+              <div
+                class="flex justify-between rounded-lg bg-zinc-50 p-2 text-sm sm:p-3 sm:text-base dark:bg-zinc-800"
+              >
+                <span class="font-medium">Is Dark</span>
+                <span>{{ new TinyColor(clr).isDark() ? 'Yes' : 'No' }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4">
+            <h2 class="mb-4 text-2xl font-bold">Color Formats</h2>
+            <div class="space-y-3">
+              <div
+                v-for="format in formats"
+                :key="format.name"
+                class="ta-150 cursor-pointer rounded-lg bg-zinc-200 p-2 text-sm hover:bg-zinc-300 sm:p-3 md:text-base dark:bg-zinc-800 dark:hover:bg-zinc-700"
+                @click="copy(format.value)"
+              >
+                <div class="flex items-center justify-between">
+                  <span class="pr-2 font-medium uppercase">{{ format.name }}</span>
+                  <span class="font-mono">{{ format.value ?? 'N/A' }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          @click="edit"
+          class="mt-3 w-full rounded-lg bg-blue-600 py-3 text-white hover:bg-blue-700"
+        >
+          Edit Color
+        </button>
       </div>
     </div>
   </div>

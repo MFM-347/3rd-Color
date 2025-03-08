@@ -48,7 +48,7 @@ const mClr = computed(() => {
     .desaturate(m.value.desaturate)
     .tint(m.value.tint)
     .shade(m.value.tint)
-    .spin(m.value.spin)
+    .spin(m.value.spin * 3.6)
   return color.toString()
 })
 
@@ -71,54 +71,52 @@ watch(c, (newClr) => {
 </script>
 
 <template>
-  <div class="min-h-screen pt-8">
-    <div class="mx-auto max-w-7xl">
-      <div class="mb-12 text-center">
-        <h1 class="text-5xl font-extrabold text-gray-950 dark:text-gray-50">Color Editor</h1>
+  <div class="min-h-screen pt-4 md:pt-8">
+    <div class="mx-auto max-w-5xl">
+      <div class="mb-4 px-2 text-center md:mb-8">
+        <h1 class="title">Color Editor</h1>
         <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
           Transform and modify different colors with precision
         </p>
       </div>
-      <div class="mx-auto max-w-4xl space-y-8">
-        <div class="relative rounded-2xl bg-zinc-100 p-6 shadow-xl dark:bg-zinc-900">
-          <vCInput
-            type="text"
-            ph="Enter any color format (e.g., #0063ff, rgb(0, 99, 255))"
-            label="Color Input"
-            v-model="c"
-          />
-          <div class="mt-4 grid gap-4 md:grid-cols-2">
-            <div
-              class="h-40 cursor-pointer rounded-xl"
-              :style="{ backgroundColor: clr }"
-              :class="[isDark(clr) ? 'text-gray-100 shadow-inner' : 'text-gray-900 shadow-md']"
-            >
-              <div class="flex h-full items-center justify-center">
-                <p class="text-xl font-medium">Original: {{ clr }}</p>
-              </div>
-            </div>
-            <div
-              class="h-40 cursor-pointer rounded-xl"
-              :style="{ backgroundColor: mClr }"
-              :class="[isDark(mClr) ? 'text-gray-100 shadow-inner' : 'text-gray-900 shadow-md']"
-              @click="copy(mClr)"
-            >
-              <div class="flex h-full items-center justify-center">
-                <p class="text-xl font-medium">Modified: {{ mClr }}</p>
-              </div>
+      <div class="sec md:max-w-4xl">
+        <vCInput
+          type="text"
+          ph="Enter any color format (e.g., #0063ff, rgb(0, 99, 255))"
+          label="Color Input"
+          v-model="c"
+        />
+        <div class="mt-4 grid gap-3 md:grid-cols-2">
+          <div
+            class="h-40 cursor-pointer rounded-xl"
+            :style="{ backgroundColor: clr }"
+            :class="[isDark(clr) ? 'text-gray-100 shadow-inner' : 'text-gray-900 shadow-md']"
+          >
+            <div class="flex h-full items-center justify-center">
+              <p class="text-xl font-medium">Original: {{ clr }}</p>
             </div>
           </div>
-          <div class="mt-6 grid w-full gap-6 sm:grid-cols-2">
-            <div v-for="(v, key) in m" :key="key">
-              <VNInput
-                v-model="m[key]"
-                :label="key"
-                :min="0"
-                :max="100"
-                :aria-label="v"
-                class="w-full"
-              />
+          <div
+            class="h-40 cursor-pointer rounded-xl"
+            :style="{ backgroundColor: mClr }"
+            :class="[isDark(mClr) ? 'text-gray-100 shadow-inner' : 'text-gray-900 shadow-md']"
+            @click="copy(mClr)"
+          >
+            <div class="flex h-full items-center justify-center">
+              <p class="text-xl font-medium">Modified: {{ mClr }}</p>
             </div>
+          </div>
+        </div>
+        <div class="mt-4 grid w-full gap-6 sm:grid-cols-2">
+          <div v-for="(v, key) in m" :key="key">
+            <VNInput
+              v-model="m[key]"
+              :label="`${key} (%)`"
+              :min="0"
+              :max="100"
+              :aria-label="v"
+              class="w-full"
+            />
           </div>
         </div>
       </div>

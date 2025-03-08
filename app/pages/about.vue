@@ -36,12 +36,12 @@ const techs = [
 </script>
 
 <template>
-  <div class="min-h-screen pt-8">
-    <div class="mx-auto max-w-7xl">
-      <div class="mb-12 text-center">
-        <h1 class="text-5xl font-extrabold text-gray-950 dark:text-gray-50">About 3rd Color</h1>
+  <div class="min-h-screen pt-4 md:pt-8">
+    <div class="mx-auto max-w-5xl">
+      <div class="mb-4 px-2 text-center md:mb-8">
+        <h1 class="title">About 3rd Color</h1>
       </div>
-      <div class="mx-auto max-w-3xl rounded-2xl bg-zinc-100 p-8 shadow-xl dark:bg-zinc-900">
+      <div class="sec max-w-3xl">
         <section id="intro" class="mb-8">
           <p class="text-lg leading-relaxed">
             <strong>3rd Color</strong> is a comprehensive color tool designed for designers and

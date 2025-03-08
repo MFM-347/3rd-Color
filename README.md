@@ -3,9 +3,16 @@
 ![GitHub code size](https://img.shields.io/github/languages/code-size/MFM-347/3rd-Color?style=for-the-badge)
 ![Github Repo Size](https://img.shields.io/github/repo-size/MFM-347/3rd-Color?style=for-the-badge)
 [![Stars](https://img.shields.io/github/stars/MFM-347/3rd-Color?style=for-the-badge)](https://github.com/MFM-347/3rd-Color/stargazers)
+<a href="https://www.producthunt.com/posts/3rd-color?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-3rd&#0045;color" target="_blank">
+<img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=939594&theme=light" alt="3rd Color - Color Tools for Designers & Developers | Product Hunt" height="30" />
+</a>
 [![Vercel](https://vercelbadge.vercel.app/api/MFM-347/3rd-Color?style=for-the-badge)](https://3color.vercel.app/)
 
 3rd Color is a powerful, user-friendly color tool app that offers color information, seamless color conversion, and advanced color modification features. Explore and transform colors easily.
+
+## OG Image
+
+OpenGraph Image will be after fixing of [nuxt-modules/og-image#332](https://github.com/nuxt-modules/og-image/issues/332).
 
 ## Future Plans
 
