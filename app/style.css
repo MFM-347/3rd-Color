@@ -2,19 +2,20 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 @custom-variant hover (&:hover);
+
 @utility ta-* {
   transition-property: all;
-  transition-duration: calc(--value(integer, [integer]) * 0.8ms);
+  transition-duration: calc(--value(integer, [integer]) * 0.9ms);
   transition-timing-function: cubic-bezier(0, 0, 0.3, 1);
 }
 *:focus-visible {
-  @apply outline-clr-400 outline-offset-2;
+  @apply outline-offset-2 outline-blue-500;
 }
 :focus:not(:focus-visible) {
   outline: none;
 }
 @theme {
-  --font-default: 'Assistant', 'Segoe UI', Roboto, ui-sans-serif, sans-serif;
+  --font-default: 'Assistant', 'Segoe UI', Roboto, sans-serif;
   --color-clr-50: #eaf7ff;
   --color-clr-100: #d0ecff;
   --color-clr-200: #aae1ff;
@@ -34,64 +35,85 @@
     @apply ta-125 font-default;
     box-sizing: border-box;
   }
+  :root {
+    --sc-bg: #f3f4f6;
+    --sc-fg: #d1d5db;
+    --sc-hover-fg: #6b7280;
+  }
+  .dark {
+    --sc-bg: #111826;
+    --sc-fg: #374151;
+    --sc-hover-fg: #4a5565;
+  }
   body {
-    @apply ta-200 bg-zinc-100 text-gray-900 dark:bg-zinc-900 dark:text-gray-100;
+    @apply ta-200 bg-zinc-50 text-gray-900 antialiased dark:bg-zinc-950 dark:text-gray-50;
     min-height: 100vh;
     max-width: 100vw;
     line-height: 1.6;
     font-size: 16px;
     text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
   h1,
   h2,
   h3 {
-    @apply text-center;
+    @apply font-bold tracking-tight;
   }
-  h1 {
-    @apply text-4xl font-extrabold;
-  }
-  h2 {
-    @apply text-3xl font-bold;
-  }
-  h3 {
-    @apply text-2xl font-semibold;
-  }
-  p {
-    @apply text-lg leading-relaxed sm:text-xl;
-  }
-  section a {
-    @apply font-medium underline hover:no-underline;
-  }
-  section {
-    @apply p-4 md:px-8;
+  button {
+    cursor: pointer;
   }
   img {
     @apply h-auto max-w-full;
   }
+  html::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  .sc::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  html::-webkit-scrollbar-track {
+    background-color: var(--sc-bg);
+    border-radius: 8px;
+  }
+  .sc::-webkit-scrollbar-track {
+    background-color: var(--sc-bg);
+    border-radius: 8px;
+  }
+  html::-webkit-scrollbar-thumb {
+    background-color: var(--sc-fg);
+    border-radius: 6px;
+  }
+  .sc::-webkit-scrollbar-thumb {
+    background-color: var(--sc-fg);
+    border-radius: 6px;
+  }
+  html::-webkit-scrollbar-thumb:hover {
+    background-color: var(--sc-hover-fg);
+  }
+  .sc::-webkit-scrollbar-thumb:hover {
+    background-color: var(--sc-hover-fg);
+  }
+  html::-webkit-scrollbar-corner {
+    background-color: var(--sc-fg);
+  }
+  .sc::-webkit-scrollbar-corner {
+    background-color: var(--sc-fg);
+  }
+  html,
+  .sc {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--sc-fg) var(--sc-bg);
+  }
 }
-.i {
-  @apply border-clr-400 ta-150 hover:border-1 cursor-pointer rounded-lg bg-zinc-200 p-2 px-4 tracking-wider hover:scale-[1.02] hover:shadow-md dark:bg-zinc-800;
-}
-.lnk {
-  @apply text-clr-600 hover:text-clr-800 dark:text-clr-400 dark:hover:text-clr-300 font-medium underline hover:no-underline;
-}
-.card {
-  @apply rounded-lg border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-700 dark:bg-zinc-800;
-}
-.card h3 {
-  @apply mb-2 text-left text-xl font-semibold;
-}
-.card p {
-  @apply text-base text-zinc-700 dark:text-zinc-300;
+.bgc {
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 @media print {
   body {
     @apply bg-white text-black;
-  }
-
-  .no-print {
-    display: none !important;
   }
 }

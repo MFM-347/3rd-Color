@@ -1,15 +1,29 @@
 <template>
-  <div class="flex flex-row">
-    <label class="hidden" :for="label.toLowerCase()">{{ label }}</label>
-    <input
-      :id="label.toLowerCase()"
-      type="text"
-      :placeholder="ph"
-      :value="modelValue"
-      @input="onTChange"
-      class="focus:border-clr-400 focus:ring-clr-500 min-h-full grow rounded-l-xl border border-zinc-400 bg-zinc-200 p-3 focus:outline-none focus:ring-1 dark:border-zinc-600 dark:bg-zinc-800"
-    />
-    <input type="color" :value="colorHex" @input="onCChange" class="aspect-square h-full rounded-r-xl" />
+  <div class="group relative">
+    <label
+      :for="label.toLowerCase()"
+      class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+    >
+      {{ label }}
+    </label>
+    <div
+      class="flex overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm transition-all focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-800"
+    >
+      <input
+        :id="label.toLowerCase()"
+        type="text"
+        :placeholder="ph"
+        :value="modelValue"
+        @input="onTChange"
+        class="flex-1 border-none bg-transparent px-4 py-3 text-lg outline-none placeholder:text-gray-400 dark:placeholder:text-gray-600"
+      />
+      <input
+        type="color"
+        :value="colorHex"
+        @input="onCChange"
+        class="aspect-square h-full cursor-pointer border-l border-zinc-200 bg-transparent transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-700"
+      />
+    </div>
   </div>
 </template>
 
@@ -19,14 +33,16 @@ import { TinyColor } from '@ctrl/tinycolor'
 
 const props = defineProps({
   modelValue: { type: String, default: '' },
-  ph: { type: String, default: 'Enter text' },
-  label: { type: String, default: 'Enter text' },
+  ph: { type: String, default: 'Enter color value' },
+  label: { type: String, default: 'Color' },
 })
 
 const emit = defineEmits(['update:modelValue'])
 
 const colorHex = ref(
-  new TinyColor(props.modelValue).isValid ? new TinyColor(props.modelValue).toHexString() : '#000000',
+  new TinyColor(props.modelValue).isValid
+    ? new TinyColor(props.modelValue).toHexString()
+    : '#000000',
 )
 
 watch(

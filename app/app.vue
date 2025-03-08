@@ -2,19 +2,29 @@
 import { meta } from '@/utils'
 
 useSeoMeta({
+  charset: 'utf-8',
+  viewport: 'width=device-width, initial-scale=1',
+  robots: 'index, follow, max-image-preview:large',
+  author: 'Farhan Madni',
+  themeColor: '#008bff',
   ogLocale: 'en_US',
   ogType: 'website',
   twitterCreator: '@mfm347',
+  twitterCard: 'summary_large_image',
   mobileWebAppCapable: 'yes',
   appleMobileWebAppCapable: 'yes',
   appleMobileWebAppTitle: '3rd Color',
   appleMobileWebAppStatusBarStyle: 'black-translucent',
-  themeColor: '#0063ff',
   googleSiteVerification: '9C3mmoooLN2NLh5PUEVgr98hTKYWPIarhqp7Efdfwuo',
+  msapplicationTileColor: '#008bff',
 })
 useHead({
+  htmlAttrs: {
+    lang: 'en',
+  },
   titleTemplate: '%s - 3rd Color',
   link: [
+    { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' },
     { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
     { rel: 'preconnect', href: 'https://fonts.googleapis.com', crossorigin: 'anonymous' },
     {
@@ -22,19 +32,22 @@ useHead({
       as: 'style',
       href: 'https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap',
     },
-    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap' },
-    { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' },
+    {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Assistant:wght@300..800&display=swap',
+    },
+    { rel: 'icon', type: 'image/svg+xml', href: '/icon.svg' },
   ],
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify({
+      value: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'WebSite',
         inLanguage: 'en',
         name: '3rd Color',
         description:
-          '3rd Color is a powerful, user-friendly color tool app that provides color information, seamless conversion, and advanced color modification.',
+          '3rd Color is a powerful suite of color tools for designers and developers. Create, analyze, and modify colors with professional-grade tools for your next project.',
         url: meta.url,
         logo: meta.logo,
         publisher: {

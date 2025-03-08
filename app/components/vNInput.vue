@@ -1,19 +1,14 @@
 <template>
   <div class="flex w-full flex-col">
     <label class="text-lg" :for="label.toLowerCase()">{{ label }}</label>
-    <div class="relative">
+    <div class="group relative">
       <div
-        :class="[
-          'flex items-center rounded-lg border',
-          'border-zinc-300 dark:border-zinc-700',
-          'bg-zinc-200 dark:bg-zinc-800',
-          focused ? 'border-clr-400 ring-clr-500' : '',
-        ]"
+        class="group-focus:ring-clr-500/20 group-focus:border-clr-500/25 flex items-center rounded-lg border border-zinc-200 bg-white group-focus:ring-2 dark:border-zinc-800 dark:bg-zinc-900"
       >
         <button
           type="button"
           @click="decr"
-          class="px-3 py-2 text-zinc-500 transition-colors hover:bg-zinc-300 dark:text-zinc-400 dark:hover:bg-zinc-700"
+          class="ta-125 rounded-l-lg px-3 py-2 text-gray-500 hover:bg-zinc-300 dark:text-gray-400 dark:hover:bg-zinc-700"
           aria-label="Decrease button"
         >
           -
@@ -27,12 +22,12 @@
           :step="step"
           @focus="focused = true"
           @blur="focused = false"
-          class="focus:outline-hidden w-full border-none bg-transparent text-center text-zinc-900 [-moz-appearance:textfield] dark:text-zinc-100 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+          class="focus:outline-hidden w-full border-none bg-transparent text-center text-gray-900 [-moz-appearance:textfield] dark:text-gray-100 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
         />
         <button
           type="button"
           @click="incr"
-          class="px-3 py-2 text-zinc-500 transition-colors hover:bg-zinc-300 dark:text-zinc-400 dark:hover:bg-zinc-700"
+          class="ta-125 rounded-r-lg px-3 py-2 text-gray-500 hover:bg-zinc-300 dark:text-gray-400 dark:hover:bg-zinc-700"
           aria-label="Increase button"
         >
           +
@@ -50,7 +45,7 @@ const props = defineProps({
   min: { type: Number, default: 0 },
   max: { type: Number, default: 100 },
   step: { type: Number, default: 1 },
-  modelValue: { type: Number, default: 50 },
+  modelValue: { type: Number, default: 0 },
 })
 
 const emit = defineEmits<{

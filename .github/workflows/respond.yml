@@ -1,5 +1,3 @@
-name: Welcome Contributors
-
 on:
   fork:
   push:
@@ -13,22 +11,14 @@ on:
   pull_request_review_comment:
     types: [created]
 
-permissions:
-  contents: read
-  issues: write
-  pull-requests: write
-
 jobs:
   welcome:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Send Welcome Message
-        uses: EddieHubCommunity/gh-action-community@main
+      - uses: actions/checkout@v1
+      - uses: EddieHubCommunity/gh-action-community/src/welcome@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           issue-message: '<h1>Feeling great to have your contribution for this project</h1> Welcome to our project'
           pr-message: '<h1>Feeling great to have your contribution for this project</h1> Welcome to our project'
-          footer: 'Our developers will respond to you as soon as possible. Any questions? Let us know.'
+          footer: 'Our developers will respond you as soon as possible. Any questions? Let us know.'

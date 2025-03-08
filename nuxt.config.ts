@@ -23,33 +23,30 @@ export default defineNuxtConfig({
       },
     },
   },
+  modules: ['@nuxtjs/sitemap'],
+  site: {
+    url: 'https://3color.vercel.app',
+    name: '3rd Color - Professional Color Tools',
+  },
+  features: {
+    inlineStyles: true,
+  },
   app: {
-    head: {
-      htmlAttrs: {
-        lang: 'en',
-      },
-      meta: [
-        { name: 'robots', content: 'index,follow,max-image-preview:large' },
-        { name: 'author', content: 'Farhan Madni' },
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      ],
-    },
     pageTransition: {
       name: 'page',
       mode: 'out-in',
     },
   },
   experimental: {
-    inlineSSRStyles: true,
     viewTransition: true,
     renderJsonPayloads: true,
   },
   routeRules: {
-    '/': { prerender: true },
-    '/app': { prerender: true },
+    '/': { redirect: '/new' },
+    '/new': { prerender: true },
+    '/edit': { prerender: true },
     '/about': { prerender: true },
-    '/**/*.{css, svg}': {
+    '/**/*.{css,svg,jpg,jpeg,png,webp}': {
       headers: {
         'Cache-Control': 'public, max-age=31536000, immutable',
       },
