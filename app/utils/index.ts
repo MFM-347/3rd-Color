@@ -6,7 +6,7 @@ import { TinyColor } from '@ctrl/tinycolor'
 export const meta = {
   title: '3rd Color - Color Tools for Designers & Developers',
   url: 'https://3color.vercel.app',
-  logo: '/logo.svg',
+  logo: '/icon.svg',
   alt: '3rd Color - Professional Color Tools',
   author: {
     name: 'Farhan Madni',

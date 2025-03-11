@@ -24,7 +24,7 @@ useHead({
   },
   titleTemplate: '%s - 3rd Color',
   link: [
-    { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' },
+    { rel: 'icon', type: 'image/svg+xml', href: '/icon.svg' },
     { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
     { rel: 'preconnect', href: 'https://fonts.googleapis.com', crossorigin: 'anonymous' },
     {
