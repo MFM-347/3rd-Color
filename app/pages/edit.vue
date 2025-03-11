@@ -20,13 +20,13 @@ useSeoMeta({
 useHead({
   link: [{ rel: 'canonical', href: url }],
 })
-// defineOgImageComponent('NuxtSeo', {
-//   title: 'Color Editor - 3rd Color',
-//   description: description,
-//   siteName: '3rd Color',
-//   siteLogo: meta.logo,
-//   theme: '008bff',
-// })
+defineOgImageComponent('NuxtSeo', {
+  title: 'Color Editor - 3rd Color',
+  description: description,
+  siteName: '3rd Color',
+  siteLogo: meta.logo,
+  theme: '008bff',
+})
 
 const c = ref('#008bff')
 const clr = ref(new TinyColor(c.value).toString())

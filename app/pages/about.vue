@@ -17,13 +17,13 @@ useSeoMeta({
 useHead({
   link: [{ rel: 'canonical', href: url }],
 })
-// defineOgImageComponent('NuxtSeo', {
-//   title: 'About - 3rd Color',
-//   description: description,
-//   siteName: '3rd Color',
-//   siteLogo: meta.logo,
-//   theme: '008bff',
-// })
+defineOgImageComponent('NuxtSeo', {
+  title: 'About - 3rd Color',
+  description: description,
+  siteName: '3rd Color',
+  siteLogo: meta.logo,
+  theme: '008bff',
+})
 
 const techs = [
   { name: 'Nuxt', link: 'https://Nuxt.com/' },

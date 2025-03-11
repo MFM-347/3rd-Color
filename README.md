@@ -10,10 +10,6 @@
 
 3rd Color is a powerful, user-friendly color tool app that offers color information, seamless color conversion, and advanced color modification features. Explore and transform colors easily.
 
-## OG Image
-
-OpenGraph Image will be after fixing of [nuxt-modules/og-image#332](https://github.com/nuxt-modules/og-image/issues/332).
-
 ## Future Plans
 
 - I may add color scheme generation like **[uicolors.app](https://uicolors.app/)** and color mixing and blending like **[hue.tools](https://hue.tools/)**.

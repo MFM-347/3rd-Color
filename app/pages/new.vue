@@ -23,13 +23,13 @@ useSeoMeta({
 useHead({
   link: [{ rel: 'canonical', href: url }],
 })
-// defineOgImageComponent('NuxtSeo', {
-//   title: 'New Color - 3rd Color',
-//   description: description,
-//   siteName: '3rd Color',
-//   siteLogo: meta.logo,
-//   theme: '008bff',
-// })
+defineOgImageComponent('NuxtSeo', {
+  title: 'New Color - 3rd Color',
+  description: description,
+  siteName: '3rd Color',
+  siteLogo: meta.logo,
+  theme: '008bff',
+})
 
 const c = ref('#008bff')
 const clr = computed(() => {
