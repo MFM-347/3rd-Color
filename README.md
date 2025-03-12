@@ -13,7 +13,7 @@
 
 ## Contributing
 
-We welcome contributions! Please check the [CONTRIBUTING.md](https://github.com/MFM-347/3rd Color/blob/main/CONTRIBUTING.md) for guidelines.
+We welcome contributions! Please check the [CONTRIBUTING.md](https://github.com/MFM-347/3rdColor/blob/main/CONTRIBUTING.md) for guidelines.
 
 ## Credits
 
