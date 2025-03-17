@@ -28,7 +28,7 @@ export default defineNuxtConfig({
       },
     },
   },
-  modules: ['@nuxtjs/sitemap', 'nuxt-schema-org', 'nuxt-og-image'],
+  modules: ['@nuxtjs/sitemap', 'nuxt-schema-org', 'nuxt-og-image', '@nuxt/fonts'],
   site: {
     url: 'https://3color.vercel.app',
     name: '3rd Color - Color Tools for Designers & Developers',

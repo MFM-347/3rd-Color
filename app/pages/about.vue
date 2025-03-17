@@ -22,7 +22,7 @@ defineOgImageComponent('NuxtSeo', {
   description: description,
   siteName: '3rd Color',
   siteLogo: meta.logo,
-  theme: '008bff',
+  theme: '385cfa',
 })
 
 const techs = [

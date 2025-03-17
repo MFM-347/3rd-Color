@@ -25,10 +25,10 @@ defineOgImageComponent('NuxtSeo', {
   description: description,
   siteName: '3rd Color',
   siteLogo: meta.logo,
-  theme: '008bff',
+  theme: '385cfa',
 })
 
-const c = ref('#008bff')
+const c = ref('#385cfa')
 const clr = ref(new TinyColor(c.value).toString())
 const m = ref({
   lighten: 0,

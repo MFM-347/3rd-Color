@@ -14,12 +14,12 @@
   "dependencies": {
     "@ctrl/tinycolor": "^4.1.0",
     "@heroicons/vue": "^2.2.0",
-    "@nuxtjs/sitemap": "^7.2.7",
-    "@unhead/vue": "^2.0.0-rc.8",
+    "@nuxt/fonts": "^0.11.0",
+    "@nuxtjs/sitemap": "^7.2.9",
     "chroma-js": "^3.1.2",
     "nuxt": "^3.16.0",
-    "nuxt-og-image": "^5.0.2",
-    "nuxt-schema-org": "^5.0.3",
+    "nuxt-og-image": "^5.0.3",
+    "nuxt-schema-org": "^5.0.4",
     "vue": "latest",
     "vue-router": "latest"
   },
