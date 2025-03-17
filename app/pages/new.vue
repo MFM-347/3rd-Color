@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
-import { useRouter } from '#app'
 import { TinyColor } from '@ctrl/tinycolor'
 import chroma from 'chroma-js'
 import { getUrl, isDark, copy } from '@/utils'
 
-const router = useRouter()
 const description =
   "3rd Color's Color Creator let's you create and analyze colors with 3rd Color's color tools"
 const url = getUrl('/new')
@@ -28,7 +26,7 @@ defineOgImageComponent('NuxtSeo', {
   description: description,
   siteName: '3rd Color',
   siteLogo: meta.logo,
-  theme: '385cfa',
+  theme: '008bff',
 })
 
 const c = ref('#385cfa')
@@ -70,11 +68,14 @@ const updateFormats = () => {
   }
 }
 onMounted(() => {
-  localStorage.removeItem('savedColor')
+  const savedColor = localStorage.getItem('savedColor')
+  if (savedColor) {
+    c.value = savedColor
+  }
 })
 const edit = () => {
+  localStorage.removeItem('savedColor')
   localStorage.setItem('savedColor', clr.value)
-  router.push('/edit')
 }
 watch(clr, updateFormats, { immediate: true })
 </script>
@@ -97,7 +98,7 @@ watch(clr, updateFormats, { immediate: true })
           v-model="c"
         />
         <div
-          class="ta-150 mt-4 h-32 rounded-xl"
+          class="mt-4 h-32 rounded-xl ta-150"
           :style="{ backgroundColor: clr }"
           :class="[isDark(clr) ? 'text-gray-100 shadow-inner' : 'text-gray-900 shadow-lg']"
         >
@@ -133,6 +134,12 @@ watch(clr, updateFormats, { immediate: true })
                 <span class="font-medium">Is Dark</span>
                 <span>{{ new TinyColor(clr).isDark() ? 'Yes' : 'No' }}</span>
               </div>
+              <div
+                class="flex justify-between rounded-lg bg-zinc-50 p-2 text-sm sm:p-3 sm:text-base dark:bg-zinc-800"
+              >
+                <span class="font-medium">Complement</span>
+                <span>{{ new TinyColor(clr).complement().toHexString() }}</span>
+              </div>
             </div>
           </div>
           <div class="p-4">
@@ -141,7 +148,7 @@ watch(clr, updateFormats, { immediate: true })
               <div
                 v-for="format in formats"
                 :key="format.name"
-                class="ta-150 cursor-pointer rounded-lg bg-zinc-200 p-2 text-sm hover:bg-zinc-300 sm:p-3 md:text-base dark:bg-zinc-800 dark:hover:bg-zinc-700"
+                class="cursor-pointer rounded-lg bg-zinc-200 p-2 text-sm ta-150 hover:bg-zinc-300 sm:p-3 md:text-base dark:bg-zinc-800 dark:hover:bg-zinc-700"
                 @click="copy(format.value)"
               >
                 <div class="flex items-center justify-between">
@@ -152,12 +159,15 @@ watch(clr, updateFormats, { immediate: true })
             </div>
           </div>
         </div>
-        <button
-          @click="edit"
-          class="mt-3 w-full rounded-lg bg-blue-600 py-3 text-white hover:bg-blue-700"
-        >
-          Edit Color
-        </button>
+        <a href="/edit" target="_self">
+          <button
+            @click="edit"
+            aria-label="Edit this Color"
+            class="mt-3 w-full rounded-lg bg-blue-600 py-3 text-white hover:bg-blue-700"
+          >
+            Edit Color
+          </button>
+        </a>
       </div>
     </div>
   </div>

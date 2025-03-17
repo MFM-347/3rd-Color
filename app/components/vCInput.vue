@@ -7,7 +7,7 @@
       {{ label }}
     </label>
     <div
-      class="ta-175 flex overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-800"
+      class="flex overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm ta-175 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-800"
     >
       <input
         :id="label.toLowerCase()"

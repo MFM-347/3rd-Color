@@ -22,7 +22,7 @@ defineOgImageComponent('NuxtSeo', {
   description: description,
   siteName: '3rd Color',
   siteLogo: meta.logo,
-  theme: '385cfa',
+  theme: '008bff',
 })
 
 const techs = [
@@ -45,14 +45,14 @@ const techs = [
         <section id="intro" class="mb-8">
           <p class="text-lg leading-relaxed">
             <strong>3rd Color</strong> is a comprehensive color tool designed for designers and
-            developers. It combines essential color manipulation features into a single but
+            developers. It combines essential <i>color manipulation features</i> into a single but
             efficient platform, providing color insights, format conversion, and modification
             capabilities.
           </p>
         </section>
         <section id="techs">
           <h2 class="text-2xl font-bold">Credits</h2>
-          <p class="mb-2 mt-4 text-lg">Built with following amazing technologies:</p>
+          <p class="mt-4 mb-2 text-lg">Built with following amazing technologies:</p>
           <ul class="flex flex-row flex-wrap gap-2">
             <li v-for="tech in techs" :key="tech.name">
               <a

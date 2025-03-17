@@ -2,7 +2,18 @@
   "rewrites": [{ "source": "/(.*)", "destination": "/" }],
   "git": {
     "deploymentEnabled": {
-      "main": false
+      "main": true
     }
-  }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=432000, stale-while-revalidate=604800"
+        }
+      ]
+    }
+  ]
 }

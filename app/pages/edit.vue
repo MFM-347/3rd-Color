@@ -25,7 +25,7 @@ defineOgImageComponent('NuxtSeo', {
   description: description,
   siteName: '3rd Color',
   siteLogo: meta.logo,
-  theme: '385cfa',
+  theme: '008bff',
 })
 
 const c = ref('#385cfa')
