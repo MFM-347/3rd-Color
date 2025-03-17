@@ -4,13 +4,18 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  nitro: {
-    compressPublicAssets: true,
-  },
-  css: ['@/style.css'],
   future: {
     compatibilityVersion: 4,
   },
+  nitro: {
+    compressPublicAssets: true,
+    prerender: {
+      failOnError: false,
+      crawlLinks: true,
+      routes: ['/new'],
+    },
+  },
+  css: ['@/style.css'],
   vite: {
     plugins: [tailwindcss()],
     build: {
@@ -64,12 +69,12 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/': { redirect: '/new' },
-    '/new': { prerender: true },
-    '/edit': { prerender: true },
-    '/about': { prerender: true },
+    '/new': { sitemap: { changefreq: 'weekly', priority: 0.99 } },
+    '/edit': { sitemap: { changefreq: 'weekly', priority: 0.9 } },
+    '/about': { sitemap: { changefreq: 'monthly', priority: 0.8 } },
     '/**/*.{css,svg,jpg,jpeg,png,webp}': {
       headers: {
-        'Cache-Control': 'public, max-age=31536000, immutable',
+        'Cache-Control': 'public, max-age=432000, stale-while-revalidate=604800',
       },
     },
   },
