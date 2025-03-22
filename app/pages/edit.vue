@@ -25,7 +25,7 @@ defineOgImageComponent('NuxtSeo', {
   description: description,
   siteName: '3rd Color',
   siteLogo: meta.logo,
-  theme: '008bff',
+  theme: '#385cfa',
 })
 
 const c = ref('#385cfa')
@@ -47,7 +47,7 @@ const mClr = computed(() => {
     .saturate(m.value.saturate)
     .desaturate(m.value.desaturate)
     .tint(m.value.tint)
-    .shade(m.value.tint)
+    .shade(m.value.shade)
     .spin(m.value.spin * 3.6)
   return color.toString()
 })

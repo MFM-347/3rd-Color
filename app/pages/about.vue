@@ -22,7 +22,7 @@ defineOgImageComponent('NuxtSeo', {
   description: description,
   siteName: '3rd Color',
   siteLogo: meta.logo,
-  theme: '008bff',
+  theme: '#385cfa',
 })
 
 const techs = [
@@ -31,7 +31,8 @@ const techs = [
   { name: 'TailwindCSS', link: 'https://tailwindcss.com/' },
   { name: 'TinyColor', link: 'https://github.com/scttcper/tinycolor' },
   { name: 'Chroma-js', link: 'https://github.com/gka/chroma.js' },
-  { name: 'KokonutUI (vue-ed components)', link: 'https://kokonutui.com/' },
+  { name: 'Reka UI', link: 'https://reka-ui.com/' },
+  { name: 'Vue3 Toastify', link: 'https://vue3-toastify.js-bridge.com/' },
 ]
 </script>
 
