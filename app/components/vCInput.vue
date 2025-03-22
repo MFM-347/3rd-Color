@@ -2,7 +2,7 @@
   <div class="group relative">
     <label
       :for="label.toLowerCase()"
-      class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+      class="mb-2 block text-sm font-medium text-stone-700 dark:text-stone-300"
     >
       {{ label }}
     </label>
@@ -15,7 +15,7 @@
         :placeholder="ph"
         :value="modelValue"
         @input="onTChange"
-        class="flex-1 border-none bg-transparent px-4 py-1 text-lg outline-none placeholder:text-gray-400 sm:py-2 dark:placeholder:text-gray-600"
+        class="flex-1 border-none bg-transparent px-4 py-1 text-lg outline-none placeholder:text-stone-400 sm:py-2 dark:placeholder:text-stone-600"
       />
       <input
         type="color"

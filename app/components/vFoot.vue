@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="mt-8 w-full border-t border-zinc-200 bg-gray-50 py-6 dark:border-zinc-800 dark:bg-zinc-900"
+    class="mt-8 w-full border-t border-zinc-200 bg-stone-50 py-6 dark:border-zinc-800 dark:bg-zinc-900"
   >
     <div class="container mx-auto px-4">
       <div class="flex flex-col items-center text-center">
@@ -25,7 +25,7 @@
         <div class="mb-4 flex flex-wrap justify-center gap-4">
           <a
             href="/about"
-            class="text-gray-600 transition-colors hover:text-clr-700 dark:text-gray-400 dark:hover:text-clr-300"
+            class="text-stone-600 transition-colors hover:text-clr-700 dark:text-stone-400 dark:hover:text-clr-300"
           >
             About
           </a>
@@ -33,7 +33,7 @@
             href="https://github.com/MFM-347/3rd-Color"
             target="_blank"
             rel="noopener"
-            class="text-gray-600 transition-colors hover:text-clr-700 dark:text-gray-400 dark:hover:text-clr-300"
+            class="text-stone-600 transition-colors hover:text-clr-700 dark:text-stone-400 dark:hover:text-clr-300"
           >
             GitHub
           </a>
@@ -41,12 +41,12 @@
             href="https://forms.gle/zou8TsJ1UAbwioff9"
             target="_blank"
             rel="noopener"
-            class="text-gray-600 transition-colors hover:text-clr-700 dark:text-gray-400 dark:hover:text-clr-300"
+            class="text-stone-600 transition-colors hover:text-clr-700 dark:text-stone-400 dark:hover:text-clr-300"
           >
             Feedback
           </a>
         </div>
-        <p class="text-sm text-gray-600 dark:text-gray-400">
+        <p class="text-sm text-stone-600 dark:text-stone-400">
           &copy; {{ new Date().getFullYear() }} 3rd Color. All rights reserved.
         </p>
       </div>

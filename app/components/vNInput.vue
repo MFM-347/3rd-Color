@@ -8,7 +8,7 @@
         <button
           type="button"
           @click="decr"
-          class="rounded-l-lg px-3 py-2 text-gray-500 ta-125 hover:bg-zinc-300 dark:text-gray-400 dark:hover:bg-zinc-700"
+          class="rounded-l-lg px-3 py-2 text-stone-500 ta-125 hover:bg-zinc-300 dark:text-stone-400 dark:hover:bg-zinc-700"
           aria-label="Decrease button"
         >
           -
@@ -22,12 +22,12 @@
           :step="step"
           @focus="focused = true"
           @blur="focused = false"
-          class="w-full border-none bg-transparent text-center text-gray-900 [-moz-appearance:textfield] focus:outline-hidden dark:text-gray-100 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+          class="w-full border-none bg-transparent text-center text-stone-900 [-moz-appearance:textfield] focus:outline-hidden dark:text-stone-100 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
         />
         <button
           type="button"
           @click="incr"
-          class="rounded-r-lg px-3 py-2 text-gray-500 ta-125 hover:bg-zinc-300 dark:text-gray-400 dark:hover:bg-zinc-700"
+          class="rounded-r-lg px-3 py-2 text-stone-500 ta-125 hover:bg-zinc-300 dark:text-stone-400 dark:hover:bg-zinc-700"
           aria-label="Increase button"
         >
           +

@@ -85,7 +85,7 @@ watch(clr, updateFormats, { immediate: true })
     <div class="mx-auto max-w-5xl">
       <div class="mb-4 px-2 text-center md:mb-8">
         <h1 class="title">Create New Color</h1>
-        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+        <p class="mt-4 text-lg text-stone-600 dark:text-stone-400">
           Enter any color format (only hex, rgb, hsl, cmyk, hsv) to explore its properties and
           variations
         </p>
@@ -100,7 +100,7 @@ watch(clr, updateFormats, { immediate: true })
         <div
           class="mt-4 h-32 rounded-xl ta-150"
           :style="{ backgroundColor: clr }"
-          :class="[isDark(clr) ? 'text-gray-100 shadow-inner' : 'text-gray-900 shadow-lg']"
+          :class="[isDark(clr) ? 'text-stone-100 shadow-inner' : 'text-stone-900 shadow-lg']"
         >
           <div class="flex h-full items-center justify-center">
             <p class="text-2xl font-medium">{{ clr }}</p>

@@ -75,7 +75,7 @@ watch(c, (newClr) => {
     <div class="mx-auto max-w-5xl">
       <div class="mb-4 px-2 text-center md:mb-8">
         <h1 class="title">Color Editor</h1>
-        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+        <p class="mt-4 text-lg text-stone-600 dark:text-stone-400">
           Transform and modify different colors with precision
         </p>
       </div>
@@ -90,7 +90,7 @@ watch(c, (newClr) => {
           <div
             class="h-40 cursor-pointer rounded-xl"
             :style="{ backgroundColor: clr }"
-            :class="[isDark(clr) ? 'text-gray-100 shadow-inner' : 'text-gray-900 shadow-md']"
+            :class="[isDark(clr) ? 'text-stone-100 shadow-inner' : 'text-stone-900 shadow-md']"
           >
             <div class="flex h-full items-center justify-center">
               <p class="text-xl font-medium">Original: {{ clr }}</p>
@@ -99,7 +99,7 @@ watch(c, (newClr) => {
           <div
             class="h-40 cursor-pointer rounded-xl"
             :style="{ backgroundColor: mClr }"
-            :class="[isDark(mClr) ? 'text-gray-100 shadow-inner' : 'text-gray-900 shadow-md']"
+            :class="[isDark(mClr) ? 'text-stone-100 shadow-inner' : 'text-stone-900 shadow-md']"
             @click="copy(mClr)"
           >
             <div class="flex h-full items-center justify-center">
