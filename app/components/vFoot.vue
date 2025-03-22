@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="mt-8 w-full border-t border-zinc-200 bg-stone-50 py-6 dark:border-zinc-800 dark:bg-zinc-900"
+    class="mt-8 w-full border-t border-zinc-200 bg-zinc-50 py-6 dark:border-zinc-800 dark:bg-zinc-900"
   >
     <div class="container mx-auto px-4">
       <div class="flex flex-col items-center text-center">

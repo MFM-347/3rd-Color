@@ -9,7 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "format": "prettier -w .",
-    "start": "npm run format && cls && npm run dev"
+    "start": "npm run format && clear && npm run dev"
   },
   "dependencies": {
     "@ctrl/tinycolor": "^4.1.0",

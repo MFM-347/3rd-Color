@@ -3,6 +3,8 @@ import { ref, computed, watch } from 'vue'
 import { TinyColor } from '@ctrl/tinycolor'
 import chroma from 'chroma-js'
 import { getUrl, isDark, copy } from '@/utils'
+import { toast } from 'vue3-toastify'
+import 'vue3-toastify/dist/index.css'
 
 const description =
   "3rd Color's Color Creator let's you create and analyze colors with 3rd Color's color tools"
@@ -28,44 +30,52 @@ defineOgImageComponent('NuxtSeo', {
   siteLogo: meta.logo,
   theme: '#385cfa',
 })
-
 const c = ref('#385cfa')
 const clr = computed(() => {
-  try {
-    return new TinyColor(c.value).toString()
-  } catch (e) {
-    console.warn('ERROR: Invalid color format - ' + e)
-    return '#000000'
+  const color = new TinyColor(c.value)
+  if (color.isValid) {
+    return color.toHexString()
   }
+  try {
+    const chromaColor = chroma(c.value)
+    if (chroma.valid(c.value)) {
+      return chromaColor.hex()
+    }
+  } catch (error) {
+    console.warn('ERROR: Invalid color format')
+  }
+  toast(`ERROR: Invalid color format`, {
+    theme: 'auto',
+    type: 'warning',
+  })
+  return '#000000'
 })
+const x = computed(() => new TinyColor(clr.value))
+const y = computed(() => chroma(clr.value))
 const formats = ref<Array<{ name: string; value: string }>>([])
 const updateFormats = () => {
-  try {
-    const color = new TinyColor(clr.value)
-    const y = chroma(clr.value)
-    const sV = (value: number) => (isNaN(value) ? '0' : value.toFixed(2))
-    const hcl = y.hcl().map(sV)
-    const hsi = y.hsi().map(sV)
-    const oklch = y.oklch().map(sV)
-    const oklab = y.oklab().map(sV)
-    const lch = y.lch().map(sV)
-    const lab = y.lab().map(sV)
-    formats.value = [
-      { name: 'hex', value: color.toHexString() },
-      { name: 'rgb', value: color.toRgbString() },
-      { name: 'cmyk', value: color.toCmykString() },
-      { name: 'hsl', value: color.toHslString() },
-      { name: 'hsv', value: color.toHsvString() },
-      { name: 'hcl', value: `hcl(${hcl.join(', ')})` },
-      { name: 'hsi', value: `hsi(${hsi.join(', ')})` },
-      { name: 'oklab', value: `oklab(${oklab.join(', ')})` },
-      { name: 'oklch', value: `oklch(${oklch.join(', ')})` },
-      { name: 'lab', value: `lab(${lab.join(', ')})` },
-      { name: 'lch', value: `lch(${lch.join(', ')})` },
-    ]
-  } catch (e) {
-    console.warn('ERROR: Failed to update color formats - ' + e)
-  }
+  const color = new TinyColor(clr.value)
+  const y = chroma(clr.value)
+  const sV = (value: number) => (isNaN(value) ? '0' : value.toFixed(2))
+  const hcl = y.hcl().map(sV)
+  const hsi = y.hsi().map(sV)
+  const oklch = y.oklch().map(sV)
+  const oklab = y.oklab().map(sV)
+  const lch = y.lch().map(sV)
+  const lab = y.lab().map(sV)
+  formats.value = [
+    { name: 'hex', value: color.toHexString() },
+    { name: 'rgb', value: color.toRgbString() },
+    { name: 'cmyk', value: color.toCmykString() },
+    { name: 'hsl', value: color.toHslString() },
+    { name: 'hsv', value: color.toHsvString() },
+    { name: 'hcl', value: `hcl(${hcl.join(', ')})` },
+    { name: 'hsi', value: `hsi(${hsi.join(', ')})` },
+    { name: 'oklab', value: `oklab(${oklab.join(', ')})` },
+    { name: 'oklch', value: `oklch(${oklch.join(', ')})` },
+    { name: 'lab', value: `lab(${lab.join(', ')})` },
+    { name: 'lch', value: `lch(${lch.join(', ')})` },
+  ]
 }
 onMounted(() => {
   const savedColor = localStorage.getItem('savedColor')
@@ -110,35 +120,33 @@ watch(clr, updateFormats, { immediate: true })
           <div class="p-4">
             <h2 class="mb-4 text-2xl font-bold">Color Information</h2>
             <div class="space-y-3">
-              <div
-                class="flex justify-between rounded-lg bg-zinc-50 p-2 text-sm sm:p-3 sm:text-base dark:bg-zinc-800"
-              >
+              <div class="inf">
                 <span class="font-medium">Format</span>
-                <span>{{ new TinyColor(clr).format }}</span>
+                <span>{{ x.format }}</span>
               </div>
-              <div
-                class="flex justify-between rounded-lg bg-zinc-50 p-2 text-sm sm:p-3 sm:text-base dark:bg-zinc-800"
-              >
+              <div class="inf">
+                <span class="font-medium">Is Valid</span>
+                <span>{{ chroma.valid(clr) }}</span>
+              </div>
+              <div class="inf">
                 <span class="font-medium">Brightness</span>
-                <span>{{ new TinyColor(clr).getBrightness().toFixed(2) }}</span>
+                <span>{{ x.getBrightness().toFixed(2) }}</span>
               </div>
-              <div
-                class="flex justify-between rounded-lg bg-zinc-50 p-2 text-sm sm:p-3 sm:text-base dark:bg-zinc-800"
-              >
+              <div class="inf">
                 <span class="font-medium">Luminance</span>
-                <span>{{ new TinyColor(clr).getLuminance().toFixed(3) }}</span>
+                <span>{{ x.getLuminance().toFixed(3) }}</span>
               </div>
-              <div
-                class="flex justify-between rounded-lg bg-zinc-50 p-2 text-sm sm:p-3 sm:text-base dark:bg-zinc-800"
-              >
+              <div class="inf">
+                <span class="font-medium">Temperature</span>
+                <span>{{ y.temperature() }}</span>
+              </div>
+              <div class="inf">
                 <span class="font-medium">Is Dark</span>
-                <span>{{ new TinyColor(clr).isDark() ? 'Yes' : 'No' }}</span>
+                <span>{{ x.isDark() ? 'Yes' : 'No' }}</span>
               </div>
-              <div
-                class="flex justify-between rounded-lg bg-zinc-50 p-2 text-sm sm:p-3 sm:text-base dark:bg-zinc-800"
-              >
+              <div class="inf">
                 <span class="font-medium">Complement</span>
-                <span>{{ new TinyColor(clr).complement().toHexString() }}</span>
+                <span>{{ x.complement().toHexString() }}</span>
               </div>
             </div>
           </div>
@@ -172,3 +180,10 @@ watch(clr, updateFormats, { immediate: true })
     </div>
   </div>
 </template>
+<style scoped>
+@reference "@/style.css"
+
+.inf {
+  @apply flex justify-between rounded-lg bg-zinc-50 p-2 text-sm sm:p-3 sm:text-base dark:bg-zinc-800;
+}
+</style>

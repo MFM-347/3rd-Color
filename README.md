@@ -1,7 +1,7 @@
 # 3rd Color
 
 ![code size](https://img.shields.io/github/languages/code-size/MFM-347/3rd-Color?style=for-the-badge)
-[![Stars](https://img.shields.io/github/stars/MFM-347/3rd-Color?style=for-the-badge)](https://github.com/MFM-347/3rd-Color/stargazers)
+[![Stars](https://img.shields.io/github/stars/MFM-347/3rd-Color?color=ee4&style=for-the-badge)](https://github.com/MFM-347/3rd-Color/stargazers)
 <a href="https://www.producthunt.com/posts/3rd-color?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-3rd&#0045;color" target="_blank">
 <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=939594&theme=light" alt="3rd Color - Color Tools for Designers & Developers | Product Hunt" height="30" />
 </a>
@@ -11,6 +11,7 @@
 
 ## Future Plans
 
+- I may release **3rd Color v1.0.0** soon.
 - I may add color scheme generation like **[uicolors.app](https://uicolors.app/)** and color mixing and blending like **[hue.tools](https://hue.tools/)**.
 - I may (`or may not`) rename **3rd Color** to **ColorXpret**.
 
