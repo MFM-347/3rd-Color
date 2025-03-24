@@ -9,23 +9,29 @@
   transition-timing-function: cubic-bezier(0.3, 0.2, 0, 1);
 }
 *:focus-visible {
-  @apply outline-offset-2 outline-clr-500;
+  @apply outline-offset-2 outline-primary;
 }
 :focus:not(:focus-visible) {
   outline: none;
 }
 @theme {
-  --color-clr-50: #eff3ff;
-  --color-clr-100: #dae3ff;
-  --color-clr-200: #beceff;
-  --color-clr-300: #91b0ff;
-  --color-clr-400: #5d86fd;
-  --color-clr-500: #385cfa;
-  --color-clr-600: #2139ef;
-  --color-clr-700: #1926dc;
-  --color-clr-800: #1b21b2;
-  --color-clr-900: #1c238c;
-  --color-clr-950: #161855;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+}
+:root {
+  --background: var(--color-zinc-50);
+  --foreground: var(--color-stone-950);
+  --muted: var(--color-stone-700);
+  --primary: #187bff;
+  --primary-hover: #0061ff;
+}
+.dark {
+  --background: var(--color-zinc-950);
+  --foreground: var(--color-stone-100);
+  --muted: var(--color-stone-300);
 }
 @layer base {
   *,
@@ -34,7 +40,6 @@
   ::backdrop,
   ::file-selector-button {
     @apply ta-125;
-    border-color: var(--color-border, currentColor);
   }
   :root {
     --sc-fg: var(--zinc-300);
@@ -45,12 +50,12 @@
     --sc-hover-fg: var(--zinc-600);
   }
   body {
-    @apply bg-zinc-50 text-stone-900 dark:bg-zinc-950 dark:text-stone-50;
-    font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+    @apply bg-background text-foreground;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
     font-optical-sizing: auto;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: stonescale;
+    -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
     max-width: 100vw;
     overflow-x: hidden;
@@ -69,7 +74,7 @@ html::-webkit-scrollbar {
   height: 4px;
 }
 html::-webkit-scrollbar-track {
-  background-color: transparent;
+  background-color: #111;
   border-radius: 8px;
 }
 html::-webkit-scrollbar-thumb {
@@ -82,16 +87,11 @@ html::-webkit-scrollbar-thumb:hover {
 html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: var(--sc-fg) transparent;
+  scrollbar-color: var(--sc-fg) #111;
 }
 .sec {
-  @apply relative mx-0 w-full rounded-none bg-zinc-100 p-6 shadow-xl md:mx-auto md:rounded-2xl dark:bg-zinc-900;
+  @apply relative mx-0 w-full rounded-none bg-zinc-100 p-6 shadow-lg hover:shadow-xl md:mx-auto md:rounded-2xl dark:bg-zinc-900;
 }
 .title {
-  @apply text-3xl font-bold text-stone-950 md:text-5xl dark:text-stone-100;
-}
-@media print {
-  body {
-    @apply bg-zinc-100 text-stone-900;
-  }
+  @apply text-3xl font-bold md:text-5xl;
 }

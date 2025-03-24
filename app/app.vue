@@ -4,7 +4,7 @@ useSeoMeta({
   viewport: 'width=device-width, initial-scale=1',
   robots: 'index, follow, max-image-preview:large',
   author: 'Farhan Madni',
-  themeColor: '#385cfa',
+  themeColor: '#187bff',
   ogLocale: 'en_US',
   ogType: 'website',
   twitterCreator: '@mfm347',
@@ -14,7 +14,7 @@ useSeoMeta({
   appleMobileWebAppTitle: '3rd Color',
   appleMobileWebAppStatusBarStyle: 'black-translucent',
   googleSiteVerification: '9C3mmoooLN2NLh5PUEVgr98hTKYWPIarhqp7Efdfwuo',
-  msapplicationTileColor: '#385cfa',
+  msapplicationTileColor: '#187bff',
 })
 useHead({
   htmlAttrs: {
@@ -43,11 +43,11 @@ useHead({
 
 .page-enter-active,
 .page-leave-active {
-  @apply ta-400;
+  @apply ta-320;
 }
 .page-enter-from,
 .page-leave-to {
-  opacity: 0;
-  filter: blur(1rem) saturate(125%);
+  opacity: 0.125;
+  filter: blur(0.8rem) saturate(125%);
 }
 </style>

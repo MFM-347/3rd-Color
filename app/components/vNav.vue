@@ -15,7 +15,12 @@ const toggleDarkMode = () => {
 }
 
 onMounted(() => {
-  isDarkMode.value = localStorage.getItem('dark-mode') === 'enabled'
+  const storedTheme = localStorage.getItem('dark-mode')
+  if (storedTheme) {
+    isDarkMode.value = storedTheme === 'enabled'
+  } else {
+    isDarkMode.value = window.matchMedia('(prefers-color-scheme: dark)').matches
+  }
   document.documentElement.classList.toggle('dark', isDarkMode.value)
   icon.value = isDarkMode.value ? SunIcon : MoonIcon
 })
@@ -27,7 +32,7 @@ onMounted(() => {
   >
     <a href="/new" class="flex items-center space-x-1">
       <div
-        class="flex aspect-square h-8 items-center justify-center rounded-xl bg-clr-400 p-2 text-base font-bold text-stone-900 dark:bg-clr-600 dark:text-stone-100"
+        class="flex aspect-square h-8 items-center justify-center rounded-xl bg-primary p-2 text-base font-bold text-foreground"
       >
         3C
       </div>
@@ -49,6 +54,7 @@ onMounted(() => {
       <button
         @click="toggleDarkMode"
         :aria-label="isDarkMode ? 'Toggle Light Mode' : 'Toggle Dark Mode'"
+        :aria-pressed="isDarkMode"
         class="rounded-full p-2 ta-150 hover:bg-zinc-200 focus:ring focus:ring-stone-300 focus:outline-none dark:hover:bg-zinc-800 dark:focus:ring-stone-700"
       >
         <component
