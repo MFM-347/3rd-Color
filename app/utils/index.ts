@@ -34,7 +34,7 @@ export const copy = (text: string) => {
   navigator.clipboard
     .writeText(text)
     .then(() => alert('Copied to clipboard!'))
-    .catch((err: unknown) => alert(`Failed to copy text: ${err}`))
+    .catch((err: unknown) => alert(`Failed to copy: ${err}`))
 }
 
 /**

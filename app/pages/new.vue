@@ -1,10 +1,9 @@
 <script setup lang="ts">
+import { useDebounceFn } from '@vueuse/core'
 import { ref, computed, watch } from 'vue'
-import { TinyColor } from '@ctrl/tinycolor'
+import { TinyColor, random } from '@ctrl/tinycolor'
 import chroma from 'chroma-js'
-import { getUrl, isDark, copy } from '@/utils'
-import { toast } from 'vue3-toastify'
-import 'vue3-toastify/dist/index.css'
+import { getUrl, meta, isDark, copy } from '@/utils'
 
 const description =
   "3rd Color's Color Creator let's you create and analyze colors with 3rd Color's color tools"
@@ -28,28 +27,22 @@ defineOgImageComponent('NuxtSeo', {
   description: description,
   siteName: '3rd Color',
   siteLogo: meta.logo,
-  theme: '#385cfa',
+  theme: '#187bff',
 })
-const c = ref('#385cfa')
+const c = ref('#187bff')
 const clr = computed(() => {
   const color = new TinyColor(c.value)
-  if (color.isValid) {
-    return color.toHexString()
-  }
-  try {
-    const chromaColor = chroma(c.value)
-    if (chroma.valid(c.value)) {
-      return chromaColor.hex()
-    }
-  } catch (error) {
-    console.warn('ERROR: Invalid color format')
-  }
-  toast(`ERROR: Invalid color format`, {
-    theme: 'auto',
-    type: 'warning',
-  })
-  return '#000000'
+  return color.isValid
+    ? color.toHexString() + 'ff' === color.toHex8String()
+      ? color.toHexString()
+      : color.toHex8String()
+    : '#000000'
 })
+const handleRandom = (event: KeyboardEvent) => {
+  if (event.key.toLowerCase() === 'r') {
+    c.value = random().toHexString()
+  }
+}
 const x = computed(() => new TinyColor(clr.value))
 const y = computed(() => chroma(clr.value))
 const formats = ref<Array<{ name: string; value: string }>>([])
@@ -64,7 +57,13 @@ const updateFormats = () => {
   const lch = y.lch().map(sV)
   const lab = y.lab().map(sV)
   formats.value = [
-    { name: 'hex', value: color.toHexString() },
+    {
+      name: 'hex',
+      value:
+        color.toHexString() + 'ff' === color.toHex8String()
+          ? color.toHexString()
+          : color.toHex8String(),
+    },
     { name: 'rgb', value: color.toRgbString() },
     { name: 'cmyk', value: color.toCmykString() },
     { name: 'hsl', value: color.toHslString() },
@@ -78,6 +77,7 @@ const updateFormats = () => {
   ]
 }
 onMounted(() => {
+  document.addEventListener('keydown', handleRandom)
   const savedColor = localStorage.getItem('savedColor')
   if (savedColor) {
     c.value = savedColor
@@ -87,7 +87,7 @@ const edit = () => {
   localStorage.removeItem('savedColor')
   localStorage.setItem('savedColor', clr.value)
 }
-watch(clr, updateFormats, { immediate: true })
+watch(clr, useDebounceFn(updateFormats, 300), { immediate: true })
 </script>
 
 <template>
@@ -95,12 +95,11 @@ watch(clr, updateFormats, { immediate: true })
     <div class="mx-auto max-w-5xl">
       <div class="mb-4 px-2 text-center md:mb-8">
         <h1 class="title">Create New Color</h1>
-        <p class="mt-4 text-lg text-stone-600 dark:text-stone-400">
-          Enter any color format (only hex, rgb, hsl, cmyk, hsv) to explore its properties and
-          variations
+        <p class="mt-2 text-lg text-stone-600 dark:text-stone-400">
+          Enter a valid color format (HEX, RGB, HSL, CMYK, HSV) to explore its properties.
         </p>
       </div>
-      <div class="sec">
+      <div class="sec md:max-w-4xl">
         <vCInput
           type="text"
           ph="Enter any color format (e.g., #0063ff, rgb(0, 99, 255))"
@@ -108,66 +107,54 @@ watch(clr, updateFormats, { immediate: true })
           v-model="c"
         />
         <div
-          class="mt-4 h-32 rounded-xl ta-150"
+          class="mt-4 flex h-32 items-center justify-center rounded-lg text-xl font-medium shadow-md transition-all"
           :style="{ backgroundColor: clr }"
-          :class="[isDark(clr) ? 'text-stone-100 shadow-inner' : 'text-stone-900 shadow-lg']"
+          @click="copy(clr)"
+          :class="[isDark(clr) ? 'text-white shadow-inner' : 'text-stone-900 shadow-lg']"
+          aria-live="polite"
         >
-          <div class="flex h-full items-center justify-center">
-            <p class="text-2xl font-medium">{{ clr }}</p>
-          </div>
+          {{ clr }}
         </div>
-        <div class="grid gap-2 rounded-2xl md:grid-cols-2">
+        <div class="grid gap-4 md:grid-cols-2">
           <div class="p-4">
-            <h2 class="mb-4 text-2xl font-bold">Color Information</h2>
-            <div class="space-y-3">
-              <div class="inf">
-                <span class="font-medium">Format</span>
-                <span>{{ x.format }}</span>
-              </div>
-              <div class="inf">
-                <span class="font-medium">Is Valid</span>
-                <span>{{ chroma.valid(clr) }}</span>
-              </div>
-              <div class="inf">
-                <span class="font-medium">Brightness</span>
-                <span>{{ x.getBrightness().toFixed(2) }}</span>
-              </div>
-              <div class="inf">
-                <span class="font-medium">Luminance</span>
-                <span>{{ x.getLuminance().toFixed(3) }}</span>
-              </div>
-              <div class="inf">
-                <span class="font-medium">Temperature</span>
-                <span>{{ y.temperature() }}</span>
-              </div>
-              <div class="inf">
-                <span class="font-medium">Is Dark</span>
-                <span>{{ x.isDark() ? 'Yes' : 'No' }}</span>
-              </div>
-              <div class="inf">
-                <span class="font-medium">Complement</span>
-                <span>{{ x.complement().toHexString() }}</span>
-              </div>
-            </div>
+            <h2 class="mb-4 text-xl font-bold">Color Information</h2>
+            <ul class="space-y-2">
+              <li class="itm">
+                <span>Brightness:</span> <span>{{ x.getBrightness().toFixed(2) }}</span>
+              </li>
+              <li class="itm">
+                <span>Luminance:</span> <span>{{ x.getLuminance().toFixed(3) }}</span>
+              </li>
+              <li class="itm">
+                <span>Temperature:</span> <span>{{ y.temperature() }}</span>
+              </li>
+              <li class="itm">
+                <span>Is Dark:</span> <span>{{ x.isDark() ? 'Yes' : 'No' }}</span>
+              </li>
+              <li class="itm">
+                <span>Complement:</span> <span>{{ x.complement().toHexString() }}</span>
+              </li>
+            </ul>
           </div>
           <div class="p-4">
-            <h2 class="mb-4 text-2xl font-bold">Color Formats</h2>
-            <div class="space-y-3">
+            <h2 class="mb-4 text-xl font-bold">Color Formats</h2>
+            <div class="space-y-2">
               <div
                 v-for="format in formats"
                 :key="format.name"
-                class="cursor-pointer rounded-lg bg-zinc-200 p-2 text-sm ta-150 hover:bg-zinc-300 sm:p-3 md:text-base dark:bg-zinc-800 dark:hover:bg-zinc-700"
+                class="flex cursor-pointer justify-between rounded-md bg-zinc-200 p-2 text-sm ta-150 hover:bg-zinc-300 sm:rounded-lg sm:p-3 md:text-base dark:bg-zinc-800 dark:hover:bg-zinc-700"
                 @click="copy(format.value)"
+                tabindex="0"
+                role="button"
+                :aria-label="`Copy ${format.name}`"
               >
-                <div class="flex items-center justify-between">
-                  <span class="pr-2 font-medium uppercase">{{ format.name }}</span>
-                  <span class="font-mono">{{ format.value ?? 'N/A' }}</span>
-                </div>
+                <span class="font-medium uppercase">{{ format.name }}</span>
+                <span class="font-mono">{{ format.value }}</span>
               </div>
             </div>
           </div>
         </div>
-        <a href="/edit" target="_self">
+        <a href="/edit" target="_self" role="link">
           <button
             @click="edit"
             aria-label="Edit this Color"
@@ -180,10 +167,11 @@ watch(clr, updateFormats, { immediate: true })
     </div>
   </div>
 </template>
-<style scoped>
-@reference "@/style.css"
 
-.inf {
-  @apply flex justify-between rounded-lg bg-zinc-50 p-2 text-sm sm:p-3 sm:text-base dark:bg-zinc-800;
+<style scoped>
+@reference "@/style.css";
+
+.itm {
+  @apply flex justify-between rounded-md bg-zinc-50 p-2 text-sm sm:rounded-lg sm:p-3 sm:text-base dark:bg-zinc-800;
 }
 </style>

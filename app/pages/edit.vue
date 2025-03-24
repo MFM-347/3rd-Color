@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, computed } from 'vue'
-import { TinyColor } from '@ctrl/tinycolor'
-import chroma from 'chroma-js'
-import { getUrl, isDark, copy } from '@/utils'
+import { TinyColor, random } from '@ctrl/tinycolor'
+import { getUrl, meta, isDark, copy } from '@/utils'
+import { useDebounceFn } from '@vueuse/core'
 import {
   NumberFieldDecrement,
   NumberFieldIncrement,
@@ -11,11 +11,8 @@ import {
   Label,
 } from 'reka-ui'
 import { PlusIcon, MinusIcon } from '@heroicons/vue/24/solid'
-import { toast } from 'vue3-toastify'
-import 'vue3-toastify/dist/index.css'
 
-const description =
-  "3rd Color's Color Editor let's you to modify and transform colors with 3rd Color's color editing tools"
+const description = "3rd Color's Color Editor lets you modify and transform colors with precision."
 const url = getUrl('/edit')
 useSeoMeta({
   title: 'Color Editor',
@@ -36,28 +33,9 @@ defineOgImageComponent('NuxtSeo', {
   description: description,
   siteName: '3rd Color',
   siteLogo: meta.logo,
-  theme: '#385cfa',
+  theme: '#187bff',
 })
-const c = ref('#385cfa')
-const clr = computed(() => {
-  const color = new TinyColor(c.value)
-  if (color.isValid) {
-    return color.toHexString()
-  }
-  try {
-    const chromaColor = chroma(c.value)
-    if (chroma.valid(c.value)) {
-      return chromaColor.hex()
-    }
-  } catch (error) {
-    console.warn('ERROR: Invalid color format')
-  }
-  toast(`ERROR: Invalid color format`, {
-    theme: 'auto',
-    type: 'warning',
-  })
-  return '#000000'
-})
+const c = ref('#187bff')
 const m = ref({
   lighten: 0,
   darken: 0,
@@ -67,7 +45,15 @@ const m = ref({
   shade: 0,
   spin: 0,
 })
-const mClr = computed(() => {
+const clr = computed(() => {
+  const color = new TinyColor(c.value)
+  return color.isValid
+    ? color.toHexString() + 'ff' === color.toHex8String()
+      ? color.toHexString()
+      : color.toHex8String()
+    : '#000000'
+})
+const computeMods = () => {
   let color = new TinyColor(clr.value)
   return color
     .lighten(m.value.lighten)
@@ -78,26 +64,33 @@ const mClr = computed(() => {
     .shade(m.value.shade)
     .spin(m.value.spin * 3.6)
     .toHexString()
-})
+}
+const mClr = ref(computeMods())
+const updateMods = useDebounceFn(() => {
+  mClr.value = computeMods()
+  localStorage.setItem('savedMClr', JSON.stringify(m.value))
+}, 300)
+const handleRandom = (event: KeyboardEvent) => {
+  if (event.key.toLowerCase() === 'r') {
+    c.value = random().toHexString()
+  }
+}
 onMounted(() => {
+  document.addEventListener('keydown', handleRandom)
   if (typeof window !== 'undefined') {
     const savedColor = localStorage.getItem('savedColor')
-    if (savedColor) {
-      c.value = savedColor
-    }
+    const savedMods = localStorage.getItem('savedMClr')
+    if (savedColor) c.value = savedColor
+    if (savedMods) m.value = JSON.parse(savedMods)
   }
 })
 watch(c, (newClr) => {
   if (!new TinyColor(newClr).isValid) {
-    toast('ERROR: Invalid color format', {
-      theme: 'auto',
-      type: 'warning',
-    })
+    console.warn('ERROR: Invalid color format')
   }
+  localStorage.setItem('savedColor', newClr)
 })
-const updateValue = (key: keyof typeof m.value, value: number) => {
-  Object.assign(m.value, { [key]: value })
-}
+watch(m, updateMods, { deep: true })
 </script>
 
 <template>
@@ -115,6 +108,7 @@ const updateValue = (key: keyof typeof m.value, value: number) => {
           ph="Enter any color format (e.g., #0063ff, rgb(0, 99, 255))"
           label="Color Input"
           v-model="c"
+          aria-label="Enter a color code"
         />
         <div class="mt-4 grid gap-3 md:grid-cols-2">
           <div
@@ -131,6 +125,7 @@ const updateValue = (key: keyof typeof m.value, value: number) => {
             :style="{ backgroundColor: mClr }"
             :class="[isDark(mClr) ? 'text-stone-100 shadow-inner' : 'text-stone-900 shadow-md']"
             @click="copy(mClr)"
+            aria-label="Click to copy modified color"
           >
             <div class="flex h-full items-center justify-center">
               <p class="text-xl font-medium">Modified: {{ mClr }}</p>
@@ -146,23 +141,29 @@ const updateValue = (key: keyof typeof m.value, value: number) => {
               :max="100"
               :default-value="0"
               :modelValue="m[key]"
-              @update:modelValue="(value) => updateValue(key, value)"
+              @update:modelValue="(value) => (m[key] = value)"
               class="w-full"
             >
-              <Label
-                :for="key"
-                class="text-sm leading-[35px] font-semibold text-stone-700 dark:text-stone-300"
-              >
+              <Label :for="key" class="text-sm font-semibold text-stone-700 dark:text-stone-300">
                 {{ key }} (%)
               </Label>
               <div
-                class="flex items-center rounded-lg bg-white shadow-sm focus-within:shadow-[0_0_0_2px] focus-within:shadow-blue-500 hover:bg-zinc-50 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+                class="flex min-h-8 flex-row rounded-lg bg-zinc-100 shadow-sm focus-within:shadow-[0_0_0_2px] focus-within:shadow-primary dark:bg-zinc-800"
               >
-                <NumberFieldDecrement class="p-2 disabled:opacity-30">
-                  <MinusIcon class="size-5 fill-zinc-600 dark:fill-zinc-300" />
+                <NumberFieldDecrement
+                  class="min-h-8 rounded-l-lg p-2 hover:bg-zinc-300 dark:hover:bg-zinc-700"
+                  aria-label="Decrease {{ key }}"
+                >
+                  <MinusIcon class="size-4 fill-zinc-600 dark:fill-zinc-300" />
                 </NumberFieldDecrement>
-                <NumberFieldInput class="w-full p-2 text-center tabular-nums focus:outline-0" />
-                <NumberFieldIncrement class="p-2 disabled:opacity-30">
+                <NumberFieldInput
+                  class="flex-1 p-2 text-center text-base outline-none"
+                  aria-label="Input for {{ key }}"
+                />
+                <NumberFieldIncrement
+                  class="min-h-8 rounded-r-lg p-2 hover:bg-zinc-300 dark:hover:bg-zinc-700"
+                  aria-label="Increase {{ key }}"
+                >
                   <PlusIcon class="size-4 fill-zinc-600 dark:fill-zinc-300" />
                 </NumberFieldIncrement>
               </div>
