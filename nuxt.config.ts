@@ -8,13 +8,13 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   nitro: {
-    compressPublicAssets: true,
     prerender: {
       failOnError: false,
       crawlLinks: true,
       routes: ['/new'],
     },
   },
+  modules: ['@nuxtjs/sitemap', 'nuxt-schema-org', 'nuxt-og-image', '@nuxt/fonts'],
   css: ['@/style.css'],
   vite: {
     plugins: [tailwindcss()],
@@ -28,7 +28,6 @@ export default defineNuxtConfig({
       },
     },
   },
-  modules: ['@nuxtjs/sitemap', 'nuxt-schema-org', 'nuxt-og-image', '@nuxt/fonts'],
   site: {
     url: 'https://3color.vercel.app',
     name: '3rd Color - Color Tools for Designers & Developers',
@@ -54,6 +53,12 @@ export default defineNuxtConfig({
       ],
     },
   },
+  fonts: {
+    provider: 'google',
+    defaults: {
+      styles: ['normal'],
+    },
+  },
   features: {
     inlineStyles: true,
   },
@@ -72,7 +77,7 @@ export default defineNuxtConfig({
     '/new': { sitemap: { changefreq: 'weekly', priority: 0.99 } },
     '/edit': { sitemap: { changefreq: 'weekly', priority: 0.9 } },
     '/about': { sitemap: { changefreq: 'monthly', priority: 0.8 } },
-    '/**/*.{css,svg,jpg,jpeg,png,webp}': {
+    '/**/*.{css,svg,png,woff,woff2}': {
       headers: {
         'Cache-Control': 'public, max-age=432000, stale-while-revalidate=604800',
       },
