@@ -1,5 +1,29 @@
 <script setup lang="ts">
-import { meta, getSocial, generateSchemas, getCanonicalUrl, generateBreadcrumb } from '@/utils'
+import { meta, getUrl } from '@/utils'
+
+const description = 'Learn about 3rd Color, a powerful color tool for designers and developers.'
+const url = getUrl('/about')
+useSeoMeta({
+  title: 'About',
+  description,
+  ogUrl: url,
+  ogTitle: 'About - 3rd Color',
+  ogDescription: description,
+  ogImageAlt: meta.alt,
+  twitterTitle: 'About - 3rd Color',
+  twitterDescription: description,
+  twitterImageAlt: meta.alt,
+})
+useHead({
+  link: [{ rel: 'canonical', href: url }],
+})
+defineOgImageComponent('NuxtSeo', {
+  title: 'About - 3rd Color',
+  description: description,
+  siteName: '3rd Color',
+  siteLogo: meta.logo,
+  theme: '#187bff',
+})
 
 const techs = [
   { name: 'Nuxt', link: 'https://Nuxt.com/' },
@@ -7,117 +31,43 @@ const techs = [
   { name: 'TailwindCSS', link: 'https://tailwindcss.com/' },
   { name: 'TinyColor', link: 'https://github.com/scttcper/tinycolor' },
   { name: 'Chroma-js', link: 'https://github.com/gka/chroma.js' },
-  {
-    name: 'KokonutUI (converted to vue)',
-    link: 'https://kokonutui.com/',
-  },
+  { name: 'Reka UI', link: 'https://reka-ui.com/' },
+  { name: 'Vue3 Toastify', link: 'https://vue3-toastify.js-bridge.com/' },
 ]
-
-const pTitle = 'About - 3rd Color'
-const pageDescription =
-  'Learn about 3rd Color, why it was created, and the technologies behind this powerful color tool.'
-const canonicalUrl = getCanonicalUrl('/about')
-
-useSeoMeta({
-  title: 'About',
-  description: pageDescription,
-  ...getSocial({
-    title: pTitle,
-    description: pageDescription,
-    url: canonicalUrl,
-  }),
-})
-
-useHead({
-  link: [{ rel: 'canonical', href: canonicalUrl }],
-  script: [
-    {
-      type: 'application/ld+json',
-      children: JSON.stringify(
-        generateSchemas({
-          type: 'WebPage',
-          title: pTitle,
-          description: pageDescription,
-          url: canonicalUrl,
-          dateModified: new Date().toISOString().split('T')[0],
-        }),
-      ),
-    },
-    {
-      type: 'application/ld+json',
-      children: JSON.stringify(
-        generateBreadcrumb([
-          { name: 'Home', url: meta.url },
-          { name: 'About', url: canonicalUrl },
-        ]),
-      ),
-    },
-  ],
-})
 </script>
 
 <template>
-  <div class="px-6 sm:px-8 md:px-12">
-    <article class="my-6">
-      <header>
-        <h2>About 3rd Color</h2>
-      </header>
-
-      <section id="intro" class="my-6">
-        <p>
-          <strong>3rd Color</strong> is a tool made for designers, developers, and artists. It offers advanced color
-          insights, seamless color format conversion, and powerful color modification capabilities. Whether you're
-          crafting UI designs, curating the perfect color palettes, or fine-tuning colors with precision,
-          <strong>3rd Color</strong> is your creative companion.
-        </p>
-      </section>
-
-      <section id="why" class="my-6">
-        <h3>Why Was 3rd Color Created?</h3>
-        <p>
-          The internet is filled with a sea of cross-platform and web-based color tools, most serving a specific role.
-          Rather than sticking to a single purpose — such as a
-          <i>contrast checker</i> — we coded an all-in-one platform that integrates the most essential and powerful
-          color manipulation tools. Our goal was to create a unified and efficient solution that meets the diverse needs
-          of creativity and professionalism.
-        </p>
-        <p class="mt-4">
-          Inspired by the best features of some existing tools, <strong>3rd Color</strong> combines the strengths of:
-        </p>
-        <ul class="mt-2 list-disc space-y-2 pl-6 text-lg">
-          <li>
-            <a class="lnk" href="https://hue.tools/" target="_blank" rel="noopener">Hue.tools</a>
-            – for effortless color mixing, blending, and modification.
-          </li>
-          <li>
-            <a class="lnk" href="https://uicolors.app/" target="_blank" rel="noopener">UI Colors</a>
-            – for generating harmonious and aesthetically pleasing color schemes (currently under development).
-          </li>
-          <li>
-            <a class="lnk" href="https://it-tools.tech/color-converter" target="_blank" rel="noopener"
-              >IT-Tools' Color Converter</a
-            >
-            – for accurate, multi-format color conversion to meet various project requirements.
-          </li>
-        </ul>
-
-        <p class="mt-4">
-          With <strong>3rd Color</strong>, you no longer need to switch between multiple tools each time. It allows you
-          to enhance your creative workflow and boost your efficiency.
-        </p>
-      </section>
-
-      <section id="credits" class="my-6">
-        <h3>Credits</h3>
-        <p>Techs used in the creation of <b>3rd Color</b> are as follows:</p>
-        <ul class="mt-2 list-disc space-y-2 pl-6 text-lg">
-          <li v-for="(tech, index) in techs" :key="index">
-            <a class="lnk" :href="tech.link" target="_blank" rel="noopener" :title="tech.name">
-              {{ tech.name }}
-            </a>
-          </li>
-        </ul>
-      </section>
-    </article>
+  <div class="min-h-screen pt-4 md:pt-8">
+    <div class="mx-auto max-w-5xl">
+      <div class="mb-4 px-2 text-center md:mb-8">
+        <h1 class="title">About 3rd Color</h1>
+      </div>
+      <div class="sec max-w-3xl">
+        <section id="intro" class="mb-8">
+          <p class="text-lg leading-relaxed">
+            <strong>3rd Color</strong> is a comprehensive color tool designed for designers and
+            developers. It combines essential <i>color manipulation features</i> into a single but
+            efficient platform, providing color insights, format conversion, and modification
+            capabilities.
+          </p>
+        </section>
+        <section id="techs">
+          <h2>Credits</h2>
+          <p class="mt-4 mb-2 text-lg">Built with following amazing technologies:</p>
+          <ul class="flex flex-row flex-wrap gap-2">
+            <li v-for="tech in techs" :key="tech.name">
+              <a
+                :href="tech.link"
+                target="_blank"
+                rel="noopener nofollow"
+                class="inline-flex items-center rounded-lg bg-zinc-200 px-4 py-2 text-lg hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+              >
+                {{ tech.name }}
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
   </div>
 </template>
