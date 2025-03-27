@@ -11,10 +11,10 @@ export default defineNuxtConfig({
     prerender: {
       failOnError: false,
       crawlLinks: true,
-      routes: ['/new'],
+      routes: ['/'],
     },
   },
-  modules: ['@nuxtjs/sitemap', 'nuxt-schema-org', 'nuxt-og-image', '@nuxt/fonts'],
+  modules: ['@nuxtjs/sitemap', 'nuxt-schema-org', 'nuxt-og-image', '@nuxt/fonts', 'reka-ui/nuxt'],
   css: ['@/style.css'],
   vite: {
     plugins: [tailwindcss()],
@@ -73,9 +73,8 @@ export default defineNuxtConfig({
     renderJsonPayloads: true,
   },
   routeRules: {
-    '/': { redirect: '/new' },
-    '/new': { sitemap: { changefreq: 'weekly', priority: 0.99 } },
-    '/edit': { sitemap: { changefreq: 'weekly', priority: 0.9 } },
+    '/new': { sitemap: { changefreq: 'weekly', priority: 0.98 } },
+    '/modify': { sitemap: { changefreq: 'weekly', priority: 0.9 } },
     '/about': { sitemap: { changefreq: 'monthly', priority: 0.8 } },
     '/**/*.{css,svg,png,woff,woff2}': {
       headers: {

@@ -1,19 +1,14 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, computed } from 'vue'
 import { TinyColor, random } from '@ctrl/tinycolor'
-import { getUrl, meta, isDark, copy } from '@/utils'
+import { getUrl, meta, isDark } from '@/utils'
 import { useDebounceFn } from '@vueuse/core'
-import {
-  NumberFieldDecrement,
-  NumberFieldIncrement,
-  NumberFieldInput,
-  NumberFieldRoot,
-  Label,
-} from 'reka-ui'
 import { PlusIcon, MinusIcon } from '@heroicons/vue/24/solid'
+import { toast } from 'vue3-toastify'
+import 'vue3-toastify/dist/index.css'
 
 const description = "3rd Color's Color Editor lets you modify and transform colors with precision."
-const url = getUrl('/edit')
+const url = getUrl('/modify')
 useSeoMeta({
   title: 'Color Editor',
   description,
@@ -35,6 +30,30 @@ defineOgImageComponent('NuxtSeo', {
   siteLogo: meta.logo,
   theme: '#187bff',
 })
+const copy = (text: string) => {
+  navigator.clipboard
+    .writeText(text)
+    .then(() =>
+      toast('Copied to clipboard!', {
+        theme: 'auto',
+        type: 'success',
+        position: 'top-center',
+        closeOnClick: false,
+        autoClose: 1200,
+        "hideProgressBar": true,
+      }),
+    )
+    .catch((e: unknown) =>
+      toast(`Failed to copy: ${e}`, {
+        theme: 'auto',
+        type: 'error',
+        position: 'top-center',
+        closeOnClick: false,
+        autoClose: 1200,
+        "hideProgressBar": true,
+      }),
+    )
+}
 const c = ref('#187bff')
 const m = ref({
   lighten: 0,
@@ -141,7 +160,7 @@ watch(m, updateMods, { deep: true })
               :max="100"
               :default-value="0"
               :modelValue="m[key]"
-              @update:modelValue="(value) => (m[key] = value)"
+              @update:modelValue="(value:number) => (m[key] = value)"
               class="w-full"
             >
               <Label :for="key" class="text-sm font-semibold text-stone-700 dark:text-stone-300">

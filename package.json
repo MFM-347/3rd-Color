@@ -23,7 +23,8 @@
     "nuxt-schema-org": "^5.0.4",
     "reka-ui": "^2.1.1",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "vue3-toastify": "^0.2.8"
   },
   "devDependencies": {
     "@nirtamir2/prettier-plugin-css-order": "^0.0.1",

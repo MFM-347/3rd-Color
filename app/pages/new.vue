@@ -3,7 +3,9 @@ import { useDebounceFn } from '@vueuse/core'
 import { ref, computed, watch } from 'vue'
 import { TinyColor, random } from '@ctrl/tinycolor'
 import chroma from 'chroma-js'
-import { getUrl, meta, isDark, copy } from '@/utils'
+import { getUrl, meta, isDark } from '@/utils'
+import { toast } from 'vue3-toastify'
+import 'vue3-toastify/dist/index.css'
 
 const description =
   "3rd Color's Color Creator let's you create and analyze colors with 3rd Color's color tools"
@@ -29,6 +31,30 @@ defineOgImageComponent('NuxtSeo', {
   siteLogo: meta.logo,
   theme: '#187bff',
 })
+const copy = (text: string) => {
+  navigator.clipboard
+    .writeText(text)
+    .then(() =>
+      toast('Copied to clipboard!', {
+        theme: 'auto',
+        type: 'success',
+        position: 'top-center',
+        closeOnClick: false,
+        autoClose: 1200,
+        "hideProgressBar": true,
+      }),
+    )
+    .catch((e: unknown) =>
+      toast(`Failed to copy: ${e}`, {
+        theme: 'auto',
+        type: 'error',
+        position: 'top-center',
+        closeOnClick: false,
+        autoClose: 1200,
+        "hideProgressBar": true,
+      }),
+    )
+}
 const c = ref('#187bff')
 const clr = computed(() => {
   const color = new TinyColor(c.value)
@@ -154,7 +180,7 @@ watch(clr, useDebounceFn(updateFormats, 300), { immediate: true })
             </div>
           </div>
         </div>
-        <a href="/edit" target="_self" role="link">
+        <NuxtLink to="/modify" role="link">
           <button
             @click="edit"
             aria-label="Edit this Color"
@@ -162,7 +188,7 @@ watch(clr, useDebounceFn(updateFormats, 300), { immediate: true })
           >
             Edit Color
           </button>
-        </a>
+        </NuxtLink>
       </div>
     </div>
   </div>
