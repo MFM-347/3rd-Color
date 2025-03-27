@@ -41,7 +41,7 @@ const copy = (text: string) => {
         position: 'top-center',
         closeOnClick: false,
         autoClose: 1200,
-        "hideProgressBar": true,
+        hideProgressBar: true,
       }),
     )
     .catch((e: unknown) =>
@@ -51,7 +51,7 @@ const copy = (text: string) => {
         position: 'top-center',
         closeOnClick: false,
         autoClose: 1200,
-        "hideProgressBar": true,
+        hideProgressBar: true,
       }),
     )
 }

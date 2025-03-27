@@ -14,7 +14,6 @@ useSeoMeta({
   appleMobileWebAppTitle: '3rd Color',
   appleMobileWebAppStatusBarStyle: 'black-translucent',
   googleSiteVerification: '9C3mmoooLN2NLh5PUEVgr98hTKYWPIarhqp7Efdfwuo',
-  msapplicationTileColor: '#187bff',
 })
 useHead({
   htmlAttrs: {
@@ -29,7 +28,7 @@ useHead({
   <div>
     <a
       href="#main"
-      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:text-black focus:shadow-lg"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-zinc-100 focus:px-4 focus:py-2 focus:text-zinc-900 focus:shadow-lg"
       >Skip to content</a
     >
     <NuxtLayout>
@@ -43,7 +42,13 @@ useHead({
 
 .page-enter-active,
 .page-leave-active {
-  @apply ta-320;
+  @apply ta-300;
+}
+@media (prefers-reduced-motion: reduced) {
+  .page-enter-active,
+  .page-leave-active {
+    @apply ta-150;
+  }
 }
 .page-enter-from,
 .page-leave-to {

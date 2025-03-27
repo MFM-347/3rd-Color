@@ -30,21 +30,23 @@ onMounted(() => {
   <nav
     class="flex items-center border-b border-zinc-200 bg-zinc-50 px-4 py-2 dark:border-zinc-800 dark:bg-zinc-950"
   >
-    <a href="/new" class="flex items-center space-x-1">
+    <NuxtLink href="/" aria-label="Home" title="Home" class="flex items-center space-x-1">
       <div
         class="flex aspect-square h-8 items-center justify-center rounded-xl bg-primary p-2 text-base font-bold text-foreground"
       >
         3C
       </div>
       <span class="hidden text-xl font-medium tracking-wide md:block">olors</span>
-    </a>
+    </NuxtLink>
     <div class="ml-6 flex items-center space-x-2">
       <NuxtLink
-        v-for="link in ['new', 'edit', 'about']"
+        v-for="link in ['new', 'modify', 'about']"
         :key="link"
         :to="`/${link}`"
         :class="['lnk', route.path === `/${link}` ? 'active' : '']"
         role="link"
+        :aria-label="link"
+        :title="link"
         :aria-current="route.path === `/${link}` ? 'page' : undefined"
       >
         {{ link.charAt(0).toUpperCase() + link.slice(1) }}

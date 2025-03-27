@@ -73,7 +73,9 @@ export default defineNuxtConfig({
     renderJsonPayloads: true,
   },
   routeRules: {
+    '/': { sitemap: { changefreq: 'weekly', priority: 1.0 } },
     '/new': { sitemap: { changefreq: 'weekly', priority: 0.98 } },
+    '/edit': { redirect: '/modify' },
     '/modify': { sitemap: { changefreq: 'weekly', priority: 0.9 } },
     '/about': { sitemap: { changefreq: 'monthly', priority: 0.8 } },
     '/**/*.{css,svg,png,woff,woff2}': {

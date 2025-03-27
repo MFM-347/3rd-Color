@@ -1,14 +1,4 @@
 <script setup lang="ts">
-import {
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogOverlay,
-  AlertDialogPortal,
-  AlertDialogRoot,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from 'reka-ui'
 import { QuestionMarkCircleIcon } from '@heroicons/vue/24/solid'
 </script>
 

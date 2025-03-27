@@ -40,7 +40,7 @@ const copy = (text: string) => {
         position: 'top-center',
         closeOnClick: false,
         autoClose: 1200,
-        "hideProgressBar": true,
+        hideProgressBar: true,
       }),
     )
     .catch((e: unknown) =>
@@ -50,7 +50,7 @@ const copy = (text: string) => {
         position: 'top-center',
         closeOnClick: false,
         autoClose: 1200,
-        "hideProgressBar": true,
+        hideProgressBar: true,
       }),
     )
 }
@@ -160,7 +160,7 @@ watch(m, updateMods, { deep: true })
               :max="100"
               :default-value="0"
               :modelValue="m[key]"
-              @update:modelValue="(value:number) => (m[key] = value)"
+              @update:modelValue="(value: number) => (m[key] = value)"
               class="w-full"
             >
               <Label :for="key" class="text-sm font-semibold text-stone-700 dark:text-stone-300">
