@@ -45,35 +45,35 @@ defineOgImageComponent('NuxtSeo', {
     </div>
     <section class="features mt-12">
       <div class="text-center">
-        <h2 class="text-3xl font-bold text-gray-900">Features</h2>
+        <h2>Features</h2>
       </div>
       <div class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
         <div class="feature-item">
           <InformationCircleIcon class="mb-4 h-12 w-12 text-primary" />
-          <h3 class="text-xl font-semibold">Color Information</h3>
+          <h3>Color Information</h3>
           <p class="mt-2 text-muted">
             Obtain detailed information about any color, including format, brightness, luminance,
             and more.
           </p>
-          <a href="/new" class="btn"> Check it out </a>
+          <a href="/new" aria-label="Check Out" class="btn"> Check it out </a>
         </div>
         <div class="feature-item">
           <ArrowsRightLeftIcon class="mb-4 h-12 w-12 text-primary" />
-          <h3 class="text-xl font-semibold">Format Conversion</h3>
+          <h3>Format Conversion</h3>
           <p class="mt-2 text-muted">
             Seamlessly convert between multiple color formats, including HEX, RGB, CMYK, HSL, HSV,
             and more.
           </p>
-          <a href="/new" class="btn"> Check it out </a>
+          <a href="/new" aria-label="Check Out" class="btn"> Check it out </a>
         </div>
         <div class="feature-item">
           <AdjustmentsHorizontalIcon class="mb-4 h-12 w-12 text-primary" />
-          <h3 class="text-xl font-semibold">Color Modification</h3>
+          <h3>Color Modification</h3>
           <p class="mt-2 text-muted">
             Modify colors with precision using controls for lightness, saturation, tint, shade, and
             hue rotation.
           </p>
-          <a href="/modify" class="btn"> Check it out </a>
+          <a href="/modify" aria-label="Check Out" class="btn"> Check it out </a>
         </div>
       </div>
     </section>
@@ -82,10 +82,7 @@ defineOgImageComponent('NuxtSeo', {
 <style scoped>
 @reference "@/style.css";
 
-.btn {
-  @apply mt-4 inline-block rounded-lg bg-primary px-5 py-2.5 font-medium text-white shadow-md ta-150 hover:bg-primary-hover focus:ring-4 focus:ring-primary/50 focus:outline-none;
-}
 .feature-item {
-  @apply flex flex-col items-center rounded-lg border border-gray-200 p-6 text-center shadow-sm;
+  @apply flex flex-col items-center rounded-lg border border-muted p-6 sm:p-8 text-center shadow-md sm:shadow-lg;
 }
 </style>

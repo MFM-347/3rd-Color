@@ -14,7 +14,12 @@ export default defineNuxtConfig({
       routes: ['/'],
     },
   },
-  modules: ['@nuxtjs/sitemap', 'nuxt-schema-org', 'nuxt-og-image', '@nuxt/fonts', 'reka-ui/nuxt'],
+  runtimeConfig: {
+    public: {
+      VITE_GA: process.env.VITE_GA,
+    },
+  },
+  modules: ['nuxt-schema-org', 'nuxt-og-image', '@nuxt/fonts', 'reka-ui/nuxt', '@nuxtjs/sitemap'],
   css: ['@/style.css'],
   vite: {
     plugins: [tailwindcss()],

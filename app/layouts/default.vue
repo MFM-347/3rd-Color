@@ -13,6 +13,8 @@ import { QuestionMarkCircleIcon } from '@heroicons/vue/24/solid'
   <AlertDialogRoot>
     <AlertDialogTrigger
       class="fixed right-4 bottom-4 m-1 grid size-10 place-items-center rounded-full bg-gray-200 shadow-lg ta-150 hover:m-0 hover:size-11 hover:bg-gray-300 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+      aria-label="Help & Tips"
+      title="Help & Tips"
     >
       <QuestionMarkCircleIcon class="size-10 fill-foreground" />
     </AlertDialogTrigger>

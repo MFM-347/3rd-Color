@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const gaId = useRuntimeConfig().public.VITE_GA
+
 useSeoMeta({
   charset: 'utf-8',
   viewport: 'width=device-width, initial-scale=1',
@@ -21,6 +23,21 @@ useHead({
   },
   titleTemplate: '%s - 3rd Color',
   link: [{ rel: 'icon', type: 'image/svg+xml', href: '/icon.svg' }],
+  script: [
+    {
+      src: `https://www.googletagmanager.com/gtag/js?id=${gaId}`,
+      async: true,
+    },
+    {
+      value: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${gaId}');
+      `,
+      type: 'text/javascript',
+    },
+  ],
 })
 </script>
 

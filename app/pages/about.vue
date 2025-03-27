@@ -32,6 +32,7 @@ const techs = [
   { name: 'TinyColor', link: 'https://github.com/scttcper/tinycolor' },
   { name: 'Chroma-js', link: 'https://github.com/gka/chroma.js' },
   { name: 'Reka UI', link: 'https://reka-ui.com/' },
+  { name: 'Vue3 Toastify', link: 'https://vue3-toastify.js-bridge.com/' },
 ]
 </script>
 
@@ -51,7 +52,7 @@ const techs = [
           </p>
         </section>
         <section id="techs">
-          <h2 class="text-2xl font-bold">Credits</h2>
+          <h2>Credits</h2>
           <p class="mt-4 mb-2 text-lg">Built with following amazing technologies:</p>
           <ul class="flex flex-row flex-wrap gap-2">
             <li v-for="tech in techs" :key="tech.name">

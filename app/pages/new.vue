@@ -143,7 +143,7 @@ watch(clr, useDebounceFn(updateFormats, 300), { immediate: true })
         </div>
         <div class="grid gap-4 md:grid-cols-2">
           <div class="p-4">
-            <h2 class="mb-4 text-xl font-bold">Color Information</h2>
+            <h2 class="mb-4">Color Information</h2>
             <ul class="space-y-2">
               <li class="itm">
                 <span>Brightness:</span> <span>{{ x.getBrightness().toFixed(2) }}</span>
@@ -163,7 +163,7 @@ watch(clr, useDebounceFn(updateFormats, 300), { immediate: true })
             </ul>
           </div>
           <div class="p-4">
-            <h2 class="mb-4 text-xl font-bold">Color Formats</h2>
+            <h2 class="mb-4">Color Formats</h2>
             <div class="space-y-2">
               <div
                 v-for="format in formats"
