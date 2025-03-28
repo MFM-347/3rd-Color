@@ -1,5 +1,16 @@
 <script setup lang="ts">
 const gaId = useRuntimeConfig().public.VITE_GA
+const isDark = ref<boolean>(false)
+const enableDark = (enabled: boolean) => {
+  document.documentElement.classList.toggle('dark', enabled)
+  localStorage.setItem('dark-mode', enabled ? 'enabled' : 'disabled')
+  isDark.value = enabled
+}
+onMounted(() => {
+  const savedTheme = localStorage.getItem('dark-mode')
+  const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  enableDark(savedTheme === 'enabled' || (!savedTheme && preferDark))
+})
 
 useSeoMeta({
   charset: 'utf-8',
@@ -17,9 +28,11 @@ useSeoMeta({
   appleMobileWebAppStatusBarStyle: 'black-translucent',
   googleSiteVerification: '9C3mmoooLN2NLh5PUEVgr98hTKYWPIarhqp7Efdfwuo',
 })
+
 useHead({
   htmlAttrs: {
     lang: 'en',
+    class: isDark.value ? 'dark' : '',
   },
   titleTemplate: '%s - 3rd Color',
   link: [{ rel: 'icon', type: 'image/svg+xml', href: '/icon.svg' }],

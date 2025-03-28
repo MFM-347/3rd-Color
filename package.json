@@ -19,9 +19,10 @@
     "@nuxtjs/sitemap": "^7.2.9",
     "chroma-js": "^3.1.2",
     "nuxt": "^3.16.1",
-    "nuxt-og-image": "^5.0.5",
+    "nuxt-og-image": "^5.1.1",
     "nuxt-schema-org": "^5.0.4",
     "reka-ui": "^2.1.1",
+    "tailwindcss": "latest",
     "vue": "latest",
     "vue-router": "latest",
     "vue3-toastify": "^0.2.8"
@@ -31,7 +32,6 @@
     "@tailwindcss/vite": "latest",
     "@types/chroma-js": "^3.1.1",
     "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "0.6.11",
-    "tailwindcss": "latest"
+    "prettier-plugin-tailwindcss": "0.6.11"
   }
 }

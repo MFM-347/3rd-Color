@@ -3,6 +3,7 @@ import { meta, getUrl } from '@/utils'
 
 const description = 'Learn about 3rd Color, a powerful color tool for designers and developers.'
 const url = getUrl('/about')
+
 useSeoMeta({
   title: 'About',
   description,
@@ -14,9 +15,11 @@ useSeoMeta({
   twitterDescription: description,
   twitterImageAlt: meta.alt,
 })
+
 useHead({
   link: [{ rel: 'canonical', href: url }],
 })
+
 defineOgImageComponent('NuxtSeo', {
   title: 'About - 3rd Color',
   description: description,
@@ -40,7 +43,7 @@ const techs = [
   <div class="min-h-screen pt-4 md:pt-8">
     <div class="mx-auto max-w-5xl">
       <div class="mb-4 px-2 text-center md:mb-8">
-        <h1 class="title">About 3rd Color</h1>
+        <h1>About 3rd Color</h1>
       </div>
       <div class="sec max-w-3xl">
         <section id="intro" class="mb-8">

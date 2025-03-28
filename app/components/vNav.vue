@@ -1,28 +1,25 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from '#imports'
 import { useRoute } from '#app'
 import { SunIcon, CodeBracketIcon, MoonIcon } from '@heroicons/vue/24/solid'
 
 const route = useRoute()
-const isDarkMode = ref<boolean>(false)
+const isDark = ref<boolean>(false)
 const icon = ref<typeof SunIcon | typeof MoonIcon>(MoonIcon)
 
 const toggleDarkMode = () => {
-  isDarkMode.value = !isDarkMode.value
-  document.documentElement.classList.toggle('dark', isDarkMode.value)
-  localStorage.setItem('dark-mode', isDarkMode.value ? 'enabled' : 'disabled')
-  icon.value = isDarkMode.value ? SunIcon : MoonIcon
+  isDark.value = !isDark.value
+  document.documentElement.classList.toggle('dark', isDark.value)
+  localStorage.setItem('dark-mode', isDark.value ? 'enabled' : 'disabled')
+  icon.value = isDark.value ? SunIcon : MoonIcon
 }
 
 onMounted(() => {
   const storedTheme = localStorage.getItem('dark-mode')
-  if (storedTheme) {
-    isDarkMode.value = storedTheme === 'enabled'
-  } else {
-    isDarkMode.value = window.matchMedia('(prefers-color-scheme: dark)').matches
-  }
-  document.documentElement.classList.toggle('dark', isDarkMode.value)
-  icon.value = isDarkMode.value ? SunIcon : MoonIcon
+  isDark.value =
+    storedTheme === 'enabled' ||
+    (storedTheme === null && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  icon.value = isDark.value ? SunIcon : MoonIcon
 })
 </script>
 
@@ -30,6 +27,7 @@ onMounted(() => {
   <nav
     class="flex items-center border-b border-zinc-200 bg-zinc-50 px-4 py-2 dark:border-zinc-800 dark:bg-zinc-950"
   >
+    <!-- Brand Logo -->
     <NuxtLink href="/" aria-label="Home" title="Home" class="flex items-center space-x-1">
       <div
         class="flex aspect-square h-8 items-center justify-center rounded-xl bg-primary p-2 text-base font-bold text-foreground"
@@ -38,13 +36,14 @@ onMounted(() => {
       </div>
       <span class="hidden text-xl font-medium tracking-wide md:block">olors</span>
     </NuxtLink>
+
+    <!-- Navigation Links -->
     <div class="ml-6 flex items-center space-x-2">
       <NuxtLink
         v-for="link in ['new', 'modify', 'about']"
         :key="link"
         :to="`/${link}`"
         :class="['lnk', route.path === `/${link}` ? 'active' : '']"
-        role="link"
         :aria-label="link"
         :title="link"
         :aria-current="route.path === `/${link}` ? 'page' : undefined"
@@ -52,11 +51,14 @@ onMounted(() => {
         {{ link.charAt(0).toUpperCase() + link.slice(1) }}
       </NuxtLink>
     </div>
+
+    <!-- Right-side Buttons -->
     <div class="ml-auto flex items-center space-x-2">
       <button
+        type="button"
         @click="toggleDarkMode"
-        :aria-label="isDarkMode ? 'Toggle Light Mode' : 'Toggle Dark Mode'"
-        :aria-pressed="isDarkMode"
+        :aria-label="isDark ? 'Toggle Light Mode' : 'Toggle Dark Mode'"
+        :aria-pressed="isDark"
         class="rounded-full p-2 ta-150 hover:bg-zinc-200 focus:ring focus:ring-stone-300 focus:outline-none dark:hover:bg-zinc-800 dark:focus:ring-stone-700"
       >
         <component

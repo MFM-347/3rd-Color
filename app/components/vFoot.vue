@@ -24,18 +24,12 @@
           </a>
         </div>
         <nav class="mb-4 flex flex-wrap justify-center gap-4">
-          <a
-            href="/about"
-            class="text-stone-600 transition-colors hover:text-primary-hover focus-visible:ring focus-visible:ring-primary dark:text-stone-400 dark:hover:text-primary"
-            aria-label="Learn more about 3rd Color"
-          >
-            About
-          </a>
+          <a href="/about" class="lnk" aria-label="Learn more about 3rd Color"> About </a>
           <a
             href="https://github.com/MFM-347/3rd-Color"
             target="_blank"
             rel="noopener"
-            class="text-stone-600 transition-colors hover:text-primary-hover focus-visible:ring focus-visible:ring-primary dark:text-stone-400 dark:hover:text-primary"
+            class="lnk"
             aria-label="View 3rd Color's GitHub repository"
           >
             GitHub
@@ -44,7 +38,7 @@
             href="https://forms.gle/zou8TsJ1UAbwioff9"
             target="_blank"
             rel="noopener nofollow"
-            class="text-stone-600 transition-colors hover:text-primary-hover focus-visible:ring focus-visible:ring-primary dark:text-stone-400 dark:hover:text-primary"
+            class="lnk"
             aria-label="Provide feedback on 3rd Color"
           >
             Feedback
@@ -57,3 +51,10 @@
     </div>
   </footer>
 </template>
+<style scoped>
+@reference "@/style.css";
+
+.lnk {
+  @apply text-stone-600 transition-colors hover:text-primary-hover focus-visible:ring focus-visible:ring-primary dark:text-stone-400 dark:hover:text-primary;
+}
+</style>

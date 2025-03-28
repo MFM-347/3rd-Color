@@ -3,10 +3,13 @@ import tailwindcss from '@tailwindcss/vite'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
+
   devtools: { enabled: true },
+
   future: {
     compatibilityVersion: 4,
   },
+
   nitro: {
     prerender: {
       failOnError: false,
@@ -14,13 +17,15 @@ export default defineNuxtConfig({
       routes: ['/'],
     },
   },
+
   runtimeConfig: {
     public: {
       VITE_GA: process.env.VITE_GA,
     },
   },
-  modules: ['nuxt-schema-org', 'nuxt-og-image', '@nuxt/fonts', 'reka-ui/nuxt', '@nuxtjs/sitemap'],
+
   css: ['@/style.css'],
+
   vite: {
     plugins: [tailwindcss()],
     build: {
@@ -33,16 +38,21 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  modules: ['@nuxtjs/sitemap', 'nuxt-og-image', 'nuxt-schema-org', 'reka-ui/nuxt', '@nuxt/fonts'],
+
   site: {
     url: 'https://3color.vercel.app',
     name: '3rd Color - Color Tools for Designers & Developers',
   },
+
   siteConfig: {
     title: '3rd Color - Color Tools for Designers & Developers',
     description:
       '3rd Color is a powerful, user-friendly app that offers color information, color conversions, color modification and other color manipulation features.',
     url: 'https://3color.vercel.app/',
   },
+
   schemaOrg: {
     identity: {
       type: 'Organization',
@@ -58,25 +68,23 @@ export default defineNuxtConfig({
       ],
     },
   },
-  fonts: {
-    provider: 'google',
-    defaults: {
-      styles: ['normal'],
-    },
-  },
+
   features: {
     inlineStyles: true,
   },
+
   app: {
     pageTransition: {
       name: 'page',
       mode: 'out-in',
     },
   },
+
   experimental: {
     viewTransition: true,
     renderJsonPayloads: true,
   },
+
   routeRules: {
     '/': { sitemap: { changefreq: 'weekly', priority: 1.0 } },
     '/new': { sitemap: { changefreq: 'weekly', priority: 0.98 } },

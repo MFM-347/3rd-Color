@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useDebounceFn } from '@vueuse/core'
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch } from '#imports'
 import { TinyColor, random } from '@ctrl/tinycolor'
 import chroma from 'chroma-js'
 import { getUrl, meta, isDark } from '@/utils'
@@ -10,6 +10,7 @@ import 'vue3-toastify/dist/index.css'
 const description =
   "3rd Color's Color Creator let's you create and analyze colors with 3rd Color's color tools"
 const url = getUrl('/new')
+
 useSeoMeta({
   title: 'New Color',
   description,
@@ -21,9 +22,11 @@ useSeoMeta({
   twitterDescription: description,
   twitterImageAlt: meta.alt,
 })
+
 useHead({
   link: [{ rel: 'canonical', href: url }],
 })
+
 defineOgImageComponent('NuxtSeo', {
   title: 'New Color - 3rd Color',
   description: description,
@@ -31,6 +34,7 @@ defineOgImageComponent('NuxtSeo', {
   siteLogo: meta.logo,
   theme: '#187bff',
 })
+
 const copy = (text: string) => {
   navigator.clipboard
     .writeText(text)
@@ -55,6 +59,7 @@ const copy = (text: string) => {
       }),
     )
 }
+
 const c = ref('#187bff')
 const clr = computed(() => {
   const color = new TinyColor(c.value)
@@ -69,8 +74,10 @@ const handleRandom = (event: KeyboardEvent) => {
     c.value = random().toHexString()
   }
 }
+
 const x = computed(() => new TinyColor(clr.value))
 const y = computed(() => chroma(clr.value))
+
 const formats = ref<Array<{ name: string; value: string }>>([])
 const updateFormats = () => {
   const color = new TinyColor(clr.value)
@@ -102,6 +109,7 @@ const updateFormats = () => {
     { name: 'lch', value: `lch(${lch.join(', ')})` },
   ]
 }
+
 onMounted(() => {
   document.addEventListener('keydown', handleRandom)
   const savedColor = localStorage.getItem('savedColor')
@@ -109,7 +117,8 @@ onMounted(() => {
     c.value = savedColor
   }
 })
-const edit = () => {
+
+const save = () => {
   localStorage.removeItem('savedColor')
   localStorage.setItem('savedColor', clr.value)
 }
@@ -120,7 +129,7 @@ watch(clr, useDebounceFn(updateFormats, 300), { immediate: true })
   <div class="min-h-screen pt-4 md:pt-8">
     <div class="mx-auto max-w-5xl">
       <div class="mb-4 px-2 text-center md:mb-8">
-        <h1 class="title">Create New Color</h1>
+        <h1>Create New Color</h1>
         <p class="mt-2 text-lg text-stone-600 dark:text-stone-400">
           Enter a valid color format (HEX, RGB, HSL, CMYK, HSV) to explore its properties.
         </p>
@@ -142,7 +151,8 @@ watch(clr, useDebounceFn(updateFormats, 300), { immediate: true })
           {{ clr }}
         </div>
         <div class="grid gap-4 md:grid-cols-2">
-          <div class="p-4">
+          <!-- Color Info -->
+          <div class="p-4" id="info">
             <h2 class="mb-4">Color Information</h2>
             <ul class="space-y-2">
               <li class="itm">
@@ -162,7 +172,9 @@ watch(clr, useDebounceFn(updateFormats, 300), { immediate: true })
               </li>
             </ul>
           </div>
-          <div class="p-4">
+
+          <!-- Color Conversions -->
+          <div class="p-4" id="cnv">
             <h2 class="mb-4">Color Formats</h2>
             <div class="space-y-2">
               <div
@@ -180,9 +192,10 @@ watch(clr, useDebounceFn(updateFormats, 300), { immediate: true })
             </div>
           </div>
         </div>
+
         <NuxtLink to="/modify" role="link">
           <button
-            @click="edit"
+            @click="save"
             aria-label="Edit this Color"
             class="mt-3 w-full rounded-lg bg-blue-600 py-3 text-white hover:bg-blue-700"
           >

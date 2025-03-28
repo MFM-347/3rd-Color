@@ -9,6 +9,7 @@ import {
 const description =
   '3rd Color is a powerful, user-friendly app that offers color information, color conversions, color modification, and other color manipulation features.'
 const url = getUrl('/')
+
 useSeoMeta({
   title: '3rd Color - Color Tools for Designers & Developers',
   description,
@@ -20,10 +21,12 @@ useSeoMeta({
   twitterDescription: description,
   twitterImageAlt: '3rd Color logo',
 })
+
 useHead({
   titleTemplate: null,
   link: [{ rel: 'canonical', href: url }],
 })
+
 defineOgImageComponent('NuxtSeo', {
   title: '3rd Color - Color Tools for Designers & Developers',
   description,
@@ -37,7 +40,7 @@ defineOgImageComponent('NuxtSeo', {
   <div class="px-4 sm:px-6 lg:px-8">
     <div class="hero mx-auto flex flex-col items-center py-12 text-center">
       <img :src="meta.logo" alt="3rd Color Logo" class="my-6" height="125" width="125" />
-      <h1 class="title">3rd Color</h1>
+      <h1>3rd Color</h1>
       <p class="mt-3 max-w-xl text-lg text-muted">
         {{ description }}
       </p>
@@ -55,7 +58,7 @@ defineOgImageComponent('NuxtSeo', {
             Obtain detailed information about any color, including format, brightness, luminance,
             and more.
           </p>
-          <a href="/new" aria-label="Check Out" class="btn"> Check it out </a>
+          <a href="/new/#info" aria-label="Check Out" class="btn mt-4"> Check it out </a>
         </div>
         <div class="feature-item">
           <ArrowsRightLeftIcon class="mb-4 h-12 w-12 text-primary" />
@@ -64,7 +67,7 @@ defineOgImageComponent('NuxtSeo', {
             Seamlessly convert between multiple color formats, including HEX, RGB, CMYK, HSL, HSV,
             and more.
           </p>
-          <a href="/new" aria-label="Check Out" class="btn"> Check it out </a>
+          <a href="/new/#cnv" aria-label="Check Out" class="btn mt-4"> Check it out </a>
         </div>
         <div class="feature-item">
           <AdjustmentsHorizontalIcon class="mb-4 h-12 w-12 text-primary" />
@@ -73,7 +76,7 @@ defineOgImageComponent('NuxtSeo', {
             Modify colors with precision using controls for lightness, saturation, tint, shade, and
             hue rotation.
           </p>
-          <a href="/modify" aria-label="Check Out" class="btn"> Check it out </a>
+          <a href="/modify" aria-label="Check Out" class="btn mt-4"> Check it out </a>
         </div>
       </div>
     </section>
@@ -83,6 +86,6 @@ defineOgImageComponent('NuxtSeo', {
 @reference "@/style.css";
 
 .feature-item {
-  @apply flex flex-col items-center rounded-lg border border-muted p-6 sm:p-8 text-center shadow-md sm:shadow-lg;
+  @apply flex flex-col items-center rounded-lg border border-muted p-6 text-center shadow-md sm:p-8 sm:shadow-lg;
 }
 </style>

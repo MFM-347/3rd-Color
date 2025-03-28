@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { ref, watch, onMounted, computed } from 'vue'
+import { useDebounceFn } from '@vueuse/core'
+import { ref, watch, onMounted, computed } from '#imports'
 import { TinyColor, random } from '@ctrl/tinycolor'
 import { getUrl, meta, isDark } from '@/utils'
-import { useDebounceFn } from '@vueuse/core'
 import { PlusIcon, MinusIcon } from '@heroicons/vue/24/solid'
 import { toast } from 'vue3-toastify'
 import 'vue3-toastify/dist/index.css'
 
 const description = "3rd Color's Color Editor lets you modify and transform colors with precision."
 const url = getUrl('/modify')
+
 useSeoMeta({
   title: 'Color Editor',
   description,
@@ -20,9 +21,11 @@ useSeoMeta({
   twitterDescription: description,
   twitterImageAlt: meta.alt,
 })
+
 useHead({
   link: [{ rel: 'canonical', href: url }],
 })
+
 defineOgImageComponent('NuxtSeo', {
   title: 'Color Editor - 3rd Color',
   description: description,
@@ -30,6 +33,7 @@ defineOgImageComponent('NuxtSeo', {
   siteLogo: meta.logo,
   theme: '#187bff',
 })
+
 const copy = (text: string) => {
   navigator.clipboard
     .writeText(text)
@@ -55,6 +59,15 @@ const copy = (text: string) => {
     )
 }
 const c = ref('#187bff')
+const clr = computed(() => {
+  const color = new TinyColor(c.value)
+  return color.isValid
+    ? color.toHexString() + 'ff' === color.toHex8String()
+      ? color.toHexString()
+      : color.toHex8String()
+    : '#000000'
+})
+
 const m = ref({
   lighten: 0,
   darken: 0,
@@ -63,14 +76,6 @@ const m = ref({
   tint: 0,
   shade: 0,
   spin: 0,
-})
-const clr = computed(() => {
-  const color = new TinyColor(c.value)
-  return color.isValid
-    ? color.toHexString() + 'ff' === color.toHex8String()
-      ? color.toHexString()
-      : color.toHex8String()
-    : '#000000'
 })
 const computeMods = () => {
   let color = new TinyColor(clr.value)
@@ -84,6 +89,7 @@ const computeMods = () => {
     .spin(m.value.spin * 3.6)
     .toHexString()
 }
+
 const mClr = ref(computeMods())
 const updateMods = useDebounceFn(() => {
   mClr.value = computeMods()
@@ -94,6 +100,7 @@ const handleRandom = (event: KeyboardEvent) => {
     c.value = random().toHexString()
   }
 }
+
 onMounted(() => {
   document.addEventListener('keydown', handleRandom)
   if (typeof window !== 'undefined') {
@@ -103,6 +110,7 @@ onMounted(() => {
     if (savedMods) m.value = JSON.parse(savedMods)
   }
 })
+
 watch(c, (newClr) => {
   if (!new TinyColor(newClr).isValid) {
     console.warn('ERROR: Invalid color format')
@@ -116,7 +124,7 @@ watch(m, updateMods, { deep: true })
   <div class="min-h-screen pt-4 md:pt-8">
     <div class="mx-auto max-w-5xl">
       <div class="mb-4 px-2 text-center md:mb-8">
-        <h1 class="title">Color Editor</h1>
+        <h1>Color Editor</h1>
         <p class="mt-4 text-lg text-stone-600 dark:text-stone-400">
           Transform and modify different colors with precision
         </p>

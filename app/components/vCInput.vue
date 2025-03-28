@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, computed } from 'vue'
+import { ref, watch, computed } from '#imports'
 import { TinyColor } from '@ctrl/tinycolor'
 
 const props = defineProps({
@@ -37,6 +37,7 @@ const props = defineProps({
   ph: { type: String, default: 'Enter color value' },
   label: { type: String, default: 'Color' },
 })
+
 const emit = defineEmits(['update:modelValue'])
 const computedId = computed(() => props.label.replace(/\s+/g, '-').toLowerCase())
 const colorHex = ref(
@@ -44,16 +45,7 @@ const colorHex = ref(
     ? new TinyColor(props.modelValue).toHexString()
     : '#000000',
 )
-watch(
-  () => props.modelValue,
-  (newValue) => {
-    if (new TinyColor(newValue).isValid) {
-      colorHex.value = new TinyColor(newValue).toHexString()
-    } else {
-      console.error('ERROR: invalid color input')
-    }
-  },
-)
+
 const onTChange = (event: Event) => {
   const inputValue = (event.target as HTMLInputElement).value
   emit('update:modelValue', inputValue)
@@ -68,6 +60,17 @@ const onCChange = (event: Event) => {
   colorHex.value = pickerValue
   emit('update:modelValue', pickerValue)
 }
+
+watch(
+  () => props.modelValue,
+  (newValue) => {
+    if (new TinyColor(newValue).isValid) {
+      colorHex.value = new TinyColor(newValue).toHexString()
+    } else {
+      console.error('ERROR: invalid color input')
+    }
+  },
+)
 </script>
 <style scoped>
 @reference "@/style.css";
