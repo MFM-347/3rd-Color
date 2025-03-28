@@ -11,6 +11,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    compressPublicAssets: true,
     prerender: {
       failOnError: false,
       crawlLinks: true,
@@ -51,6 +52,10 @@ export default defineNuxtConfig({
     description:
       '3rd Color is a powerful, user-friendly app that offers color information, color conversions, color modification and other color manipulation features.',
     url: 'https://3color.vercel.app/',
+  },
+
+  sitemap: {
+    xsl: false,
   },
 
   schemaOrg: {
