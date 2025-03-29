@@ -1,6 +1,26 @@
 # Changelog
 
-## Latest Changes
+## Changes in v1.1.0
+
+### Features
+
+- feat: typography and analytics (47128b7)
+- feat: toast for smooth UI and fix some errors (c4feb38)
+
+### Updates
+
+- Update: UI and Color Scheme (6be00e9)
+- update editor configuration (03dd2e2)
+- update github config (76c8f11)
+- update: SEO and accessiblity (5699d46)
+
+### Others
+
+- Create SECURITY.md (8491808)
+- disable xsl sitemap (fde22a1)
+- cleaned-up code and fixed some errors (191c605)
+
+## Changes in v1.0.0
 
 ### Features
 

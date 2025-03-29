@@ -3,30 +3,36 @@ import { execSync } from 'child_process'
 
 function getGitCommits(sinceTag) {
   try {
-    const log = execSync(`git log ${sinceTag}..HEAD --pretty=format:"%h %s"`).toString()
+    const log = execSync(`git log ${sinceTag}..HEAD --pretty=format:"%h %s"`, {
+      stdio: 'pipe',
+    }).toString()
     return log
       .split('\n')
       .filter(Boolean)
       .map((line) => {
-        const parts = line.split(' ')
-        return { hash: parts[0], message: parts.slice(1).join(' ') }
+        const [hash, ...messageParts] = line.split(' ')
+        return { hash, message: messageParts.join(' ') }
       })
   } catch (error) {
-    console.error('Error fetching git commits:', error.message)
+    console.error(`Error fetching git commits: ${error.message}`)
     return []
   }
 }
 
 function categorizeCommits(commits) {
-  const categories = { Features: [], Fixes: [], Chores: [], Others: [] }
+  const categories = { Features: [], Fixes: [], Chores: [], Updates: [], Others: [] }
 
   commits.forEach(({ hash, message }) => {
-    if (message.startsWith('feat:')) {
+    const lowerMessage = message.toLowerCase() // Normalize for case variations
+
+    if (lowerMessage.startsWith('feat:')) {
       categories.Features.push(`- ${message} (${hash})`)
-    } else if (message.startsWith('fix:')) {
+    } else if (lowerMessage.startsWith('fix:')) {
       categories.Fixes.push(`- ${message} (${hash})`)
-    } else if (message.startsWith('chore:')) {
+    } else if (lowerMessage.startsWith('chore:') || lowerMessage.startsWith('chore(')) {
       categories.Chores.push(`- ${message} (${hash})`)
+    } else if (lowerMessage.startsWith('update:') || lowerMessage.startsWith('update ')) {
+      categories.Updates.push(`- ${message} (${hash})`)
     } else {
       categories.Others.push(`- ${message} (${hash})`)
     }
@@ -36,20 +42,22 @@ function categorizeCommits(commits) {
 }
 
 function generateMarkdown(categories) {
-  let markdown = '# Changelog\n\n## Latest Changes\n'
+  let markdown = '## Changes\n\n'
+  let hasChanges = false
 
   for (const [category, messages] of Object.entries(categories)) {
     if (messages.length > 0) {
+      hasChanges = true
       markdown += `### ${category}\n${messages.join('\n')}\n\n`
     }
   }
 
-  return markdown
+  return hasChanges ? markdown.trim() : '## Changes\n\nNo changes found.'
 }
 
 function writeChangelog(content) {
-  fs.writeFileSync('CHANGELOG.md', content)
-  console.log('CHANGELOG.md generated successfully.')
+  fs.writeFileSync('CHANGELOG.tmp.md', content)
+  console.log('CHANGELOG generated successfully.')
 }
 
 const sinceTag = process.argv[2] || 'v1.0.0'
