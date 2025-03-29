@@ -40,7 +40,7 @@ const techs = [
 </script>
 
 <template>
-  <div class="min-h-screen pt-4 md:pt-8">
+  <article class="min-h-screen pt-4 md:pt-8">
     <div class="mx-auto max-w-5xl">
       <div class="mb-4 px-2 text-center md:mb-8">
         <h1>About 3rd Color</h1>
@@ -56,14 +56,15 @@ const techs = [
         </section>
         <section id="techs">
           <h2>Credits</h2>
-          <p class="mt-4 mb-2 text-lg">Built with following amazing technologies:</p>
+          <p class="mt-4 mb-2 text-lg">Built with the following amazing technologies:</p>
           <ul class="flex flex-row flex-wrap gap-2">
             <li v-for="tech in techs" :key="tech.name">
               <a
                 :href="tech.link"
                 target="_blank"
                 rel="noopener nofollow"
-                class="inline-flex items-center rounded-lg bg-zinc-200 px-4 py-2 text-lg hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+                class="inline-flex items-center rounded-lg bg-ground-200 px-4 py-2 text-lg hover:bg-ground-300 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:outline-none dark:bg-ground-800 dark:hover:bg-ground-700"
+                :aria-label="'Learn more about ' + tech.name"
               >
                 {{ tech.name }}
               </a>
@@ -72,5 +73,5 @@ const techs = [
         </section>
       </div>
     </div>
-  </div>
+  </article>
 </template>

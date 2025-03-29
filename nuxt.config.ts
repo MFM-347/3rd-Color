@@ -92,7 +92,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/': { sitemap: { changefreq: 'weekly', priority: 1.0 } },
-    '/new': { sitemap: { changefreq: 'weekly', priority: 0.98 } },
+    '/new': { sitemap: { changefreq: 'weekly', priority: 0.95 } },
     '/edit': { redirect: '/modify' },
     '/modify': { sitemap: { changefreq: 'weekly', priority: 0.9 } },
     '/about': { sitemap: { changefreq: 'monthly', priority: 0.8 } },

@@ -5,8 +5,11 @@
 
 @utility ta-* {
   transition-property: all;
-  transition-duration: calc(--value(integer, [integer]) * 0.8ms);
-  transition-timing-function: cubic-bezier(0.3, 0.2, 0, 1);
+  transition-duration: calc(--value(integer, [integer]) * 0.9ms);
+  transition-timing-function: cubic-bezier(0.3, 0.1, 0.2, 1);
+  @media (prefers-reduced-motion: reduced) {
+    transition-duration: calc(--value(integer, [integer]) * 0.6ms);
+  }
 }
 *:focus-visible {
   @apply outline-2 outline-offset-2 outline-primary;
@@ -20,29 +23,36 @@
   --color-muted: var(--muted);
   --color-primary: #187bff;
   --color-primary-hover: #0061ff;
+  --color-x: #01d0fb;
+
+  /* Copied from PrimeVue Docs */
+  --color-ground-50: #f9fafb;
+  --color-ground-100: #f3f4f6;
+  --color-ground-200: #e5e7eb;
+  --color-ground-300: #d1d5db;
+  --color-ground-400: #9ca3af;
+  --color-ground-500: #6b7280;
+  --color-ground-600: #4b5563;
+  --color-ground-700: #374151;
+  --color-ground-800: #1f2937;
+  --color-ground-900: #111827;
+  --color-ground-950: #030712;
 }
 :root {
-  --background: var(--color-zinc-50);
-  --foreground: var(--color-stone-950);
-  --muted: var(--color-stone-700);
+  --background: var(--color-ground-50);
+  --foreground: var(--color-ground-950);
+  --muted: var(--color-ground-700);
 }
 .dark {
-  --background: var(--color-zinc-950);
-  --foreground: var(--color-stone-100);
-  --muted: var(--color-stone-300);
+  --background: var(--color-ground-950);
+  --foreground: var(--color-ground-100);
+  --muted: var(--color-ground-300);
 }
 @layer base {
   *,
   ::after,
   ::before {
     @apply ta-125;
-  }
-  @media (prefers-reduced-motion: reduced) {
-    *,
-    ::after,
-    ::before {
-      @apply ta-100;
-    }
   }
   :root {
     @apply antialiased;
@@ -51,12 +61,12 @@
     font-feature-settings: normal;
     font-variation-settings: normal;
     text-rendering: optimizeLegibility;
-    --sc-fg: var(--zinc-200);
-    --sc-hover-fg: var(--zinc-300);
+    --sc-fg: var(--ground-200);
+    --sc-hover-fg: var(--ground-300);
   }
   .dark {
-    --sc-fg: var(--zinc-800);
-    --sc-hover-fg: var(--zinc-700);
+    --sc-fg: var(--ground-800);
+    --sc-hover-fg: var(--ground-700);
   }
   body {
     @apply bg-background text-foreground;
@@ -98,8 +108,8 @@ html {
   scrollbar-color: var(--sc-fg) #111;
 }
 .sec {
-  @apply relative mx-0 w-full rounded-none bg-zinc-100 p-6 shadow-lg hover:shadow-xl md:mx-auto md:rounded-2xl dark:bg-zinc-900;
+  @apply relative mx-0 w-full rounded-none bg-ground-100 p-6 shadow-lg hover:shadow-xl md:mx-auto md:rounded-2xl dark:bg-ground-900;
 }
 .btn {
-  @apply rounded-xl bg-primary px-6 py-3 font-medium text-zinc-200 ta-200 hover:bg-primary-hover focus:outline-2 focus:outline-offset-2 focus:outline-primary-hover;
+  @apply rounded-xl bg-primary px-6 py-3 font-medium text-ground-200 ta-200 hover:bg-primary-hover focus:outline-2 focus:outline-offset-2 focus:outline-primary-hover;
 }

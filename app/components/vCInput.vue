@@ -2,7 +2,7 @@
   <div class="group relative">
     <label
       :for="computedId"
-      class="mb-2 block text-sm font-medium text-stone-700 dark:text-stone-300"
+      class="mb-2 block text-sm font-medium text-ground-700 dark:text-ground-300"
     >
       {{ label }}
     </label>
@@ -13,7 +13,7 @@
         :placeholder="ph + ' (e.g., #ff0000, rgb(255,0,0))'"
         :value="modelValue"
         @input="onTChange"
-        class="min-w-20 flex-1 rounded-l-lg border border-transparent bg-zinc-200 px-4 py-1 text-sm ta-175 outline-none placeholder:text-stone-400 focus:ring focus:ring-primary sm:rounded-l-xl sm:py-0.5 sm:text-base dark:border-zinc-700 dark:bg-zinc-800 dark:placeholder:text-stone-400"
+        class="min-w-20 flex-1 rounded-l-lg border border-transparent bg-ground-200 px-4 py-1 text-sm ta-175 outline-none placeholder:text-ground-400 focus:ring focus:ring-primary sm:rounded-l-xl sm:py-0.5 sm:text-base dark:border-ground-700 dark:bg-ground-800 dark:placeholder:text-ground-400"
         :aria-labelledby="computedId"
       />
       <input

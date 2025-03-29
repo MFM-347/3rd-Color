@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="w-full border-t border-zinc-200 bg-zinc-100 py-6 sm:mt-8 dark:border-zinc-800 dark:bg-zinc-900"
+    class="w-full border-t border-ground-200 bg-ground-100 py-6 sm:mt-8 dark:border-ground-800 dark:bg-ground-900"
   >
     <div class="container mx-auto px-4">
       <div class="flex flex-col items-center text-center">
@@ -44,7 +44,7 @@
             Feedback
           </a>
         </nav>
-        <p class="text-sm text-stone-600 dark:text-stone-400">
+        <p class="text-sm text-ground-600 dark:text-ground-400">
           &copy; {{ new Date().getFullYear() }} 3rd Color. All rights reserved.
         </p>
       </div>
@@ -55,6 +55,6 @@
 @reference "@/style.css";
 
 .lnk {
-  @apply text-stone-600 transition-colors hover:text-primary-hover focus-visible:ring focus-visible:ring-primary dark:text-stone-400 dark:hover:text-primary;
+  @apply text-ground-600 transition-colors hover:text-primary-hover focus-visible:ring focus-visible:ring-primary dark:text-ground-400 dark:hover:text-primary;
 }
 </style>

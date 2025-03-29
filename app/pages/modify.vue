@@ -125,7 +125,7 @@ watch(m, updateMods, { deep: true })
     <div class="mx-auto max-w-5xl">
       <div class="mb-4 px-2 text-center md:mb-8">
         <h1>Color Editor</h1>
-        <p class="mt-4 text-lg text-stone-600 dark:text-stone-400">
+        <p class="mt-4 text-lg text-ground-600 dark:text-ground-400">
           Transform and modify different colors with precision
         </p>
       </div>
@@ -139,20 +139,24 @@ watch(m, updateMods, { deep: true })
         />
         <div class="mt-4 grid gap-3 md:grid-cols-2">
           <div
-            class="h-40 cursor-pointer rounded-xl"
+            class="h-40 cursor-pointer rounded-xl focus-visible:ring-2"
             :style="{ backgroundColor: clr }"
-            :class="[isDark(clr) ? 'text-stone-100 shadow-inner' : 'text-stone-900 shadow-md']"
+            :class="[isDark(clr) ? 'text-ground-100 shadow-inner' : 'text-ground-900 shadow-md']"
+            tabindex="0"
+            :aria-label="`Original color: ${clr}.`"
           >
             <div class="flex h-full items-center justify-center">
               <p class="text-xl font-medium">Original: {{ clr }}</p>
             </div>
           </div>
           <div
-            class="h-40 cursor-pointer rounded-xl"
+            class="h-40 cursor-pointer rounded-xl focus-visible:ring-2"
             :style="{ backgroundColor: mClr }"
-            :class="[isDark(mClr) ? 'text-stone-100 shadow-inner' : 'text-stone-900 shadow-md']"
+            :class="[isDark(mClr) ? 'text-ground-100 shadow-inner' : 'text-ground-900 shadow-md']"
+            tabindex="0"
             @click="copy(mClr)"
-            aria-label="Click to copy modified color"
+            @keydown.enter="copy(mClr)"
+            :aria-label="`Modified color: ${mClr}. Click to copy.`"
           >
             <div class="flex h-full items-center justify-center">
               <p class="text-xl font-medium">Modified: {{ mClr }}</p>
@@ -171,27 +175,27 @@ watch(m, updateMods, { deep: true })
               @update:modelValue="(value: number) => (m[key] = value)"
               class="w-full"
             >
-              <Label :for="key" class="text-sm font-semibold text-stone-700 dark:text-stone-300">
+              <Label :for="key" class="text-sm font-semibold text-ground-700 dark:text-ground-300">
                 {{ key }} (%)
               </Label>
               <div
-                class="flex min-h-8 flex-row rounded-lg bg-zinc-100 shadow-sm focus-within:shadow-[0_0_0_2px] focus-within:shadow-primary dark:bg-zinc-800"
+                class="flex min-h-8 flex-row rounded-lg bg-ground-100 shadow-sm focus-within:ring-2 focus-within:ring-primary dark:bg-ground-800"
               >
                 <NumberFieldDecrement
-                  class="min-h-8 rounded-l-lg p-2 hover:bg-zinc-300 dark:hover:bg-zinc-700"
-                  aria-label="Decrease {{ key }}"
+                  class="min-h-8 rounded-l-lg p-2 hover:bg-ground-300 focus-visible:ring-2 dark:hover:bg-ground-700"
+                  :aria-label="'Decrease ' + key"
                 >
-                  <MinusIcon class="size-4 fill-zinc-600 dark:fill-zinc-300" />
+                  <MinusIcon class="size-4 fill-ground-600 dark:fill-ground-300" />
                 </NumberFieldDecrement>
                 <NumberFieldInput
                   class="flex-1 p-2 text-center text-base outline-none"
-                  aria-label="Input for {{ key }}"
+                  :aria-label="'Input for ' + key"
                 />
                 <NumberFieldIncrement
-                  class="min-h-8 rounded-r-lg p-2 hover:bg-zinc-300 dark:hover:bg-zinc-700"
-                  aria-label="Increase {{ key }}"
+                  class="min-h-8 rounded-r-lg p-2 hover:bg-ground-300 focus-visible:ring-2 dark:hover:bg-ground-700"
+                  :aria-label="'Increase ' + key"
                 >
-                  <PlusIcon class="size-4 fill-zinc-600 dark:fill-zinc-300" />
+                  <PlusIcon class="size-4 fill-ground-600 dark:fill-ground-300" />
                 </NumberFieldIncrement>
               </div>
             </NumberFieldRoot>

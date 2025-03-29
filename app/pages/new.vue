@@ -130,7 +130,7 @@ watch(clr, useDebounceFn(updateFormats, 300), { immediate: true })
     <div class="mx-auto max-w-5xl">
       <div class="mb-4 px-2 text-center md:mb-8">
         <h1>Create New Color</h1>
-        <p class="mt-2 text-lg text-stone-600 dark:text-stone-400">
+        <p class="mt-2 text-lg text-ground-600 dark:text-ground-400">
           Enter a valid color format (HEX, RGB, HSL, CMYK, HSV) to explore its properties.
         </p>
       </div>
@@ -140,13 +140,16 @@ watch(clr, useDebounceFn(updateFormats, 300), { immediate: true })
           ph="Enter any color format (e.g., #0063ff, rgb(0, 99, 255))"
           label="Color Input"
           v-model="c"
+          aria-label="Enter a color code"
         />
         <div
           class="mt-4 flex h-32 items-center justify-center rounded-lg text-xl font-medium shadow-md transition-all"
           :style="{ backgroundColor: clr }"
           @click="copy(clr)"
-          :class="[isDark(clr) ? 'text-white shadow-inner' : 'text-stone-900 shadow-lg']"
+          :class="[isDark(clr) ? 'text-ground-100 shadow-inner' : 'text-ground-900 shadow-md']"
           aria-live="polite"
+          tabindex="0"
+          aria-label="Color Preview"
         >
           {{ clr }}
         </div>
@@ -180,7 +183,7 @@ watch(clr, useDebounceFn(updateFormats, 300), { immediate: true })
               <div
                 v-for="format in formats"
                 :key="format.name"
-                class="flex cursor-pointer justify-between rounded-md bg-zinc-200 p-2 text-sm ta-150 hover:bg-zinc-300 sm:rounded-lg sm:p-3 md:text-base dark:bg-zinc-800 dark:hover:bg-zinc-700"
+                class="flex cursor-pointer justify-between rounded-md bg-ground-200 p-2 text-sm ta-150 hover:bg-ground-300 sm:rounded-lg sm:p-3 md:text-base dark:bg-ground-800 dark:hover:bg-ground-700"
                 @click="copy(format.value)"
                 tabindex="0"
                 role="button"
@@ -192,7 +195,6 @@ watch(clr, useDebounceFn(updateFormats, 300), { immediate: true })
             </div>
           </div>
         </div>
-
         <NuxtLink to="/modify" role="link">
           <button
             @click="save"
@@ -211,6 +213,6 @@ watch(clr, useDebounceFn(updateFormats, 300), { immediate: true })
 @reference "@/style.css";
 
 .itm {
-  @apply flex justify-between rounded-md bg-zinc-50 p-2 text-sm sm:rounded-lg sm:p-3 sm:text-base dark:bg-zinc-800;
+  @apply flex justify-between rounded-md bg-ground-50 p-2 text-sm sm:rounded-lg sm:p-3 sm:text-base dark:bg-ground-800;
 }
 </style>

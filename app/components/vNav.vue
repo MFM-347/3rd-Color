@@ -4,37 +4,37 @@ import { useRoute } from '#app'
 import { SunIcon, CodeBracketIcon, MoonIcon } from '@heroicons/vue/24/solid'
 
 const route = useRoute()
-const isDark = ref<boolean>(false)
+const isDarkMode = ref<boolean>(false)
 const icon = ref<typeof SunIcon | typeof MoonIcon>(MoonIcon)
 
 const toggleDarkMode = () => {
-  isDark.value = !isDark.value
-  document.documentElement.classList.toggle('dark', isDark.value)
-  localStorage.setItem('dark-mode', isDark.value ? 'enabled' : 'disabled')
-  icon.value = isDark.value ? SunIcon : MoonIcon
+  isDarkMode.value = !isDarkMode.value
+  document.documentElement.classList.toggle('dark', isDarkMode.value)
+  localStorage.setItem('dark-mode', isDarkMode.value ? 'enabled' : 'disabled')
+  icon.value = isDarkMode.value ? SunIcon : MoonIcon
 }
 
 onMounted(() => {
   const storedTheme = localStorage.getItem('dark-mode')
-  isDark.value =
+  isDarkMode.value =
     storedTheme === 'enabled' ||
     (storedTheme === null && window.matchMedia('(prefers-color-scheme: dark)').matches)
-  icon.value = isDark.value ? SunIcon : MoonIcon
+  icon.value = isDarkMode.value ? SunIcon : MoonIcon
 })
 </script>
 
 <template>
   <nav
-    class="flex items-center border-b border-zinc-200 bg-zinc-50 px-4 py-2 dark:border-zinc-800 dark:bg-zinc-950"
+    class="flex items-center border-b border-ground-200 bg-ground-50 px-4 py-2 dark:border-ground-800 dark:bg-ground-950"
   >
     <!-- Brand Logo -->
     <NuxtLink href="/" aria-label="Home" title="Home" class="flex items-center space-x-1">
       <div
-        class="flex aspect-square h-8 items-center justify-center rounded-xl bg-primary p-2 text-base font-bold text-foreground"
+        class="flex items-center justify-center rounded-lg bg-gradient-to-br from-x to-primary-hover p-1.5 text-base font-bold text-ground-100"
       >
         3C
       </div>
-      <span class="hidden text-xl font-medium tracking-wide md:block">olors</span>
+      <span class="hidden text-xl font-bold tracking-wide text-ground-200 md:block">olors</span>
     </NuxtLink>
 
     <!-- Navigation Links -->
@@ -57,25 +57,20 @@ onMounted(() => {
       <button
         type="button"
         @click="toggleDarkMode"
-        :aria-label="isDark ? 'Toggle Light Mode' : 'Toggle Dark Mode'"
-        :aria-pressed="isDark"
-        class="rounded-full p-2 ta-150 hover:bg-zinc-200 focus:ring focus:ring-stone-300 focus:outline-none dark:hover:bg-zinc-800 dark:focus:ring-stone-700"
+        :aria-label="isDarkMode ? 'Toggle Light Mode' : 'Toggle Dark Mode'"
+        :aria-pressed="isDarkMode"
+        class="rounded-full p-2 ta-150 hover:bg-ground-200 focus:ring focus:ring-ground-300 focus:outline-none dark:hover:bg-ground-800 dark:focus:ring-ground-700"
       >
-        <component
-          :is="icon"
-          class="size-6 transform text-stone-700 ta-140 ease-in-out hover:scale-110 dark:text-stone-300"
-        />
+        <component :is="icon" class="size-6 text-ground-700 ta-200 dark:text-ground-300" />
       </button>
       <a
         href="https://github.com/MFM-347/3rd-Color"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Source Code"
-        class="rounded-full p-2 ta-150 hover:bg-zinc-200 focus:ring focus:ring-stone-300 focus:outline-none dark:hover:bg-zinc-800 dark:focus:ring-stone-700"
+        class="rounded-full p-2 ta-150 hover:bg-ground-200 focus:ring focus:ring-ground-300 focus:outline-none dark:hover:bg-ground-800 dark:focus:ring-ground-700"
       >
-        <CodeBracketIcon
-          class="size-6 transform text-stone-700 ta-140 ease-in-out hover:scale-110 dark:text-stone-300"
-        />
+        <CodeBracketIcon class="size-6 text-ground-700 ta-200 dark:text-ground-300" />
       </a>
     </div>
   </nav>
@@ -85,9 +80,9 @@ onMounted(() => {
 @reference "@/style.css";
 
 .lnk {
-  @apply px-3 py-2 text-sm font-medium text-stone-600 ta-125 hover:text-stone-900 sm:text-base dark:text-stone-400 dark:hover:text-stone-100;
+  @apply px-3 py-2 text-sm font-medium text-ground-600 ta-125 hover:text-ground-900 sm:text-base dark:text-ground-400 dark:hover:text-ground-100;
 }
 .active {
-  @apply font-semibold text-stone-950 dark:text-stone-50;
+  @apply font-semibold text-ground-950 dark:text-ground-50;
 }
 </style>
