@@ -36,7 +36,20 @@ useHead({
     class: isDark.value ? 'dark' : '',
   },
   titleTemplate: '%s - 3rd Color',
-  link: [{ rel: 'icon', type: 'image/svg+xml', href: '/icon.svg' }],
+  link: [
+    { rel: 'icon', type: 'image/svg+xml', href: '/icon.svg' },
+    { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+    { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: undefined },
+    {
+      rel: 'preload',
+      href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&display=swap',
+      as: 'style',
+    },
+    {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&display=swap',
+    },
+  ],
   script: [
     {
       src: `https://www.googletagmanager.com/gtag/js?id=${gaId}`,
@@ -59,7 +72,7 @@ useHead({
   <div>
     <a
       href="#main"
-      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-ground-100 focus:px-4 focus:py-2 focus:text-ground-900 focus:shadow-lg"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-gray-100 focus:px-4 focus:py-2 focus:text-gray-900 focus:shadow-lg"
       >Skip to content</a
     >
     <NuxtLayout>

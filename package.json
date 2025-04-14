@@ -5,33 +5,35 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "format": "prettier -w .",
-    "start": "npm run format && clear && npm run dev"
+    "format": "prettier -w **/*.css **/*.ts **/*.vue",
+    "start": "pnpm format && clear && pnpm dev"
   },
   "dependencies": {
     "@ctrl/tinycolor": "^4.1.0",
-    "@heroicons/vue": "^2.2.0",
-    "@internationalized/number": "^3.6.0",
-    "@nuxt/fonts": "^0.11.0",
-    "@nuxtjs/sitemap": "^7.2.9",
+    "@internationalized/number": "^3.6.1",
     "chroma-js": "^3.1.2",
-    "nuxt": "^3.16.1",
-    "nuxt-og-image": "^5.1.1",
-    "nuxt-schema-org": "^5.0.4",
+    "nuxt": "^3.16.2",
     "reka-ui": "^2.1.1",
-    "tailwindcss": "latest",
     "vue": "latest",
     "vue-router": "latest",
     "vue3-toastify": "^0.2.8"
   },
   "devDependencies": {
+    "@iconify-json/material-symbols": "^1.2.19",
     "@nirtamir2/prettier-plugin-css-order": "^0.0.1",
+    "@nuxt/icon": "1.12.0",
+    "@nuxtjs/sitemap": "^7.2.10",
     "@tailwindcss/vite": "latest",
     "@types/chroma-js": "^3.1.1",
+    "@vueuse/core": "^13.1.0",
+    "@vueuse/nuxt": "13.1.0",
+    "nuxt-og-image": "^5.1.1",
+    "nuxt-schema-org": "^5.0.4",
     "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "0.6.11"
-  }
+    "prettier-plugin-tailwindcss": "0.6.11",
+    "tailwindcss": "latest"
+  },
+  "packageManager": "pnpm@10.8.1"
 }

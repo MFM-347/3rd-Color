@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { useDebounceFn } from '@vueuse/core'
 import { ref, watch, onMounted, computed } from '#imports'
 import { TinyColor, random } from '@ctrl/tinycolor'
 import { getUrl, meta, isDark } from '@/utils'
-import { PlusIcon, MinusIcon } from '@heroicons/vue/24/solid'
 import { toast } from 'vue3-toastify'
 import 'vue3-toastify/dist/index.css'
 
@@ -125,7 +123,7 @@ watch(m, updateMods, { deep: true })
     <div class="mx-auto max-w-5xl">
       <div class="mb-4 px-2 text-center md:mb-8">
         <h1>Color Editor</h1>
-        <p class="mt-4 text-lg text-ground-600 dark:text-ground-400">
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
           Transform and modify different colors with precision
         </p>
       </div>
@@ -141,7 +139,7 @@ watch(m, updateMods, { deep: true })
           <div
             class="h-40 cursor-pointer rounded-xl focus-visible:ring-2"
             :style="{ backgroundColor: clr }"
-            :class="[isDark(clr) ? 'text-ground-100 shadow-inner' : 'text-ground-900 shadow-md']"
+            :class="[isDark(clr) ? 'text-gray-100 shadow-inner' : 'text-gray-900 shadow-md']"
             tabindex="0"
             :aria-label="`Original color: ${clr}.`"
           >
@@ -152,7 +150,7 @@ watch(m, updateMods, { deep: true })
           <div
             class="h-40 cursor-pointer rounded-xl focus-visible:ring-2"
             :style="{ backgroundColor: mClr }"
-            :class="[isDark(mClr) ? 'text-ground-100 shadow-inner' : 'text-ground-900 shadow-md']"
+            :class="[isDark(mClr) ? 'text-gray-100 shadow-inner' : 'text-gray-900 shadow-md']"
             tabindex="0"
             @click="copy(mClr)"
             @keydown.enter="copy(mClr)"
@@ -175,27 +173,35 @@ watch(m, updateMods, { deep: true })
               @update:modelValue="(value: number) => (m[key] = value)"
               class="w-full"
             >
-              <Label :for="key" class="text-sm font-semibold text-ground-700 dark:text-ground-300">
+              <Label :for="key" class="text-sm font-semibold text-gray-700 dark:text-gray-300">
                 {{ key }} (%)
               </Label>
               <div
-                class="flex min-h-8 flex-row rounded-lg bg-ground-100 shadow-sm focus-within:ring-2 focus-within:ring-primary dark:bg-ground-800"
+                class="flex min-h-8 flex-row rounded-lg bg-gray-100 shadow-sm focus-within:ring-2 focus-within:ring-primary dark:bg-gray-800"
               >
                 <NumberFieldDecrement
-                  class="min-h-8 rounded-l-lg p-2 hover:bg-ground-300 focus-visible:ring-2 dark:hover:bg-ground-700"
+                  class="min-h-8 rounded-l-lg p-2 hover:bg-gray-300 focus-visible:ring-2 dark:hover:bg-gray-700"
                   :aria-label="'Decrease ' + key"
                 >
-                  <MinusIcon class="size-4 fill-ground-600 dark:fill-ground-300" />
+                  <Icon
+                    name="material-symbos:remove-rounded"
+                    size="16"
+                    class="fill-gray-600 dark:fill-gray-300"
+                  />
                 </NumberFieldDecrement>
                 <NumberFieldInput
                   class="flex-1 p-2 text-center text-base outline-none"
                   :aria-label="'Input for ' + key"
                 />
                 <NumberFieldIncrement
-                  class="min-h-8 rounded-r-lg p-2 hover:bg-ground-300 focus-visible:ring-2 dark:hover:bg-ground-700"
+                  class="min-h-8 rounded-r-lg p-2 hover:bg-gray-300 focus-visible:ring-2 dark:hover:bg-gray-700"
                   :aria-label="'Increase ' + key"
                 >
-                  <PlusIcon class="size-4 fill-ground-600 dark:fill-ground-300" />
+                  <Icon
+                    name="material-symbos:add-rounded"
+                    size="16"
+                    class="fill-gray-600 dark:fill-gray-300"
+                  />
                 </NumberFieldIncrement>
               </div>
             </NumberFieldRoot>

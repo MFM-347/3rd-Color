@@ -1,10 +1,5 @@
 <script setup lang="ts">
 import { meta, getUrl } from '@/utils'
-import {
-  InformationCircleIcon,
-  ArrowsRightLeftIcon,
-  AdjustmentsHorizontalIcon,
-} from '@heroicons/vue/24/solid'
 
 const description =
   '3rd Color is a powerful, user-friendly app that offers color information, color conversions, color modification, and other color manipulation features.'
@@ -62,7 +57,7 @@ defineOgImageComponent('NuxtSeo', {
         </NuxtLink>
         <a
           href="https://github.com/MFM-347/3rd-Color"
-          class="mt-4 transform rounded-full border border-ground-200 bg-muted px-6 py-3 font-medium text-background shadow-lg ta-300 hover:-translate-y-1 hover:border-primary focus:outline-2 focus:outline-offset-2 focus:outline-primary-hover dark:border-ground-700 dark:hover:border-x"
+          class="mt-4 transform rounded-full border border-gray-200 bg-muted px-6 py-3 font-medium text-background shadow-lg ta-300 hover:-translate-y-1 hover:border-primary focus:outline-2 focus:outline-offset-2 focus:outline-primary-hover dark:border-gray-700 dark:hover:border-x"
           role="link"
           target="_blank"
           aria-label="View Source Code on GitHub"
@@ -76,7 +71,12 @@ defineOgImageComponent('NuxtSeo', {
       <h2 id="features-heading">Features</h2>
       <div class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
         <div class="feature-item">
-          <InformationCircleIcon class="mb-4 size-12 fill-primary dark:fill-x" aria-hidden="true" />
+          <Icon
+            name="material-symbols:info-i-rounded"
+            size="48"
+            class="mb-4 fill-primary dark:fill-x"
+            aria-hidden="true"
+          />
           <h3 class="text-xl font-medium">Color Information</h3>
           <p class="mt-2 text-gray-700 dark:text-gray-300">
             Obtain detailed information about any color, including format, brightness, luminance,
@@ -84,7 +84,7 @@ defineOgImageComponent('NuxtSeo', {
           </p>
           <a
             href="/new/#info"
-            class="btn mt-4"
+            class="mt-4 btn"
             role="button"
             aria-label="Explore Color Information"
           >
@@ -93,20 +93,27 @@ defineOgImageComponent('NuxtSeo', {
         </div>
 
         <div class="feature-item">
-          <ArrowsRightLeftIcon class="mb-4 size-12 fill-primary dark:fill-x" aria-hidden="true" />
+          <Icon
+            name="material-symbols:compare-arrows-rounded"
+            size="48"
+            class="fill-primary dark:fill-x"
+            aria-hidden="true"
+          />
           <h3 class="text-xl font-medium">Format Conversion</h3>
           <p class="mt-2 text-gray-700 dark:text-gray-300">
             Seamlessly convert between multiple color formats, including HEX, RGB, CMYK, HSL, HSV,
             and more.
           </p>
-          <a href="/new/#cnv" class="btn mt-4" role="button" aria-label="Explore Format Conversion">
+          <a href="/new/#cnv" class="mt-4 btn" role="button" aria-label="Explore Format Conversion">
             Check it out
           </a>
         </div>
 
         <div class="feature-item">
-          <AdjustmentsHorizontalIcon
-            class="mb-4 size-12 fill-primary dark:fill-x"
+          <Icon
+            name="material-symbols:tune-rounded"
+            size="48"
+            class="fill-primary dark:fill-x"
             aria-hidden="true"
           />
           <h3 class="text-xl font-medium">Color Modification</h3>
@@ -114,7 +121,7 @@ defineOgImageComponent('NuxtSeo', {
             Modify colors with precision using controls for lightness, saturation, tint, shade, and
             hue rotation.
           </p>
-          <a href="/modify" class="btn mt-4" role="button" aria-label="Explore Color Modification">
+          <a href="/modify" class="mt-4 btn" role="button" aria-label="Explore Color Modification">
             Check it out
           </a>
         </div>
@@ -127,6 +134,6 @@ defineOgImageComponent('NuxtSeo', {
 @reference "@/style.css";
 
 .feature-item {
-  @apply flex flex-col items-center rounded-2xl border border-ground-200 bg-white/50 p-4 text-center shadow-xl backdrop-blur-lg ta-500 ease-in-out hover:border-primary hover:shadow-2xl hover:shadow-primary/20 sm:p-8 dark:border-ground-700 dark:bg-ground-800/50 dark:hover:border-x dark:hover:shadow-x/20;
+  @apply flex flex-col items-center rounded-2xl border border-gray-200 bg-white/50 p-4 text-center shadow-xl backdrop-blur-lg ta-500 ease-in-out hover:border-primary hover:shadow-2xl hover:shadow-primary/20 sm:p-8 dark:border-gray-700 dark:bg-gray-800/50 dark:hover:border-x dark:hover:shadow-x/20;
 }
 </style>

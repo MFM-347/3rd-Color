@@ -63,7 +63,7 @@ const techs = [
                 :href="tech.link"
                 target="_blank"
                 rel="noopener nofollow"
-                class="inline-flex items-center rounded-lg bg-ground-200 px-4 py-2 text-lg hover:bg-ground-300 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:outline-none dark:bg-ground-800 dark:hover:bg-ground-700"
+                class="inline-flex items-center rounded-lg bg-gray-200 px-4 py-2 text-lg hover:bg-gray-300 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700"
                 :aria-label="'Learn more about ' + tech.name"
               >
                 {{ tech.name }}

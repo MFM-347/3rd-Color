@@ -13,7 +13,6 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: true,
     prerender: {
-      failOnError: false,
       crawlLinks: true,
       routes: ['/'],
     },
@@ -40,14 +39,16 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxtjs/sitemap', 'nuxt-og-image', 'nuxt-schema-org', 'reka-ui/nuxt', '@nuxt/fonts'],
+  modules: [
+    '@nuxtjs/sitemap',
+    'nuxt-og-image',
+    'nuxt-schema-org',
+    'reka-ui/nuxt',
+    '@vueuse/nuxt',
+    '@nuxt/icon',
+  ],
 
   site: {
-    url: 'https://3color.vercel.app',
-    name: '3rd Color - Color Tools for Designers & Developers',
-  },
-
-  siteConfig: {
     title: '3rd Color - Color Tools for Designers & Developers',
     description:
       '3rd Color is a powerful, user-friendly app that offers color information, color conversions, color modification and other color manipulation features.',
@@ -74,6 +75,11 @@ export default defineNuxtConfig({
     },
   },
 
+  icon: {
+    mode: 'svg',
+    serverBundle: 'auto',
+  },
+
   features: {
     inlineStyles: true,
   },
@@ -92,11 +98,11 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/': { sitemap: { changefreq: 'weekly', priority: 1.0 } },
-    '/new': { sitemap: { changefreq: 'weekly', priority: 0.95 } },
+    '/new': { sitemap: { changefreq: 'weekly', priority: 0.9 } },
     '/edit': { redirect: '/modify' },
     '/modify': { sitemap: { changefreq: 'weekly', priority: 0.9 } },
     '/about': { sitemap: { changefreq: 'monthly', priority: 0.8 } },
-    '/**/*.{css,svg,png,woff,woff2}': {
+    '/**/*.{css,svg,png,woff2}': {
       headers: {
         'Cache-Control': 'public, max-age=432000, stale-while-revalidate=604800',
       },

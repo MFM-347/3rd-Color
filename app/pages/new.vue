@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useDebounceFn } from '@vueuse/core'
 import { ref, computed, watch } from '#imports'
 import { TinyColor, random } from '@ctrl/tinycolor'
 import chroma from 'chroma-js'
@@ -130,7 +129,7 @@ watch(clr, useDebounceFn(updateFormats, 300), { immediate: true })
     <div class="mx-auto max-w-5xl">
       <div class="mb-4 px-2 text-center md:mb-8">
         <h1>Create New Color</h1>
-        <p class="mt-2 text-lg text-ground-600 dark:text-ground-400">
+        <p class="mt-2 text-lg text-gray-600 dark:text-gray-400">
           Enter a valid color format (HEX, RGB, HSL, CMYK, HSV) to explore its properties.
         </p>
       </div>
@@ -146,7 +145,7 @@ watch(clr, useDebounceFn(updateFormats, 300), { immediate: true })
           class="mt-4 flex h-32 items-center justify-center rounded-lg text-xl font-medium shadow-md transition-all"
           :style="{ backgroundColor: clr }"
           @click="copy(clr)"
-          :class="[isDark(clr) ? 'text-ground-100 shadow-inner' : 'text-ground-900 shadow-md']"
+          :class="[isDark(clr) ? 'text-gray-100 shadow-inner' : 'text-gray-900 shadow-md']"
           aria-live="polite"
           tabindex="0"
           aria-label="Color Preview"
@@ -183,7 +182,7 @@ watch(clr, useDebounceFn(updateFormats, 300), { immediate: true })
               <div
                 v-for="format in formats"
                 :key="format.name"
-                class="flex cursor-pointer justify-between rounded-md bg-ground-200 p-2 text-sm ta-150 hover:bg-ground-300 sm:rounded-lg sm:p-3 md:text-base dark:bg-ground-800 dark:hover:bg-ground-700"
+                class="flex cursor-pointer justify-between rounded-md bg-gray-200 p-2 text-sm ta-150 hover:bg-gray-300 sm:rounded-lg sm:p-3 md:text-base dark:bg-gray-800 dark:hover:bg-gray-700"
                 @click="copy(format.value)"
                 tabindex="0"
                 role="button"
@@ -213,6 +212,6 @@ watch(clr, useDebounceFn(updateFormats, 300), { immediate: true })
 @reference "@/style.css";
 
 .itm {
-  @apply flex justify-between rounded-md bg-ground-50 p-2 text-sm sm:rounded-lg sm:p-3 sm:text-base dark:bg-ground-800;
+  @apply flex justify-between rounded-md bg-gray-50 p-2 text-sm sm:rounded-lg sm:p-3 sm:text-base dark:bg-gray-800;
 }
 </style>
