@@ -7,17 +7,17 @@ import { toast } from 'vue3-toastify'
 import 'vue3-toastify/dist/index.css'
 
 const description =
-  "3rd Color's Color Creator let's you create and analyze colors with 3rd Color's color tools"
+  "Color Xpret's Color Creator let's you create and analyze colors with Color Xpret's color tools"
 const url = getUrl('/new')
 
 useSeoMeta({
   title: 'New Color',
   description,
   ogUrl: url,
-  ogTitle: 'New Color - 3rd Color',
+  ogTitle: 'New Color - Color Xpret',
   ogDescription: description,
   ogImageAlt: meta.alt,
-  twitterTitle: 'New Color - 3rd Color',
+  twitterTitle: 'New Color - Color Xpret',
   twitterDescription: description,
   twitterImageAlt: meta.alt,
 })
@@ -27,9 +27,9 @@ useHead({
 })
 
 defineOgImageComponent('NuxtSeo', {
-  title: 'New Color - 3rd Color',
+  title: 'New Color - Color Xpret',
   description: description,
-  siteName: '3rd Color',
+  siteName: 'Color Xpret',
   siteLogo: meta.logo,
   theme: '#187bff',
 })
@@ -134,7 +134,7 @@ watch(clr, useDebounceFn(updateFormats, 300), { immediate: true })
         </p>
       </div>
       <div class="sec md:max-w-4xl">
-        <vCInput
+        <VColorInput
           type="text"
           ph="Enter any color format (e.g., #0063ff, rgb(0, 99, 255))"
           label="Color Input"

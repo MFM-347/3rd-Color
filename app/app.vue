@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const gaId = useRuntimeConfig().public.VITE_GA
+const gaId = useRuntimeConfig().public.NUXT_GA
 const isDark = ref<boolean>(false)
 const enableDark = (enabled: boolean) => {
   document.documentElement.classList.toggle('dark', enabled)
@@ -25,8 +25,7 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
   mobileWebAppCapable: 'yes',
   appleMobileWebAppCapable: 'yes',
-  appleMobileWebAppTitle: '3rd Color',
-  appleMobileWebAppStatusBarStyle: 'black-translucent',
+  appleMobileWebAppTitle: 'Color Xpret',
   googleSiteVerification: '9C3mmoooLN2NLh5PUEVgr98hTKYWPIarhqp7Efdfwuo',
 })
 
@@ -35,7 +34,7 @@ useHead({
     lang: 'en',
     class: isDark.value ? 'dark' : '',
   },
-  titleTemplate: '%s - 3rd Color',
+  titleTemplate: '%s - Color Xpret',
   link: [
     { rel: 'icon', type: 'image/svg+xml', href: '/icon.svg' },
     { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -69,16 +68,9 @@ useHead({
 </script>
 
 <template>
-  <div>
-    <a
-      href="#main"
-      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-gray-100 focus:px-4 focus:py-2 focus:text-gray-900 focus:shadow-lg"
-      >Skip to content</a
-    >
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-  </div>
 </template>
 
 <style>

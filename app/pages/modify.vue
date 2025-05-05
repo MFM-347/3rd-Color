@@ -5,17 +5,17 @@ import { getUrl, meta, isDark } from '@/utils'
 import { toast } from 'vue3-toastify'
 import 'vue3-toastify/dist/index.css'
 
-const description = "3rd Color's Color Editor lets you modify and transform colors with precision."
+const description = "Color Xpret's Color Editor lets you modify and transform colors with precision."
 const url = getUrl('/modify')
 
 useSeoMeta({
   title: 'Color Editor',
   description,
   ogUrl: url,
-  ogTitle: 'Color Editor - 3rd Color',
+  ogTitle: 'Color Editor - Color Xpret',
   ogDescription: description,
   ogImageAlt: meta.alt,
-  twitterTitle: 'Color Editor - 3rd Color',
+  twitterTitle: 'Color Editor - Color Xpret',
   twitterDescription: description,
   twitterImageAlt: meta.alt,
 })
@@ -25,9 +25,9 @@ useHead({
 })
 
 defineOgImageComponent('NuxtSeo', {
-  title: 'Color Editor - 3rd Color',
+  title: 'Color Editor - Color Xpret',
   description: description,
-  siteName: '3rd Color',
+  siteName: 'Color Xpret',
   siteLogo: meta.logo,
   theme: '#187bff',
 })
@@ -128,7 +128,7 @@ watch(m, updateMods, { deep: true })
         </p>
       </div>
       <div class="sec md:max-w-4xl">
-        <vCInput
+        <VColorInput
           type="text"
           ph="Enter any color format (e.g., #0063ff, rgb(0, 99, 255))"
           label="Color Input"

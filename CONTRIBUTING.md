@@ -1,13 +1,13 @@
-# Contributing to 3rd Color
+# Contributing to Color Xpret
 
-Thank you for considering contributing to 3rd Color! 🎉
+Thank you for considering contributing to Color Xpret! 🎉
 Your contributions, whether big or small, are essential to the success of this project. We welcome **bug reports**, **feature requests**, **documentation updates**, and **code improvements**.
 
 ## Contribution Guide
 
 ### Step 1: Fork the Repository
 
-1. Navigate to the [3rd Color repository](https://github.com/MFM-347/3rd Color).
+1. Navigate to the [Color Xpret repository](https://github.com/MFM-347/Color Xpret).
 2. Click the **Fork** button in the top-right corner to create your own copy of the repository.
 
 ### Step 2: Clone Your Fork
@@ -15,8 +15,8 @@ Your contributions, whether big or small, are essential to the success of this p
 Clone your forked repository to your local machine:
 
 ```bash
-git clone https://github.com/<your-username>/3rd Color.git
-cd 3rd Color
+git clone https://github.com/<your-username>/Color Xpret.git
+cd Color Xpret
 ```
 
 ### Step 3: Set Up Your Environment
@@ -95,7 +95,7 @@ Push your branch to your fork:
 git push origin <branch-name>
 ```
 
-Then, navigate to the **original 3rd Color repository** and submit a pull request.
+Then, navigate to the **original Color Xpret repository** and submit a pull request.
 Include the following in your PR description:
 
 - A summary of changes.
@@ -149,4 +149,4 @@ If you’re unsure about something or need guidance:
 - Start a [discussion](https://github.com/MFM-347/3rd-Color/discussions).
 - Join our community for support and collaboration.
 
-Thank you ✨ for contributing to 3rd Color! Your effort makes this project better for everyone.
+Thank you ✨ for contributing to Color Xpret! Your effort makes this project better for everyone.

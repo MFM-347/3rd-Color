@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { meta, getUrl } from '@/utils'
 
-const description = 'Learn about 3rd Color, a powerful color tool for designers and developers.'
+const description = 'Learn about Color Xpret, a powerful color tool for designers and developers.'
 const url = getUrl('/about')
 
 useSeoMeta({
   title: 'About',
   description,
   ogUrl: url,
-  ogTitle: 'About - 3rd Color',
+  ogTitle: 'About - Color Xpret',
   ogDescription: description,
   ogImageAlt: meta.alt,
-  twitterTitle: 'About - 3rd Color',
+  twitterTitle: 'About - Color Xpret',
   twitterDescription: description,
   twitterImageAlt: meta.alt,
 })
@@ -21,9 +21,9 @@ useHead({
 })
 
 defineOgImageComponent('NuxtSeo', {
-  title: 'About - 3rd Color',
+  title: 'About - Color Xpret',
   description: description,
-  siteName: '3rd Color',
+  siteName: 'Color Xpret',
   siteLogo: meta.logo,
   theme: '#187bff',
 })
@@ -43,12 +43,12 @@ const techs = [
   <article class="min-h-screen pt-4 md:pt-8">
     <div class="mx-auto max-w-5xl">
       <div class="mb-4 px-2 text-center md:mb-8">
-        <h1>About 3rd Color</h1>
+        <h1>About Color Xpret</h1>
       </div>
       <div class="sec max-w-3xl">
         <section id="intro" class="mb-8">
           <p class="text-lg leading-relaxed">
-            <strong>3rd Color</strong> is a comprehensive color tool designed for designers and
+            <strong>Color Xpret</strong> is a comprehensive color tool designed for designers and
             developers. It combines essential <i>color manipulation features</i> into a single but
             efficient platform, providing color insights, format conversion, and modification
             capabilities.

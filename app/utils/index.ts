@@ -4,10 +4,10 @@ import { TinyColor } from '@ctrl/tinycolor'
  * Application metadata for site-wide use
  */
 export const meta = {
-  title: '3rd Color - Color Tools for Designers & Developers',
-  url: 'https://3color.vercel.app',
+  title: 'Color Xpret - Color Tools for Designers & Developers',
+  url: 'https://xpret.vercel.app',
   logo: '/icon.svg',
-  alt: '3rd Color - Professional Color Tools',
+  alt: 'Color Xpret - Professional Color Tools',
   author: {
     name: 'Farhan Madni',
     url: 'https://xyzdev.vercel.app/',

@@ -28,12 +28,11 @@ onMounted(() => {
   >
     <!-- Brand Logo -->
     <NuxtLink href="/" aria-label="Home" title="Home" class="flex items-center space-x-1">
-      <div
-        class="flex items-center justify-center rounded-lg bg-gradient-to-br from-x to-primary-hover p-1.5 text-base font-bold text-gray-100"
+      <span class="text-2xl font-bold tracking-normal text-primary dark:text-x">3X</span
+      ><span
+        class="hidden text-xl font-semibold tracking-wide text-gray-800 md:block dark:text-gray-200"
+        >pret</span
       >
-        3C
-      </div>
-      <span class="hidden text-xl font-bold tracking-wide text-gray-200 md:block">olors</span>
     </NuxtLink>
 
     <!-- Navigation Links -->

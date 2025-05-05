@@ -19,7 +19,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      VITE_GA: process.env.VITE_GA,
+      NUXT_GA: process.env.NUXT_GA,
     },
   },
 
@@ -41,17 +41,17 @@ export default defineNuxtConfig({
   modules: ['reka-ui/nuxt', '@nuxt/icon', '@nuxtjs/seo', '@vueuse/nuxt'],
 
   site: {
-    title: '3rd Color - Color Tools for Designers & Developers',
+    title: 'Color Xpret - Color Tools for Designers & Developers',
     description:
-      '3rd Color is a powerful, user-friendly app that offers color information, color conversions, color modification and other color manipulation features.',
-    url: 'https://3color.vercel.app/',
+      'Color Xpret is a powerful, user-friendly app that offers color information, color conversions, color modification and other color manipulation features.',
+    url: 'https://xpret.vercel.app/',
   },
 
   schemaOrg: {
     identity: {
       type: 'Organization',
-      name: '3rd Color',
-      alternateName: '3Color',
+      name: 'Color Xpret',
+      alternateName: 'Xpret',
       logo: '/icon.svg',
       sameAs: [
         'https://github.com/mfm-347',

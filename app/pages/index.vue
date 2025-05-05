@@ -2,19 +2,19 @@
 import { meta, getUrl } from '@/utils'
 
 const description =
-  '3rd Color is a powerful, user-friendly app that offers color information, color conversions, color modification, and other color manipulation features.'
+  'Color Xpret is a powerful, user-friendly app that offers color information, color conversions, color modification, and other color manipulation features.'
 const url = getUrl('/')
 
 useSeoMeta({
-  title: '3rd Color - Color Tools for Designers & Developers',
+  title: 'Color Xpret - Color Tools for Designers & Developers',
   description,
   ogUrl: url,
-  ogTitle: '3rd Color - Color Tools for Designers & Developers',
+  ogTitle: 'Color Xpret - Color Tools for Designers & Developers',
   ogDescription: description,
-  ogImageAlt: '3rd Color logo',
-  twitterTitle: '3rd Color - Color Tools for Designers & Developers',
+  ogImageAlt: 'Color Xpret logo',
+  twitterTitle: 'Color Xpret - Color Tools for Designers & Developers',
   twitterDescription: description,
-  twitterImageAlt: '3rd Color logo',
+  twitterImageAlt: 'Color Xpret logo',
 })
 
 useHead({
@@ -23,9 +23,9 @@ useHead({
 })
 
 defineOgImageComponent('NuxtSeo', {
-  title: '3rd Color - Color Tools for Designers & Developers',
+  title: 'Color Xpret - Color Tools for Designers & Developers',
   description,
-  siteName: '3rd Color',
+  siteName: 'Color Xpret',
   siteLogo: meta.logo,
   theme: '#187bff',
 })
@@ -36,13 +36,13 @@ defineOgImageComponent('NuxtSeo', {
     <header id="hero" class="mx-auto flex flex-col items-center py-12 text-center">
       <img
         :src="meta.logo"
-        alt="3rd Color logo"
+        alt="Color Xpret logo"
         class="my-6"
         height="125"
         width="125"
         aria-hidden="true"
       />
-      <h1 class="title">3rd Color</h1>
+      <h1 class="title">Color Xpret</h1>
       <p class="mt-3 max-w-xl text-lg text-gray-700 dark:text-gray-300">
         {{ description }}
       </p>
@@ -51,7 +51,7 @@ defineOgImageComponent('NuxtSeo', {
           to="/new"
           class="mt-4 transform rounded-full bg-gradient-to-r from-primary to-x px-6 py-3 font-medium text-white shadow-lg shadow-primary/25 ta-300 hover:-translate-y-1 hover:shadow-primary/40 focus:outline-2 focus:outline-offset-2 focus:outline-primary-hover"
           role="link"
-          aria-label="Get Started with 3rd Color"
+          aria-label="Get Started with Color Xpret"
         >
           Get Started
         </NuxtLink>
