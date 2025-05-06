@@ -12,11 +12,10 @@ Color Xpret is a powerful, user-friendly color tool app that offers color inform
 ## Future Plans
 
 - I may add color scheme generation like **[uicolors.app](https://uicolors.app/)** and color mixing and blending like **[hue.tools](https://hue.tools/)**.
-- I may (`or may not`) rename **Color Xpret** to **ColorXpret**.
 
 ## Contributing
 
-We welcome contributions! Please check the [CONTRIBUTING.md](https://github.com/MFM-347/3rdColor/blob/main/CONTRIBUTING.md) for guidelines.
+We welcome contributions! Please check the [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
 ## Credits
 
