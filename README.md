@@ -1,19 +1,21 @@
-# 3rd Color
+# Color Xpret
 
-![GitHub code size](https://img.shields.io/github/languages/code-size/MFM-347/3rd-Color?style=for-the-badge&color=505B92) <!-- Just for having extra focus on app size -->
-![Github Repo Size](https://img.shields.io/github/repo-size/MFM-347/3rd-Color?style=for-the-badge&color=505B92) <!-- Just for having extra focus on app size -->
-![Stars](https://img.shields.io/github/stars/MFM-347/3rd-COlor?color=blue&style=for-the-badge)
+![code size](https://img.shields.io/github/languages/code-size/MFM-347/3rd-Color?style=for-the-badge)
+[![Stars](https://img.shields.io/github/stars/MFM-347/3rd-Color?color=efef25&style=for-the-badge)](https://github.com/MFM-347/3rd-Color/stargazers)
+<a href="https://www.producthunt.com/posts/3rd-color?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-3rd&#0045;color" target="_blank">
+<img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=939594&theme=light" alt="Color Xpret - Color Tools for Designers & Developers | Product Hunt" height="30" />
+</a>
+[![Website Link](https://img.shields.io/badge/Website-Link-187bff?style=for-the-badge)](https://xpret.vercel.app/?ref=github&utm_source=github.com&utm_medium=repo&utm_compaign=readme_link)
 
-3rd Color is a powerful, user-friendly color tool app that offers color information, seamless color conversion, and advanced color modification features. Explore and transform colors easily.
+Color Xpret is a powerful, user-friendly color tool app that offers color information, seamless color conversion, and advanced color modification features. Explore and transform colors easily.
 
 ## Future Plans
 
-- I may add color scheme generation like **[uicolors.app](https://uicolors.app/)** and **[chromax.app](https://www.chromax.app/)**.
-- I may (or may not) rename **3rd Color** to **ColorXpret**.
+- I may add color scheme generation like **[uicolors.app](https://uicolors.app/)** and color mixing and blending like **[hue.tools](https://hue.tools/)**.
 
 ## Contributing
 
-We welcome contributions! Please check the [CONTRIBUTING.md](https://github.com/MFM-347/3rdColor/blob/main/CONTRIBUTING.md) for guidelines.
+We welcome contributions! Please check the [CONTRIBUTING.md](https://github.com/MFM-347/color-xpret/blob/main/CONTRIBUTING.md) for guidelines.
 
 ## Credits
 
@@ -23,4 +25,4 @@ Created with ❤️ by [@MFM-347](https://github.com/mfm-347).
 
 The code in this repository is licensed under the **MIT License**.
 
-[![License MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
+[![License MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](./LICENSE)

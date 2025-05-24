@@ -1,4 +1,4 @@
-# Pull Request for 3rd Color
+# Pull Request for Color Xpret
 
 ## Description
 
@@ -18,13 +18,12 @@ Please provide a detailed summary of the changes, including the purpose and cont
 
 Before submitting this pull request, ensure the following tasks have been completed:
 
-- [ ] Changes have been tested locally using `vite dev` or equivalent.
+- [ ] Changes have been tested locally using `npm start` or equivalent.
 - [ ] Associated documentation has been updated to reflect the changes.
 - [ ] This PR resolves any linked issues (**issue ID:** #{ID}).
 - [ ] A clear and detailed description of the problem, solution, and implementation approach is provided.
 - [ ] Code follows the project's coding standards and guidelines.
 - [ ] No errors or warnings are present in the console.
-- [ ] Relevant tests have been added or updated and pass locally.
 - [ ] All merge conflicts are resolved.
 
 ## Testing Instructions
@@ -37,7 +36,7 @@ Please describe the testing steps and any relevant configurations for verifying 
 
 ## Dependencies and Updates
 
-Include any updates to dependencies, frameworks, or tooling (e.g., `tailwindcss`, `vue-router`, `pinia`) and their impact on the project.
+Include any updates to dependencies, frameworks, or tooling and their impact on the project.
 
 ## Additional Comments
 

@@ -1,64 +1,139 @@
 <script setup lang="ts">
-import { getSocial, generateSchemas, getCanonicalUrl } from '@/utils'
+import { meta, getUrl } from '@/utils'
 
-const pTitle = '3rd Color - Super Powerful Color Tools'
-const pageDescription =
-  '3rd Color helps you explore, modify, and convert colors with ease. Discover advanced color features for all your creative needs.'
+const description =
+  'Color Xpret is a powerful, user-friendly app that offers color information, color conversions, color modification, and other color manipulation features.'
+const url = getUrl('/')
+
 useSeoMeta({
-  title: pTitle,
-  description: pageDescription,
-  ...getSocial({
-    title: pTitle,
-    description: pageDescription,
-  }),
+  title: 'Color Xpret - Color Tools for Designers & Developers',
+  description,
+  ogUrl: url,
+  ogTitle: 'Color Xpret - Color Tools for Designers & Developers',
+  ogDescription: description,
+  ogImageAlt: 'Color Xpret logo',
+  twitterTitle: 'Color Xpret - Color Tools for Designers & Developers',
+  twitterDescription: description,
+  twitterImageAlt: 'Color Xpret logo',
 })
+
 useHead({
   titleTemplate: null,
-  link: [{ rel: 'canonical', href: getCanonicalUrl() }],
-  script: [
-    {
-      type: 'application/ld+json',
-      children: JSON.stringify(
-        generateSchemas({
-          type: 'WebPage',
-          title: pTitle,
-          description: pageDescription,
-          dateModified: new Date().toISOString().split('T')[0],
-        }),
-      ),
-    },
-  ],
+  link: [{ rel: 'canonical', href: url }],
+})
+
+defineOgImageComponent('NuxtSeo', {
+  title: 'Color Xpret - Color Tools for Designers & Developers',
+  description,
+  siteName: 'Color Xpret',
+  siteLogo: meta.logo,
+  theme: '#187bff',
 })
 </script>
 
 <template>
-  <div>
-    <section class="flex flex-col items-center px-4 py-6">
-      <h2>Best Color Tools</h2>
-      <p class="mx-auto mb-6 max-w-2xl text-center">
-        Get detailed information about any color, conversion to any format and modification with precision, all in one
-        app, the <b>3rd Color</b>.
+  <div class="px-4 sm:px-6 lg:px-8">
+    <header id="hero" class="mx-auto flex flex-col items-center py-12 text-center">
+      <img
+        :src="meta.logo"
+        alt="Color Xpret logo"
+        class="my-6"
+        height="125"
+        width="125"
+        aria-hidden="true"
+      />
+      <h1 class="title">Color Xpret</h1>
+      <p class="mt-3 max-w-xl text-lg text-gray-700 dark:text-gray-300">
+        {{ description }}
       </p>
-      <NuxtLink to="/app">
-        <button class="bg-clr-600 hover:bg-clr-500 ta-150 rounded-lg p-2">Get Started for free</button>
-      </NuxtLink>
-    </section>
-    <section class="mt-8 bg-zinc-50 px-4 py-8 dark:bg-zinc-800">
-      <h2>Key Features</h2>
-      <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
-        <article class="card">
-          <h3>Color Information</h3>
-          <p>Get detailed information about any color including format, brightness, luminance, and more.</p>
-        </article>
-        <article class="card">
-          <h3>Format Conversion</h3>
-          <p>Convert between multiple color formats including HEX, RGB, CMYK, HSL, HSV, and more advanced formats.</p>
-        </article>
-        <article class="card">
-          <h3>Color Modification</h3>
-          <p>Modify colors with precision using controls for lightness, saturation, tint, shade, and hue rotation.</p>
-        </article>
+      <div id="cta" class="inline-flex gap-x-1">
+        <NuxtLink
+          to="/new"
+          class="mt-4 transform rounded-full bg-gradient-to-r from-primary to-x px-6 py-3 font-medium text-white shadow-lg shadow-primary/25 ta-300 hover:-translate-y-1 hover:shadow-primary/40 focus:outline-2 focus:outline-offset-2 focus:outline-primary-hover"
+          role="link"
+          aria-label="Get Started with Color Xpret"
+        >
+          Get Started
+        </NuxtLink>
+        <a
+          href="https://github.com/MFM-347/3rd-Color"
+          class="mt-4 transform rounded-full border border-gray-200 bg-muted px-6 py-3 font-medium text-background shadow-lg ta-300 hover:-translate-y-1 hover:border-primary focus:outline-2 focus:outline-offset-2 focus:outline-primary-hover dark:border-gray-700 dark:hover:border-x"
+          role="link"
+          target="_blank"
+          aria-label="View Source Code on GitHub"
+        >
+          Source Code
+        </a>
+      </div>
+    </header>
+
+    <section id="features" class="mt-12 text-center" aria-labelledby="features-heading">
+      <h2 id="features-heading">Features</h2>
+      <div class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
+        <div class="feature-item">
+          <Icon
+            name="material-symbols:info-i-rounded"
+            size="48"
+            class="mb-4 fill-primary dark:fill-x"
+            aria-hidden="true"
+          />
+          <h3 class="text-xl font-medium">Color Information</h3>
+          <p class="mt-2 text-gray-700 dark:text-gray-300">
+            Obtain detailed information about any color, including format, brightness, luminance,
+            and more.
+          </p>
+          <a
+            href="/new/#info"
+            class="mt-4 btn"
+            role="button"
+            aria-label="Explore Color Information"
+          >
+            Check it out
+          </a>
+        </div>
+
+        <div class="feature-item">
+          <Icon
+            name="material-symbols:compare-arrows-rounded"
+            size="48"
+            class="fill-primary dark:fill-x"
+            aria-hidden="true"
+          />
+          <h3 class="text-xl font-medium">Format Conversion</h3>
+          <p class="mt-2 text-gray-700 dark:text-gray-300">
+            Seamlessly convert between multiple color formats, including HEX, RGB, CMYK, HSL, HSV,
+            and more.
+          </p>
+          <a href="/new/#cnv" class="mt-4 btn" role="button" aria-label="Explore Format Conversion">
+            Check it out
+          </a>
+        </div>
+
+        <div class="feature-item">
+          <Icon
+            name="material-symbols:tune-rounded"
+            size="48"
+            class="fill-primary dark:fill-x"
+            aria-hidden="true"
+          />
+          <h3 class="text-xl font-medium">Color Modification</h3>
+          <p class="mt-2 text-gray-700 dark:text-gray-300">
+            Modify colors with precision using controls for lightness, saturation, tint, shade, and
+            hue rotation.
+          </p>
+          <a href="/modify" class="mt-4 btn" role="button" aria-label="Explore Color Modification">
+            Check it out
+          </a>
+        </div>
       </div>
     </section>
   </div>
 </template>
+
+<style scoped>
+@reference "@/style.css";
+
+.feature-item {
+  @apply flex flex-col items-center rounded-2xl border border-gray-200 bg-white/50 p-4 text-center shadow-xl backdrop-blur-lg ta-500 ease-in-out hover:border-primary hover:shadow-2xl hover:shadow-primary/20 sm:p-8 dark:border-gray-700 dark:bg-gray-800/50 dark:hover:border-x dark:hover:shadow-x/20;
+}
+</style>
