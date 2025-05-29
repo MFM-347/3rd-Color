@@ -5,7 +5,7 @@
 <a href="https://www.producthunt.com/posts/3rd-color?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-3rd&#0045;color" target="_blank">
 <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=939594&theme=light" alt="Color Xpret - Color Tools for Designers & Developers | Product Hunt" height="30" />
 </a>
-[![Website Link](https://img.shields.io/badge/Website-Link-187bff?style=for-the-badge)](https://xpret.vercel.app/?ref=github&utm_source=github.com&utm_medium=repo&utm_compaign=readme_link)
+[![Website Link](https://img.shields.io/badge/Website-Link-187bff?style=for-the-badge)](https://xpret.vercel.app/??ref=github&utm_source=github.com&utm_medium=repo&utm_campaign=readme_link)
 
 Color Xpret is a powerful, user-friendly color tool app that offers color information, seamless color conversion, and advanced color modification features. Explore and transform colors easily.
 
